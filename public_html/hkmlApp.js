@@ -43,5 +43,13 @@ $j(document).ready(function()
        $j('body center > div.tableborder').css('display', 'none')
        // hide the model brands links panel
        $j('body center center').css('display', 'none')
+       
+       $j('a[href="javascript:void(0)"]').each(function(i, n){
+           var out = n.outerHTML()
+           var mth = out.match(/onclick\=\"window\.open\(\'(^\')\'"/)
+           if (mth && mth[1]) {
+               alert(mth[1])
+           }
+       })
   })
 
