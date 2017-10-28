@@ -38,21 +38,21 @@ $j(document).ready(function()
            for(var x=3; x < sph_q.length; x++) {
                $j(sph_q[x]).css('display', 'none');
            }
+           
+            $j('a[href="javascript:void(0)"]').each(function(i, n){
+                var out = n.outerHTML()
+                var mth = out.match(/onclick\=\"window\.open\(\'(^\')\'"/)
+                alert(mth.length)
+                if (mth && mth[1]) {
+                    alert(mth[1])
+                }
+            })
+           
        }
        // hide the board instruction panel
        $j('body center > div.tableborder').css('display', 'none')
        // hide the model brands links panel
        $j('body center center').css('display', 'none')
        
-       alert('@@@')
-       
-       $j('a[href="javascript:void(0)"]').each(function(i, n){
-           var out = n.outerHTML()
-           var mth = out.match(/onclick\=\"window\.open\(\'(^\')\'"/)
-           alert(mth.length)
-           if (mth && mth[1]) {
-               alert(mth[1])
-           }
-       })
   })
 
