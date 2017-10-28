@@ -48,10 +48,10 @@ $j(document).ready(function()
            try {
             $j('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML
-                var mth = out.match(/onclick\=\"window\.open\(\'(^\')\'"/)
-                alert(mth.length)
+                var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/)
+                
                 if (mth && mth[1]) {
-                    alert(mth[1])
+                    $j(n).attr('href', mth[1])[0].onclick = null;
                 }
             })
            } catch (e) {
