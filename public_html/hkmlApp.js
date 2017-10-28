@@ -38,7 +38,13 @@ $j(document).ready(function()
            for(var x=3; x < sph_q.length; x++) {
                $j(sph_q[x]).css('display', 'none');
            }
-           
+                      
+       }
+       // hide the board instruction panel
+       $j('body center > div.tableborder').css('display', 'none')
+       // hide the model brands links panel
+       $j('body center center').css('display', 'none')
+       
            try {
             $j('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML()
@@ -51,12 +57,5 @@ $j(document).ready(function()
            } catch (e) {
                alert(e.message)
            }
-           
-       }
-       // hide the board instruction panel
-       $j('body center > div.tableborder').css('display', 'none')
-       // hide the model brands links panel
-       $j('body center center').css('display', 'none')
-       
   })
 
