@@ -39,6 +39,7 @@ $j(document).ready(function()
                $j(sph_q[x]).css('display', 'none');
            }
            
+           try {
             $j('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML()
                 var mth = out.match(/onclick\=\"window\.open\(\'(^\')\'"/)
@@ -47,6 +48,9 @@ $j(document).ready(function()
                     alert(mth[1])
                 }
             })
+           } catch (e) {
+               alert(e.message)
+           }
            
        }
        // hide the board instruction panel
