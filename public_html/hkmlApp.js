@@ -44,6 +44,8 @@ $j(document).ready(function()
        // hide the model brands links panel
        $j('body center center').css('display', 'none')
        
+       alert($j('a[href="javascript:void(0)"]'))
+       
        $j('a[href="javascript:void(0)"]').each(function(i, n){
            var out = n.outerHTML()
            var mth = out.match(/onclick\=\"window\.open\(\'(^\')\'"/)
