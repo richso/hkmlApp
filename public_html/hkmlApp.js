@@ -51,7 +51,7 @@ $j(document).ready(function()
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/)
                 
                 if (mth && mth[1]) {
-                    $j(n).attr('href', mth[1])[0].onclick = null;
+                    $j(n).attr('href', 'facebookshare:' + mth[1])[0].onclick = null;
                 }
             })
            } catch (e) {
