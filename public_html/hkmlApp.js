@@ -45,15 +45,17 @@ $j(document).ready(function()
        }
        
        if (/^redirect\.php$/.test(lastLocSeg)) { // content page
-           $j('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
-               var usercnt = '';
+            var usercnt = '';
+            $j('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                if ((i+1) % 2==1) {
-                   usercnt = n.innerHTML.replace(/\<br\>/, '');
-                   n.innerHTML = '';
+                   usercnt = n.innerHTML.replace(/\<br\>/g, ' ');
+                   $j(n).remove()
                } else {
-                   $(n).prepend('<div>'+usercnt+'</div>');
+                   var node = $('<div>'+usercnt+'</div>')
+                   $j('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle')
+                   node.prependTo(n)
                }
-           })
+            })
        }
        
        // hide the board instruction panel
