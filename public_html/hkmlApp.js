@@ -63,7 +63,7 @@ $j(document).ready(function() {
        }
        
        // hide the board instruction panel
-       $('body center > div.tableborder').css({'display', 'none')
+       $('body center > div.tableborder').css('display', 'none')
        // hide the model brands links panel
        $('body center center').css('display', 'none')
        
