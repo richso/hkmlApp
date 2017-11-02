@@ -49,7 +49,7 @@ $j(document).ready(function() {
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                if ((i+1) % 2==1) {
-                   var img = $('.avatar > img', n)
+                   var img = $('.avatar > img', n).css('height', '50px')
                    $(n).prepend(img)
                    $('> div.smalltxt', n).remove();
                    usercnt = $(n).html();
