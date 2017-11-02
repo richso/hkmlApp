@@ -43,6 +43,19 @@ $j(document).ready(function()
            }
                       
        }
+       
+       if (/^redirect\.php$/.test(lastLocSeg)) { // content page
+           $j('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
+               var usercnt = '';
+               if (i==0) {
+                   usercnt = n.innerHTML.replace(/\<br\>/);
+                   n.innerHTML = '';
+               } else {
+                   $(n).prepend('<div>'+usercnt+'</div>');
+               }
+           })
+       }
+       
        // hide the board instruction panel
        $j('body center > div.tableborder').css('display', 'none')
        // hide the model brands links panel
