@@ -49,7 +49,7 @@ $j(document).ready(function() {
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                if ((i+1) % 2==1) {
-                   var img = $('.avatar > img', n).css('height', '50px')
+                   var img = $('.avatar > img', n).css({height: '50px', width: 'auto'})
                    $(n).prepend(img)
                    $('> div.smalltxt', n).remove();
                    usercnt = $(n).html();
@@ -63,7 +63,7 @@ $j(document).ready(function() {
        }
        
        // hide the board instruction panel
-       $('body center > div.tableborder').css('display', 'none')
+       $('body center > div.tableborder').css({'display', 'none')
        // hide the model brands links panel
        $('body center center').css('display', 'none')
        
