@@ -1,76 +1,80 @@
-$j(document).ready(function()
-  {
-       $j('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
+$j(document).ready(function() {
+    var $ = $j;
+    
+       $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
            .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.avatar, .avatar > img { width: 45px !important; height: auto !important;}</style>');
-       $j('*').css('font-size', '16px');
-       $j('.logo').css('display', 'none');
+       $('*').css('font-size', '16px');
+       $('.logo').css('display', 'none');
        
        var hashSeg = location.href.split(/\#/)[0]
        var urlParts = hashSeg.split(/\//)
        var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0]
-       var mainTable_q = $j('body > center > .maintable')
+       var mainTable_q = $('body > center > .maintable')
        if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) { // index page
            var mainTable = mainTable_q[0]
-           var sph_q = $j('> .spaceborder', mainTable)
-           $j(sph_q[0]).css('display', 'none')
+           var sph_q = $('> .spaceborder', mainTable)
+           $(sph_q[0]).css('display', 'none')
                    
            var sph = sph_q[1]
-           $j('<div id="hkmlApp-forumBox"></div>').insertBefore(sph)
-           $j('> table:first-child table', sph).each(function(i, n){
-               $j(n).css('width', '100%')
-               $j('#hkmlApp-forumBox').append(n)
+           $('<div id="hkmlApp-forumBox"></div>').insertBefore(sph)
+           $('> table:first-child table', sph).each(function(i, n){
+               $(n).css('width', '100%')
+               $('#hkmlApp-forumBox').append(n)
            })
                    
            var billboard_div = sph_q[2];
-           $j('<div id="hkmlApp-billboard"></div>').insertBefore(billboard_div);
-           $j('<div id="hkmlApp-themepark"></div>').insertAfter('#hkmlApp-billboard');
-           $j('> table > tbody > tr > td > table', billboard_div).each(function(i, n){
+           $('<div id="hkmlApp-billboard"></div>').insertBefore(billboard_div);
+           $('<div id="hkmlApp-themepark"></div>').insertAfter('#hkmlApp-billboard');
+           $('> table > tbody > tr > td > table', billboard_div).each(function(i, n){
                if (i==0) {
-                   var btd = $j('> tbody > tr:nth-child(2) > td', n)
-                   $j('<div id="billboard-inner"></div>').insertAfter($j('> table', btd[0]))
-                   $j('> table > tbody > tr > td', btd[0]).each(function(j, n2){
-                       $j('#billboard-inner').append('<div style="width:50%; text-align: center;float:left;">'+n2.innerHTML+'</div>')
-                       $j(n2).html('');
+                   var btd = $('> tbody > tr:nth-child(2) > td', n)
+                   $('<div id="billboard-inner"></div>').insertAfter($('> table', btd[0]))
+                   $('> table > tbody > tr > td', btd[0]).each(function(j, n2){
+                       $('#billboard-inner').append('<div style="width:50%; text-align: center;float:left;">'+n2.innerHTML+'</div>')
+                       $(n2).html('');
                    })
-                   $j('#hkmlApp-billboard').append(n);
-                   $j('> table', btd[0]).remove();
+                   $('#hkmlApp-billboard').append(n);
+                   $('> table', btd[0]).remove();
                } else {
-                   $j('#hkmlApp-themepark').append(n);
+                   $('#hkmlApp-themepark').append(n);
                }
            })
            for(var x=3; x < sph_q.length; x++) {
-               $j(sph_q[x]).css('display', 'none');
+               $(sph_q[x]).css('display', 'none');
            }
                       
        }
        
        if (/^redirect\.php$/.test(lastLocSeg)) { // content page
             var usercnt = '';
-            $j('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
+            $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                if ((i+1) % 2==1) {
-                   usercnt = n.innerHTML.replace(/\<br\>/g, ' ');
-                   $j(n).remove()
+                   var img = $('> div.smalltxt > img', n)
+                   $(n).prepend(img)
+                   $('> div.smalltxt', n).remove();
+                   usercnt = $(n).html();
+                   $(n).remove()
                } else {
-                   var node = $j('<div>'+usercnt+'</div>')
-                   $j('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle')
+                   var node = $('<div>'+usercnt+'</div>')
+                   $('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle')
                    node.prependTo(n)
                }
             })
        }
        
        // hide the board instruction panel
-       $j('body center > div.tableborder').css('display', 'none')
+       $('body center > div.tableborder').css('display', 'none')
        // hide the model brands links panel
-       $j('body center center').css('display', 'none')
+       $('body center center').css('display', 'none')
        
-        $j('body > center > div.menu + div').css('display', 'none')
+        $('body > center > div.menu + div').css('display', 'none')
         try {
-            $j('a[href="javascript:void(0)"]').each(function(i, n){
+            $('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/)
 
                 if (mth && mth[1]) {
-                    $j(n).attr('href', /* 'facebookshare:' + */ mth[1])[0].onclick = null;
+                    $(n).attr('href', /* 'facebookshare:' + */ mth[1])[0].onclick = null;
                 }
             })
         } catch (e) {
