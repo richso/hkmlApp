@@ -4,8 +4,12 @@ $j(document).ready(function()
            .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.avatar, .avatar > img { width: 45px !important; height: auto !important;}</style>');
        $j('*').css('font-size', '16px');
        $j('.logo').css('display', 'none');
+       
+       var hashSeg = location.href.split(/\#/)[0]
+       var urlParts = hashSeg.split(/\//)
+       var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0]
        var mainTable_q = $j('body > center > .maintable')
-       if (mainTable_q.length) {
+       if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) { // index page
            $j('body > center > div.menu + div').css('display', 'none')
            var mainTable = mainTable_q[0]
            var sph_q = $j('> .spaceborder', mainTable)
