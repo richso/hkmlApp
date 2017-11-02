@@ -10,7 +10,6 @@ $j(document).ready(function()
        var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0]
        var mainTable_q = $j('body > center > .maintable')
        if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) { // index page
-           $j('body > center > div.menu + div').css('display', 'none')
            var mainTable = mainTable_q[0]
            var sph_q = $j('> .spaceborder', mainTable)
            $j(sph_q[0]).css('display', 'none')
@@ -49,17 +48,18 @@ $j(document).ready(function()
        // hide the model brands links panel
        $j('body center center').css('display', 'none')
        
-           try {
+        $j('body > center > div.menu + div').css('display', 'none')
+        try {
             $j('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/)
-                
+
                 if (mth && mth[1]) {
                     $j(n).attr('href', /* 'facebookshare:' + */ mth[1])[0].onclick = null;
                 }
             })
-           } catch (e) {
-               alert(e.message)
-           }
+        } catch (e) {
+            alert(e.message)
+        }
   })
 
