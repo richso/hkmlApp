@@ -51,7 +51,7 @@ $j(document).ready(function()
                    usercnt = n.innerHTML.replace(/\<br\>/g, ' ');
                    $j(n).remove()
                } else {
-                   var node = $('<div>'+usercnt+'</div>')
+                   var node = $j('<div>'+usercnt+'</div>')
                    $j('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle')
                    node.prependTo(n)
                }
