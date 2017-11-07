@@ -10,7 +10,8 @@ $j(document).ready(function() {
        var urlParts = hashSeg.split(/\//)
        var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0]
        var mainTable_q = $('body > center > .maintable')
-       if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) { // index page
+       /* check if index page */
+       if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
            var mainTable = mainTable_q[0]
            var sph_q = $('> .spaceborder', mainTable)
            $(sph_q[0]).css('display', 'none')
@@ -45,7 +46,8 @@ $j(document).ready(function() {
                       
        }
        
-       if (/^redirect\.php$/.test(lastLocSeg)) { // content page
+       /* apply to content page only */
+       if (/^redirect\.php$/.test(lastLocSeg)) { 
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                if ((i+1) % 2==1) {
@@ -62,9 +64,9 @@ $j(document).ready(function() {
             })
        }    
        
-       // hide the board instruction panel
+       /* hide the board instruction panel */
        $('body center > div.tableborder').css('display', 'none')
-       // hide the model brands links panel
+       /* hide the model brands links panel */
        $('body center center').css('display', 'none')
        
         $('body > center > div.menu + div').css('display', 'none')
