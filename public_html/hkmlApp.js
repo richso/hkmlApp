@@ -6,21 +6,21 @@ $j(document).ready(function() {
        $('*').css('font-size', '16px');
        $('.logo').css('display', 'none');
        
-       var hashSeg = location.href.split(/\#/)[0]
-       var urlParts = hashSeg.split(/\//)
-       var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0]
-       var mainTable_q = $('body > center > .maintable')
+       var hashSeg = location.href.split(/\#/)[0];
+       var urlParts = hashSeg.split(/\//);
+       var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
+       var mainTable_q = $('body > center > .maintable');
        /* check if index page */
        if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
-           var mainTable = mainTable_q[0]
-           var sph_q = $('> .spaceborder', mainTable)
-           $(sph_q[0]).css('display', 'none')
+           var mainTable = mainTable_q[0];
+           var sph_q = $('> .spaceborder', mainTable);
+           $(sph_q[0]).css('display', 'none');
                    
-           var sph = sph_q[1]
-           $('<div id="hkmlApp-forumBox"></div>').insertBefore(sph)
+           var sph = sph_q[1];
+           $('<div id="hkmlApp-forumBox"></div>').insertBefore(sph);
            $('> table:first-child table', sph).each(function(i, n){
-               $(n).css('width', '100%')
-               $('#hkmlApp-forumBox').append(n)
+               $(n).css('width', '100%');
+               $('#hkmlApp-forumBox').append(n);
            })
                    
            var billboard_div = sph_q[2];
@@ -28,10 +28,10 @@ $j(document).ready(function() {
            $('<div id="hkmlApp-themepark"></div>').insertAfter('#hkmlApp-billboard');
            $('> table > tbody > tr > td > table', billboard_div).each(function(i, n){
                if (i==0) {
-                   var btd = $('> tbody > tr:nth-child(2) > td', n)
-                   $('<div id="billboard-inner"></div>').insertAfter($('> table', btd[0]))
+                   var btd = $('> tbody > tr:nth-child(2) > td', n);
+                   $('<div id="billboard-inner"></div>').insertAfter($('> table', btd[0]));
                    $('> table > tbody > tr > td', btd[0]).each(function(j, n2){
-                       $('#billboard-inner').append('<div style="width:50%; text-align: center;float:left;">'+n2.innerHTML+'</div>')
+                       $('#billboard-inner').append('<div style="width:50%; text-align: center;float:left;">'+n2.innerHTML+'</div>');
                        $(n2).html('');
                    })
                    $('#hkmlApp-billboard').append(n);
@@ -51,36 +51,36 @@ $j(document).ready(function() {
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                if ((i+1) % 2==1) {
-                   var img = $('.avatar > img', n).css({height: '15px', width: 'auto'})
-                   $(n).prepend(img)
+                   var img = $('.avatar > img', n).css({height: '15px', width: 'auto'});
+                   $(n).prepend(img);
                    $('> div.smalltxt', n).remove();
                    usercnt = $(n).html();
-                   $(n).remove()
+                   $(n).remove();
                } else {
-                   var node = $('<div>'+usercnt+'</div>')
-                   $('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle')
-                   node.prependTo(n)
+                   var node = $('<div>'+usercnt+'</div>');
+                   $('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle');
+                   node.prependTo(n);
                }
             })
        }    
        
        /* hide the board instruction panel */
-       $('body center > div.tableborder').css('display', 'none')
+       $('body center > div.tableborder').css('display', 'none');
        /* hide the model brands links panel */
-       $('body center center').css('display', 'none')
+       $('body center center').css('display', 'none');
        
-        $('body > center > div.menu + div').css('display', 'none')
+        $('body > center > div.menu + div').css('display', 'none');
         try {
             $('a[href="javascript:void(0)"]').each(function(i, n){
-                var out = n.outerHTML
-                var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/)
+                var out = n.outerHTML;
+                var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/);
 
                 if (mth && mth[1]) {
                     $(n).attr('href', /* 'facebookshare:' + */ mth[1])[0].onclick = null;
                 }
             })
         } catch (e) {
-            alert(e.message)
+            alert(e.message);
         }
   })
 
