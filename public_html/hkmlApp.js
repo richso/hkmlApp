@@ -76,18 +76,17 @@ $j(document).ready(function() {
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/);
 
                 if (mth && mth[1]) {
-                    var arUrl = mth[1].split('?');
-                    var url = arUrl[1].substring(2);
-                    if (/^http[s]{0,1}\:\/\/www\.facebook\.com/.test(arUrl[0])) {
-                        alert(url);
-                        $(n).attr('href', 'facebookshare:' + url)[0].onclick = null;
+                    var fb_sharer = 'http://www.facebook.com/sharer/sharer.php?u=';
+                    if (/^http[s]{0,1}\:\/\/www\.facebook\.com/.test(mth[1])) {
+                        $(n).attr('href', 'facebookshare:' + mth[1].substring(fb_sharer.length).replace(/\&amp;/g, '&'));
                     } else {
-                        $(n).attr('href', mth[1])[0].onclick = null;
+                        $(n).attr('href', mth[1]);
                     }
+                    $(n)[0].onclick = null;
                 }
-            })
+            });
         } catch (e) {
-            alert(e.message);
+            //alert(e.message);
         }
   })
 
