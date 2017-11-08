@@ -78,8 +78,12 @@ $j(document).ready(function() {
                 if (mth && mth[1]) {
                     var arUrl = mth[1].split('?');
                     var url = arUrl[1].substring(2);
-                    alert(url);
-                    $(n).attr('href', 'facebookshare:' + url)[0].onclick = null;
+                    if (/^http[s]{0,1}\:\/\/www\.facebook\.com/.test(arUrl[0])) {
+                        alert(url);
+                        $(n).attr('href', 'facebookshare:' + url)[0].onclick = null;
+                    } else {
+                        $(n).attr('href', mth[1])[0].onclick = null;
+                    }
                 }
             })
         } catch (e) {
