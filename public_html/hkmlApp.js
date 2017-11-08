@@ -76,7 +76,10 @@ $j(document).ready(function() {
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/);
 
                 if (mth && mth[1]) {
-                    $(n).attr('href', 'facebookshare:' + mth[1])[0].onclick = null;
+                    var arUrl = mth[1].split('?');
+                    var url = arUrl[1].substring(2);
+                    alert(url);
+                    $(n).attr('href', 'facebookshare:' + url)[0].onclick = null;
                 }
             })
         } catch (e) {
