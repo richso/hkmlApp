@@ -8,14 +8,10 @@ $j(document).ready(function() {
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
     
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
-            .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.avatar, .avatar > img { width: 45px !important; height: auto !important;}</style>');
+            .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
-        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').each(function(i, n) {
-            if (i != 0) {
-                $(n).css('width', '100%');
-            }
-        });
+        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').css('width', '100%');
 
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
