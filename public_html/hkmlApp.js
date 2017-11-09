@@ -11,6 +11,11 @@ $j(document).ready(function() {
             .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.avatar, .avatar > img { width: 45px !important; height: auto !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
+        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid])').each(function(i, n) {
+            if (i != 0) {
+                $(n).css('width', '100%');
+            }
+        });
 
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
