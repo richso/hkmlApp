@@ -54,11 +54,11 @@ $j(document).ready(function() {
         }
 
         /* apply to content page only */
-        if (/^redirect\.php$/.test(lastLocSeg)) { 
+        if (/^redirect\.php$/.test(lastLocSeg) || /^viewthread\.php$/.test(lastLocSeg)) { 
              var usercnt = '';
              $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                 if ((i+1) % 2==1) {
-                    var img = $('.avatar > img', n).css({height: '15px', width: 'auto'});
+                    var img = $('.avatar > img', n).css({height: '20px', width: 'auto'});
                     $(n).prepend(img);
                     $('> div.smalltxt', n).remove();
                     usercnt = $(n).html();
