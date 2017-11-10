@@ -85,7 +85,10 @@ $j(document).ready(function() {
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', 'none');
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
-            $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0])
+            $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
+            var tube = $('a[href^="https://www.youtube.com/"]').attr('href'); 
+            tube = tube.substring(32).split('&')[0]; 
+            $('a[href^="https://www.youtube.com/"]').replaceWith('<iframe width="560" height="315" src="https://www.youtube.com/embed/'+tube+'" frameborder="0" allowfullscreen></iframe>')
         }    
         
         if (/^my\.php$/.test(lastLocSeg)) { 
