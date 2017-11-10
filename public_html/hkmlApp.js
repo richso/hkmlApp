@@ -10,6 +10,7 @@ $j(document).ready(function() {
     
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
             .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.msgborder, .msgheader { margin: 0 !important;}</style>');
+        $('html > head').append('<meta name="Content-Type" content="text/html; charset=big5-hkscs">')
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
         $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').css('width', '100%');
