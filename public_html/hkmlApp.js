@@ -9,7 +9,8 @@ $j(document).ready(function() {
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
     
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
-            .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.msgborder, .msgheader { margin: 0 !important;}</style>');
+            .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
+            '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
         $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').css('width', '100%');
@@ -18,10 +19,13 @@ $j(document).ready(function() {
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
+        var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
         var mainTable_q = $('body > center > .maintable');
         /* check if index page */
         if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
             var mainTable = mainTable_q[0];
+            
+            // new message boxes
             var sph_q = $('> .spaceborder', mainTable);
             $(sph_q[0]).css('display', 'none');
 
@@ -32,6 +36,7 @@ $j(document).ready(function() {
                 $('#hkmlApp-forumBox').append(n);
             })
 
+            // billboard
             var billboard_div = sph_q[2];
             $('<div id="hkmlApp-billboard"></div>').insertBefore(billboard_div);
             $('<div id="hkmlApp-themepark"></div>').insertAfter('#hkmlApp-billboard');
@@ -72,6 +77,34 @@ $j(document).ready(function() {
                 }
              })
         }    
+        
+        if (/^my\.php$/.test(lastLocSeg)) { 
+            $('td.subject a[target="_blank"]').attr('target', '_self');
+            $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
+            $('> td:nth-child(3)', $('td.subject').parent('tr')).css('display', 'none');
+            $('> td:nth-child(3)', $('tr.category')).css('display', 'none');
+            $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
+        }
+        
+        if (/^search\.php$/.test(lastLocSeg)) { 
+            if (lastLocParams) {
+                $('td.subject a[target="_blank"]').attr('target', '_self');
+                $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
+                $('td a[href^="space"][target="_blank"]').attr('target', '_self');
+                $('> td:nth-child(4)', $('td.subject').parent('tr')).css('display', 'none');
+                $('> td:nth-child(5)', $('td.subject').parent('tr')).css('display', 'none');
+                $('> td:nth-child(4)', $('tr.category')).css('display', 'none');
+                $('> td:nth-child(5)', $('tr.category')).css('display', 'none');
+                $('> tr:first-child > td:nth-child(4)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
+                $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
+            } else {
+                $('input[type="text"]').css('width', '80px');
+                $('input[name="srchtxt"]').attr('placeholder', '關鍵字');
+                $('input[name="srchuname"]').attr('placeholder', '用戶名');
+                $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
+                $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
+            }
+         }
 
         /* hide the board instruction panel */
         $('body center > div.tableborder').css('display', 'none');
@@ -79,6 +112,12 @@ $j(document).ready(function() {
         $('body center center').css('display', 'none');
        
         $('body > center > div.menu + div').css('display', 'none');
+        
+        // hide unuseful links
+        $('a[href="medals.php"]').css('display', 'none');
+        $('#memcp').css('display', 'none');
+        $('a[href="faq.php"]').css('display', 'none');
+        
         try {
             $('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML;
