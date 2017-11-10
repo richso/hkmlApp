@@ -10,7 +10,6 @@ $j(document).ready(function() {
     
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
             .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {margin: 0 auto !important;}\n.msgborder, .msgheader { margin: 0 !important;}</style>');
-        $('html > head').append('<meta name="Content-Type" content="text/html; charset=big5-hkscs">')
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
         $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').css('width', '100%');
@@ -94,6 +93,24 @@ $j(document).ready(function() {
                     }
                     $(n)[0].onclick = null;
                 }
+            });
+            
+            $("body").swipe( {
+                //Generic swipe handler for all directions
+                swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    history.back();
+                },
+                swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    history.forward();
+                },
+                swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    window.scrollTo(0,0);
+                },
+                swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    window.scrollTo(0, window.scrollMaxY);
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                 threshold:75
             });
         } catch (e) {
             //alert(e.message);
