@@ -82,8 +82,8 @@ $j(document).ready(function() {
              });
             $('a[href^="misc.php"]').css('display', 'none');
             $('a[href^="viewthread.php?action=printable"]').css('display', 'none');
-            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', '');
-//            $('a[href^="misc.php"]').parent('div').parent('td').css('background-color', '#cccccc');
+            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', 'none');
+            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0])
         }    
