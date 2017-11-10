@@ -1,5 +1,5 @@
 
 
 //setTimeout(function(){
-    showPopupText = function(){}
+    //showPopupText = function(){}
 //}, 500)

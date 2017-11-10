@@ -4,6 +4,7 @@ $j(document).ready(function() {
     var appHead = $('html').attr('hkmlApp_head');
     
     if (! appHead) {
+        showPopupText = function(){}
         
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
     
