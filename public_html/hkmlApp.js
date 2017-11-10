@@ -102,14 +102,16 @@ $j(document).ready(function() {
                 $('> tr:first-child > td:nth-child(4)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
                 $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
             } else {
-                $('input[type="text"]').css('width', '100%').css('height', 'auto');
+                $('input[type="text"]').css('width', '100%');
                 $('input[name="srchtxt"]').attr('placeholder', '關鍵字');
                 $('input[name="srchuname"]').attr('placeholder', '用戶名');
                 $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
                 $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
             }
-         }
+        }
 
+        $('input[type="text"]').css('height', 'auto');
+                
         /* hide the board instruction panel */
         $('body center > div.tableborder').css('display', 'none');
         /* hide the model brands links panel */
@@ -121,6 +123,8 @@ $j(document).ready(function() {
         $('a[href="medals.php"]').css('display', 'none');
         $('#memcp').css('display', 'none');
         $('a[href="faq.php"]').css('display', 'none');
+        $('a[href="misc.php"]').css('display', 'none');
+        $('a[href^="viewthread.php?action=printable"]').css('display', 'none');
         
         try {
             $('a[href="javascript:void(0)"]').each(function(i, n){
@@ -147,13 +151,13 @@ $j(document).ready(function() {
                     history.forward();
                 },
                 swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
-                    window.scrollTo(0,0);
-                },
-                swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
                     window.scrollTo(0, 10000);
                 },
+                swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    window.scrollTo(0,0);
+                },
                 //Default is 75px, set to 0 for demo so any distance triggers swipe
-                 threshold:75
+                 threshold:120
             });
         } catch (e) {
             //alert(e.message);
