@@ -76,7 +76,7 @@ $j(document).ready(function() {
                     node.prependTo(n);
                 }
              });
-             $('$postform').css({
+             $('#postform').css({
                  width: '100%',
                  overflow: 'scroll'
              });
