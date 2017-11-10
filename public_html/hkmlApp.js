@@ -98,7 +98,7 @@ $j(document).ready(function() {
                 $('> tr:first-child > td:nth-child(4)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
                 $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
             } else {
-                $('input[type="text"]').css('width', '100%');
+                $('input[type="text"]').css('width', '100%').css('height', 'auto');
                 $('input[name="srchtxt"]').attr('placeholder', '關鍵字');
                 $('input[name="srchuname"]').attr('placeholder', '用戶名');
                 $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
@@ -146,7 +146,7 @@ $j(document).ready(function() {
                     window.scrollTo(0,0);
                 },
                 swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
-                    window.scrollTo(0, window.scrollMaxY);
+                    window.scrollTo(0, 10000);
                 },
                 //Default is 75px, set to 0 for demo so any distance triggers swipe
                  threshold:75
