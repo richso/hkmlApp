@@ -94,7 +94,7 @@ $j(document).ready(function() {
                 var w = $(window).width();
                 var vw = w * 0.8;
                 var vh = vw * 315 / 560;
-                $('a[href^="https://www.youtube.com/"]').replaceWith('<iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+tube+'" frameborder="0" allowfullscreen></iframe>')
+                $('a[href^="https://www.youtube.com/"]').replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+tube+'" frameborder="0" allowfullscreen></iframe></div>')
             } catch (e) {
                 //
             }
