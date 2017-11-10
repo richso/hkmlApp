@@ -82,7 +82,7 @@ $j(document).ready(function() {
              });
             $('a[href^="misc.php"]').css('display', 'none');
             $('a[href^="viewthread.php?action=printable"]').css('display', 'none');
-//            $('a[href^="misc.php"]').parent().parent().parent('tr').css('background-image', '');
+            $('a[href^="misc.php"]').parent().parent().parent('tr').css('background-image', '');
 //            $('a[href^="misc.php"]').parent().parent().css('background-color', '#cccccc');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0])
