@@ -75,7 +75,11 @@ $j(document).ready(function() {
                     $('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle');
                     node.prependTo(n);
                 }
-             })
+             });
+             $('$postform').css({
+                 width: '100%',
+                 overflow: 'scroll'
+             });
         }    
         
         if (/^my\.php$/.test(lastLocSeg)) { 
