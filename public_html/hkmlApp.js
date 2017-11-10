@@ -12,6 +12,7 @@ $j(document).ready(function() {
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
         $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').css('width', '100%');
+        $('.t_row > tbody > tr > td:nth-child(2) a[href][target]').attr('target', '_self').css('color', 'blue')
 
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
