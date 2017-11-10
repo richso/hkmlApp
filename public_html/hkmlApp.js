@@ -86,12 +86,18 @@ $j(document).ready(function() {
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
+            
+            // replace youtube link with in place youtube box
             var tube = $('a[href^="https://www.youtube.com/"]').attr('href'); 
-            tube = tube.substring(32).split('&')[0]; 
-            var w = $(window).width();
-            var vw = w * 0.8;
-            var vh = vw * 315 / 560;
-            $('a[href^="https://www.youtube.com/"]').replaceWith('<iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+tube+'" frameborder="0" allowfullscreen></iframe>')
+            try {
+                tube = tube.substring(32).split('&')[0]; 
+                var w = $(window).width();
+                var vw = w * 0.8;
+                var vh = vw * 315 / 560;
+                $('a[href^="https://www.youtube.com/"]').replaceWith('<iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+tube+'" frameborder="0" allowfullscreen></iframe>')
+            } catch (e) {
+                //
+            }
         }    
         
         if (/^my\.php$/.test(lastLocSeg)) { 
