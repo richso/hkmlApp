@@ -88,13 +88,13 @@ $j(document).ready(function() {
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
             
             // replace youtube link with in place youtube box
-            var tube = $('a[href^="https://www.youtube.com/"]').attr('href'); 
+            var tube = $('a[href^="https://www.youtube.com/watch?v="]').attr('href'); 
             try {
-                tube = tube.substring(32).split('&')[0]; 
+                var match = tube.match(/^https\:\/\/www\.youtube\.com\/watch\?v\=([^\&]+)/)
                 var w = $(window).width();
                 var vw = w * 0.8;
                 var vh = vw * 315 / 560;
-                $('a[href^="https://www.youtube.com/"]').replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+tube+'" frameborder="0" allowfullscreen></iframe></div>')
+                $('a[href^="https://www.youtube.com/watch?v="]').replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'" frameborder="0" allowfullscreen></iframe></div>')
             } catch (e) {
                 //
             }
@@ -161,19 +161,13 @@ $j(document).ready(function() {
             $("body").swipe( {
                 //Generic swipe handler for all directions
                 swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
-                    history.back();
-                },
-                swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
                     history.forward();
                 },
-                swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
-                    window.scrollTo(0, 10000);
-                },
-                swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
-                    window.scrollTo(0,0);
+                swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+                    history.back();
                 },
                 //Default is 75px, set to 0 for demo so any distance triggers swipe
-                 threshold:120
+                 threshold:70
             });
         } catch (e) {
             //alert(e.message);
