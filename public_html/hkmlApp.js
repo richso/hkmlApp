@@ -150,13 +150,16 @@ $j(document).ready(function() {
                 $(n).remove();
             });
             
+            var ctrlTd = $('<td></td>');
             $('#postform #posteditor_controls > table').each(function(i, n){
-                var fc = $('> tbody > tr > td:first-child', n);
+                //var fc = $('> tbody > tr > td:first-child', n);
                 $('> tbody > tr > td', n).each(function(i, n2){
-                    if (i>0) {
-                        $(fc).append($('> *', n2));
+                    if (! n2.id) {
+                        $('> *', n2).appendTo(ctrlTd);
                     }
+                    $(n2).remove();
                 });
+                $('> tbody > tr', n).append(ctrlTd);
             });
         }
         
