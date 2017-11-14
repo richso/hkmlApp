@@ -16,7 +16,7 @@ $j(document).ready(function() {
             '#divStayTopLeft {display: none;}\n' +
             '#postform input[type="file"], #postform input[type="text"] {width: 100% !important;}\n' +
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
-            '#postform #attachbody tr.row2 > td { border-bottom: 1px dotted #dddddd;}\n' +
+            '#postform #attachbody tr.row2 > td { border-bottom: 1px dotted #555555; padding-bottom: 20px;}\n' +
             '#postform #attachbody tr.row2:last-child > td { border-bottom: none;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
