@@ -10,6 +10,10 @@ $j(document).ready(function() {
     
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
             .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
+            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child,\n'+
+            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2),\n'+
+            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child {display: none;}\n'+
+            '#divStayTopLeft {display: none;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
@@ -98,6 +102,11 @@ $j(document).ready(function() {
             } catch (e) {
                 //
             }
+            
+            var formToolTable = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table')[1];
+            $(formToolTable).css('display', 'none');
+            $('#postform input[name="subject"]').attr('placeholder', '主題(選填)');
+            
         }    
         
         if (/^my\.php$/.test(lastLocSeg)) { 
