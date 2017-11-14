@@ -14,8 +14,6 @@ $j(document).ready(function() {
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2),\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child {display: none;}\n'+
             '#divStayTopLeft {display: none;}\n' +
-            '#postform #attachbody > tr > td:first-child {width: auto !important;}\n' +
-            '#postform #attachbody > tr > td:nth-child(2) {display: none;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
@@ -112,6 +110,13 @@ $j(document).ready(function() {
             
             var uploadDesc = $('> tbody:nth-child(4)', formTables[2]);
             uploadDesc.html(uploadDesc.html().replace(/jpeg/, ''));
+            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
+            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
+                if (i!=0) {
+                    $('input', n).attr('placeholder', '描述');
+                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
+                }
+            });
             
         }    
         
