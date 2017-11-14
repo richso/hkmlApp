@@ -16,6 +16,7 @@ $j(document).ready(function() {
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child {display: none;}\n'+
             '#divStayTopLeft {display: none;}\n' +
             '#postform input[type="file"], #postform input[type="text"] {width: 100% !important;}\n' +
+            '#postform #posteditor_textarea {height: 30px !important;}\n' + 
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td { border-bottom: 1px dotted #555555; padding-bottom: 20px; padding-top: 10px;}\n' +
             '#postform #attachbody tr.row2:last-child, #postform #attachbody tr.row1:last-child > td { border-bottom: none;}\n' +
@@ -138,7 +139,7 @@ $j(document).ready(function() {
         if (/^post.php$/.test(lastLocSeg)) {
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
             $('#postform input[name="subject"]').attr('placeholder', '主題(選填)');
-            $('#postform #posteditor_textarea').css('height', '30px;').attr('placeholder', '內容（最小10個字）');
+            $('#postform #posteditor_textarea').attr('placeholder', '內容（最小10個字）');
             
             // file upload set
             var eb = $(formTables).filter(function(){
