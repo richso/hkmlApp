@@ -156,7 +156,7 @@ $j(document).ready(function() {
                 //var fc = $('> tbody > tr > td:first-child', n);
                 $('> tbody > tr > td', n).each(function(i, n2){
                     if (! n2.id) {
-                        if (n2.tagName != 'img' && !['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'].indexOf(n2.id)) {
+                        if (n2.tagName != 'img' && !$.inArray(n2.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
                             $('> *', n2).appendTo(ctrlTd);
                         }
                     }
