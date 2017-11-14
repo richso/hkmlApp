@@ -17,7 +17,7 @@ $j(document).ready(function() {
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
-        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="http://"]):not([src^="images/attachicons"])').css('width', '100%');
+        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="images/attachicons"])').css('width', '100%');
         $('.t_row > tbody > tr > td:nth-child(2) a[href][target]').attr('target', '_self').css('color', 'blue')
 
         var hashSeg = location.href.split(/\#/)[0];
@@ -103,9 +103,13 @@ $j(document).ready(function() {
                 //
             }
             
-            var formToolTable = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table')[1];
+            var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
+            var formToolTable = formTables[0];
             $(formToolTable).css('display', 'none');
             $('#postform input[name="subject"]').attr('placeholder', '主題(選填)');
+            
+            var uploadDesc = $('> tbody:nth-child(4)', formTables[2]);
+            uploadDesc.html(uploadDesc.html().replace(/jpeg/, ''));
             
         }    
         
