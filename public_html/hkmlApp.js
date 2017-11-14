@@ -157,7 +157,7 @@ $j(document).ready(function() {
                 $('> tbody > tr > td', n).each(function(j, n2){
                     if (! n2.id) {
                         $('> *', n2).each(function(k, n3){
-                            if (n3.tagName != 'img' && -1 == $.inArray(n3.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
+                            if (n3.tagName != 'IMG' && -1 == $.inArray(n3.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
                                 $(n3).appendTo(ctrlTd);
                             }
                         });
