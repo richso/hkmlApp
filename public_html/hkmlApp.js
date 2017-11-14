@@ -141,7 +141,7 @@ $j(document).ready(function() {
             $('#postform #posteditor_textarea').attr('placeholder', '內容（最小10個字）').css('height', '100px; !important');
             
             // file upload set
-            var editor_table = $('> tbody > tr:nth-child(2) > td:first-child', formTables[11])[0];
+            var editor_table = $('> tbody > tr:nth-child(2) > td:first-child > table', formTables[8])[0];
             $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
@@ -154,11 +154,13 @@ $j(document).ready(function() {
             var ctrlTd = $('<td></td>');
             $('#postform #posteditor_controls > table').each(function(i, n){
                 //var fc = $('> tbody > tr > td:first-child', n);
-                $('> tbody > tr > td', n).each(function(i, n2){
+                $('> tbody > tr > td', n).each(function(j, n2){
                     if (! n2.id) {
-                        if (n2.tagName != 'img' && !$.inArray(n2.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
-                            $('> *', n2).appendTo(ctrlTd);
-                        }
+                        $('> *', n2).each(function(k, n3){
+                            if (n3.tagName != 'img' && -1 == $.inArray(n3.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
+                                $(n3).appendTo(ctrlTd);
+                            }
+                        });
                     }
                     $(n2).remove();
                 });
