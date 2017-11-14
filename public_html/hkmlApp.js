@@ -138,11 +138,12 @@ $j(document).ready(function() {
         if (/^post.php$/.test(lastLocSeg)) {
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
             $('#postform input[name="subject"]').attr('placeholder', '主題(選填)');
-            $('#postform #message').attr('placeholder', '內容（最小10個字）');
+            $('#postform #posteditor_textarea').attr('placeholder', '內容（最小10個字）').css('height', '100px; !important');
             
             // file upload set
-            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
-            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
+            var editor_table = $('> tbody > tr:nth-child(2) > td:first-child', formTables[11])[0];
+            $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
+            $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
                     $('input', n).attr('placeholder', '描述');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
