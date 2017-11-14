@@ -8,8 +8,8 @@ $j(document).ready(function() {
         
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
     
-        $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">');
-        $('body').append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
+        $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
+            .append('<style type="text/css">[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
             '#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child,\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child,\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2),\n'+
