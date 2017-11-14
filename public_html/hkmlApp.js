@@ -10,14 +10,16 @@ $j(document).ready(function() {
     
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
             .append('<style>[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
+            '#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child,\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child,\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2),\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child {display: none;}\n'+
             '#divStayTopLeft {display: none;}\n' +
             '#postform input[type="file"], #postform input[type="text"] {width: 100% !important;}\n' +
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
-            '#postform #attachbody tr.row2 > td { border-bottom: 1px dotted #555555; padding-bottom: 20px;}\n' +
+            '#postform #attachbody tr.row2 > td { border-bottom: 1px dotted #555555; padding-bottom: 20px; padding-top: 10px;}\n' +
             '#postform #attachbody tr.row2:last-child > td { border-bottom: none;}\n' +
+            '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
@@ -83,13 +85,20 @@ $j(document).ready(function() {
                     $('table', node[0]).attr('align', 'left').attr('width', '').attr('valign', 'middle');
                     node.prependTo(n);
                 }
-             });
-             $('#postform').css({
-                 width: '100%',
-                 overflow: 'scroll'
-             });
-            $('a[href^="misc.php"]').css('display', 'none');
-            $('a[href^="viewthread.php?action=printable"]').css('display', 'none');
+            });
+             
+            var utilLinkParent = $('a[href^="misc.php?action=emailfriend"]').parent();
+            $('a[href^="misc.php?action=emailfriend"]').remove();
+            $('a[href^="viewthread.php?action=printable"]').remove();
+            var span = $('<span></span>')
+            $('> *', utilLinkParent).each(function(i, n){
+                if (i > 0) {
+                    $(span).append(' | ');
+                }
+                $(n).appendTo(span);
+            });
+            $(utilLinkParent).empty().append(span);
+            
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', 'none');
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
@@ -107,6 +116,7 @@ $j(document).ready(function() {
                 //
             }
             
+            // postform
             var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
             var formToolTable = formTables[0];
             $(formToolTable).css('display', 'none');
@@ -124,6 +134,31 @@ $j(document).ready(function() {
             });
             
         }    
+        
+        if (/^post.php$/.test(lastLocSeg)) {
+            var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
+            $('#postform input[name="subject"]').attr('placeholder', '主題(選填)');
+            $('#postform #message').attr('placeholder', '內容（最小10個字）');
+            
+            // file upload set
+            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
+            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
+                if (i!=0) {
+                    $('input', n).attr('placeholder', '描述');
+                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
+                }
+                $(n).remove();
+            });
+            
+            $('#postform #posteditor_controls > table').each(function(i, n){
+                var fc = $('> tbody > tr > td:first-child', n);
+                $('> tbody > tr > td', n).each(function(i, n2){
+                    if (i>0) {
+                        $(fc).append($('> *', n2));
+                    }
+                });
+            });
+        }
         
         if (/^my\.php$/.test(lastLocSeg)) { 
             $('td.subject a[target="_blank"]').attr('target', '_self');
@@ -163,9 +198,17 @@ $j(document).ready(function() {
         $('body > center > div.menu + div').css('display', 'none');
         
         // hide unuseful links
-        $('a[href="medals.php"]').css('display', 'none');
-        $('#memcp').css('display', 'none');
-        $('a[href="faq.php"]').css('display', 'none');
+        $('a[href="medals.php"]').remove();
+        $('#memcp').remove();
+        $('a[href="faq.php"]').remove();
+        var span = $('<span></span>');
+        $('body > center > div.menu > div.maintable > *').each(function(i, n){
+            if (i > 1) {
+                $(span).append(' | ');
+            }
+            $(n).appendTo(span);
+        });
+        $('body > center > div.menu > div.maintable').empty().append(span);
         
         try {
             $('a[href="javascript:void(0)"]').each(function(i, n){
