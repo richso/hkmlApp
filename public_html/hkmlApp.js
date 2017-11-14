@@ -138,7 +138,7 @@ $j(document).ready(function() {
         if (/^post.php$/.test(lastLocSeg)) {
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
             $('#postform input[name="subject"]').attr('placeholder', '主題(選填)');
-            $('#postform #posteditor_textarea').css('height', '100px;').attr('placeholder', '內容（最小10個字）');
+            $('#postform #posteditor_textarea').css('height', '30px;').attr('placeholder', '內容（最小10個字）');
             
             // file upload set
             var eb = $(formTables).filter(function(){
