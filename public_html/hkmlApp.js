@@ -141,7 +141,7 @@ $j(document).ready(function() {
             $('#postform #posteditor_textarea').css('height', '100px; !important').attr('placeholder', '內容（最小10個字）');
             
             // file upload set
-            var editor_table = $('> tbody > tr:nth-child(2) > td:first-child > table', formTables[8])[0];
+            var editor_table = formTables[14];
             $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
