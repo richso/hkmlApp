@@ -14,6 +14,8 @@ $j(document).ready(function() {
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2),\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child {display: none;}\n'+
             '#divStayTopLeft {display: none;}\n' +
+            '#postform #attachbody > tr > td:first-child {width: auto !important;}\n' +
+            '#postform #attachbody > tr > td:nth-child(2) {display: none;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
