@@ -141,7 +141,10 @@ $j(document).ready(function() {
             $('#postform #posteditor_textarea').css('height', '100px; !important').attr('placeholder', '內容（最小10個字）');
             
             // file upload set
-            var editor_table = formTables[14];
+            var eb = $(formTables).filter(function(){
+                return $(this).hasClass('editor_button');
+            })[0];
+            var editor_table = $('> tbody > tr:nth-child(2) > td > table', eb)[0];
             $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
