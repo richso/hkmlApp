@@ -14,8 +14,8 @@ $j(document).ready(function() {
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2),\n'+
             '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child {display: none;}\n'+
             '#divStayTopLeft {display: none;}\n' +
-            '#postform input[type="file"], #postform input[type="text"] {width: 100%;}\n' +
-            '.lightbutton {padding: 0 5px; color: #050505; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px;}\n' +
+            '#postform input[type="file"], #postform input[type="text"] {width: 100% !important;}\n' +
+            '.lightbutton {padding: 0 5px !important; color: #050505 !important; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
