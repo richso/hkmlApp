@@ -99,6 +99,28 @@ $j(document).ready(function() {
             });
             $(utilLinkParent).empty().append(span);
             
+            // like frame
+            var fs = $('fieldset')[0];
+            if (fs) {
+                var tb = $('table', fs)[1]
+                if (tb) {
+                    var slt = $('<select id="likeActions" />');
+                    $('td a', tb).each(function(i, n){
+                        var label = $('font', n).text();
+                        var opt = $('<option value="'+$(n).attr('href')+'">'+label+'</option>');
+                        $(slt).append(opt);
+                    });
+                    $(slt).on('change', function(){
+                        if (this.value) {
+                            location = this.value;
+                        }
+                    });
+                    $(tb).remove();
+                    $(fs).append('Æg¦n:');
+                    $(fs).append(slt);
+                } 
+            }
+            
             // replace youtube link with in place youtube box
             var tube = $('a[href^="https://www.youtube.com/watch?v="]').attr('href'); 
             try {
