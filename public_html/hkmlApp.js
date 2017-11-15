@@ -15,6 +15,7 @@ $j(document).ready(function() {
             '#postform #posteditor_textarea {height: 90px !important;}\n' + 
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
+            '.toptenblock {display: inline-block;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
@@ -171,6 +172,44 @@ $j(document).ready(function() {
         
         if (/^logging.php$/.test(lastLocSeg)) {
             $('form[name="login"] input[name="answer"]').css('width', '100%');
+        }
+        
+        if (/^toptendetails.php$/.test(lastLocSeg)) {
+            var tbTop = $('.tableborder');
+            var nav = tbTop[0];
+            if (nav) {
+                var div = $('<div />');
+                $('> tbody > tr > td', nav).each(function(i, n){
+                    console.log(n.childNodes)
+                    n.childNodes.forEach(function(c){
+                        console.log(n.childNodes[0])
+                        $(div).append(n.childNodes[0]);
+                    });
+                    $(n).remove();
+                });
+                var td = $('<td />')
+                $(td).append(div);
+                $('> tbody > tr', nav).append(td);
+            }
+            var tb0 = tbTop[1];
+            var tb1 = $('> tbody > tr > td > table', tb0);
+            if (tb0 && tb1[0]) {
+                var tb = tb1[0];
+                $('> tbody > tr > td', tb).each(function(i, td){
+                    var div = $('<div class="toptenblock" />');
+                    $('> *', td).each(function(j, n){
+                        $(div).append(n);
+                    });
+                    $(tb0).append(div);
+                });
+                $(tb1).remove();
+                $('.toptenblock:last-child')
+                        .css({
+                            display: 'block', 
+                            width: '100%', 
+                            border: 'none'
+                        });
+            }
         }
         
         if (/^post.php$/.test(lastLocSeg)) {
