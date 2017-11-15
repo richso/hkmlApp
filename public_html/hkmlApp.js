@@ -105,10 +105,12 @@ $j(document).ready(function() {
                 if (fs) {
                     var tb = $('table', fs)[1]
                     if (tb) {
-                        var slt = $('<select id="likeActions" />');
+                        var slt = $('<select id="likeActions" style="width: 100%;" />');
+                        var opt = $('<option value="">---</option>');
+                        $(slt).append(opt);
                         $('td a', tb).each(function(i, n){
                             var label = $('font', n).text();
-                            var opt = $('<option value="'+$(n).attr('href')+'">'+label+'</option>');
+                            opt = $('<option value="'+$(n).attr('href')+'">'+label+'</option>');
                             $(slt).append(opt);
                         });
                         $(slt).on('change', function(){
@@ -122,7 +124,7 @@ $j(document).ready(function() {
                     } 
                 }
             } catch (e) {
-                alert(e.message);
+                //alert(e.message);
             }
             
             // replace youtube link with in place youtube box
@@ -159,13 +161,17 @@ $j(document).ready(function() {
             $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
                 if (i!=0) {
-                    $('input', n).attr('placeholder', 'þýè¿°');
+                    $('input', n).attr('placeholder', '´y­z');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
                 }
                 $(n).remove();
             });
             
         }    
+        
+        if (/^logging.php$/.test(lastLocSeg)) {
+            $('form[name="login"] input[name="answer"]').css('width', '100%');
+        }
         
         if (/^post.php$/.test(lastLocSeg)) {
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
