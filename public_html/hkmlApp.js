@@ -24,7 +24,7 @@ $j(document).ready(function() {
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
-        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="images/attachicons"])').css('width', '100%');
+        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"])').css('width', '100%');
         $('.t_row > tbody > tr > td:nth-child(2) a[href][target]').attr('target', '_self').css('color', 'blue')
 
         var hashSeg = location.href.split(/\#/)[0];
