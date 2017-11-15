@@ -88,6 +88,11 @@ $j(document).ready(function() {
                 }
             });
              
+            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', 'none');
+            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
+            var p = $('a[href^="misc.php"]').parent('div').parent('td');
+            $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
+            
             var utilLinkParent = $('a[href^="misc.php?action=emailfriend"]').parent();
             $('a[href^="misc.php?action=emailfriend"]').remove();
             $('a[href^="viewthread.php?action=printable"]').remove();
@@ -99,11 +104,6 @@ $j(document).ready(function() {
                 $(n).appendTo(span);
             });
             $(utilLinkParent).empty().append(span);
-            
-            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', 'none');
-            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
-            var p = $('a[href^="misc.php"]').parent('div').parent('td');
-            $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
             
             // replace youtube link with in place youtube box
             var tube = $('a[href^="https://www.youtube.com/watch?v="]').attr('href'); 
