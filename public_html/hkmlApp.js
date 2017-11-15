@@ -185,6 +185,7 @@ $j(document).ready(function() {
             $('> td:nth-child(3)', $('td.subject').parent('tr')).css('display', 'none');
             $('> td:nth-child(3)', $('tr.category')).css('display', 'none');
             $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
+            $('input[type="text"]').css('width', '100%');
         }
         
         if (/^search\.php$/.test(lastLocSeg)) { 
