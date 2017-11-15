@@ -100,25 +100,29 @@ $j(document).ready(function() {
             $(utilLinkParent).empty().append(span);
             
             // like frame
-            var fs = $('fieldset')[0];
-            if (fs) {
-                var tb = $('table', fs)[1]
-                if (tb) {
-                    var slt = $('<select id="likeActions" />');
-                    $('td a', tb).each(function(i, n){
-                        var label = $('font', n).text();
-                        var opt = $('<option value="'+$(n).attr('href')+'">'+label+'</option>');
-                        $(slt).append(opt);
-                    });
-                    $(slt).on('change', function(){
-                        if (this.value) {
-                            location = this.value;
-                        }
-                    });
-                    $(tb).remove();
-                    $(fs).append('Æg¦n:');
-                    $(fs).append(slt);
-                } 
+            try {
+                var fs = $('fieldset')[0];
+                if (fs) {
+                    var tb = $('table', fs)[1]
+                    if (tb) {
+                        var slt = $('<select id="likeActions" />');
+                        $('td a', tb).each(function(i, n){
+                            var label = $('font', n).text();
+                            var opt = $('<option value="'+$(n).attr('href')+'">'+label+'</option>');
+                            $(slt).append(opt);
+                        });
+                        $(slt).on('change', function(){
+                            if (this.value) {
+                                location = this.value;
+                            }
+                        });
+                        $(tb).remove();
+                        $(fs).append('Æg¦n:');
+                        $(fs).append(slt);
+                    } 
+                }
+            } catch (e) {
+                alert(e.message);
             }
             
             // replace youtube link with in place youtube box
