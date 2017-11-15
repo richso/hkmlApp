@@ -126,14 +126,14 @@ $j(document).ready(function() {
             var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
             var formToolTable = formTables[0];
             $(formToolTable).css('display', 'none');
-            $('#postform input[name="subject"]').attr('placeholder', 'ä¸»é¡Œ(é¸å¡«)');
-            $('#postform #message').attr('placeholder', 'å…§å®¹ï¼ˆæœ€å°10å€‹å­—ï¼‰');
+            $('#postform input[name="subject"]').attr('placeholder', '¥DÃD(¥i¿ï)');
+            $('#postform #message').attr('placeholder', '¤º®e(¥i¿ï)');
             
             // file upload set
             $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
                 if (i!=0) {
-                    $('input', n).attr('placeholder', 'æè¿°');
+                    $('input', n).attr('placeholder', 'şıè¿°');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
                 }
                 $(n).remove();
@@ -145,8 +145,8 @@ $j(document).ready(function() {
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
     
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
-            $('#postform input[name="subject"]').attr('placeholder', 'ä¸»é¡Œ(é¸å¡«)');
-            $('#postform #posteditor_textarea').attr('placeholder', 'å…§å®¹ï¼ˆæœ€å°10å€‹å­—ï¼‰');
+            $('#postform input[name="subject"]').attr('placeholder', '¥DÃD(¥i¿ï)');
+            $('#postform #posteditor_textarea').attr('placeholder', '¤º®e(¥i¿ï)');
             
             // file upload set
             var eb = $(formTables).filter(function(){
@@ -156,7 +156,7 @@ $j(document).ready(function() {
             $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
-                    $('input', n).attr('placeholder', 'æè¿°');
+                    $('input', n).attr('placeholder', '´y­z');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
                 }
                 $(n).remove();
@@ -201,8 +201,8 @@ $j(document).ready(function() {
                 $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
             } else {
                 $('input[type="text"]').css('width', '100%');
-                $('input[name="srchtxt"]').attr('placeholder', 'é—œéµå­—');
-                $('input[name="srchuname"]').attr('placeholder', 'ç”¨æˆ¶å');
+                $('input[name="srchtxt"]').attr('placeholder', 'ÃöÁä¦r');
+                $('input[name="srchuname"]').attr('placeholder', '¥Î¤á¦W');
                 $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
                 $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
             }
