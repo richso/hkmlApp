@@ -16,8 +16,9 @@ $j(document).ready(function() {
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
             '.toptenblock {display: inline-block; width: calc(50% - 15px) !important;}\n' +
-            '.myalbum-thumbss {width: 100% !important; height: auto;}' +
-            '.myalbum-thumbss > a > img {width: 100% !important;}' +
+            '.toptenblock > div:nth-child(2) {height: 150px !important;}\n' +
+            '.myalbum-thumbss {width: 100% !important; height: auto;}\n' +
+            '.myalbum-thumbss > a > img {width: 100% !important;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
