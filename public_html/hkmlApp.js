@@ -70,7 +70,7 @@ $j(document).ready(function() {
                 } else {
                     var td = $('<td />');
                     $('> table > tbody:nth-child(2) > tr > td', sph_q[x]).each(function(i, n){
-                        $('> *', n).appendTo(td);
+                        $('> *', n).appendTo(td).css('width', '50%').attr('align', 'left');
                         $(n).remove();
                     });
                     $('> table > tbody:nth-child(2) > tr', sph_q[x]).append(td);
