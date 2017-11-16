@@ -236,7 +236,7 @@ $j(document).ready(function() {
     
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
             $('#postform input[name="subject"]').attr('placeholder', 'Title (optional)');
-            $('#postform #posteditor_textarea').attr('placeholder', 'Content (optional)');
+            $('#postform #posteditor_textarea').attr('placeholder', 'Content');
             
             // file upload set
             var eb = $(formTables).filter(function(){
@@ -246,7 +246,7 @@ $j(document).ready(function() {
             $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
-                    $('input', n).attr('placeholder', 'Desc.');
+                    $('input', n).attr('placeholder', 'desc.');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
                 }
                 $(n).remove();
@@ -376,7 +376,7 @@ $j(document).ready(function() {
             var formToolTable = formTables[0];
             $(formToolTable).css('display', 'none');
             $('#postform input[name="subject"]').attr('placeholder', 'Title (optional)');
-            $('#postform #message').attr('placeholder', 'Content (optional)');
+            $('#postform #message').attr('placeholder', 'Content');
             
             // file upload set
             $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
