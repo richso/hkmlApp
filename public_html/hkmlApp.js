@@ -83,8 +83,11 @@ $j(document).ready(function() {
 
         /* apply to content page only */
         if (/^redirect\.php$/.test(lastLocSeg) || /^viewthread\.php$/.test(lastLocSeg)) { 
-             var usercnt = '';
-             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
+            
+            $('a[href="###"][onclick="scroll(0,0)"]').on('click', function(){scrollTo(0,0);}).attr('href', 'javascript:void(0);')
+            
+            var usercnt = '';
+            $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
                 if ((i+1) % 2==1) {
                     var img = $('.avatar > img', n).css({height: '20px', width: 'auto'});
                     $(n).prepend(img);
