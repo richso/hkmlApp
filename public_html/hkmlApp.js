@@ -16,7 +16,7 @@ $j(document).ready(function() {
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
             '.toptenblock {display: inline-block; width: calc(50% - 15px) !important;}\n' +
-            '.toptenblock > div:nth-child(2) {height: 150px !important;}\n' +
+            '.toptenblock > div:nth-child(2) {height: 150px !important; overflow-y: hidden;}\n' +
             '.myalbum-thumbss {width: 100% !important; height: auto;}\n' +
             '.myalbum-thumbss > a > img {width: 100% !important;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
@@ -63,10 +63,22 @@ $j(document).ready(function() {
                     $('#hkmlApp-themepark').append(n);
                 }
             })
-            for(var x=3; x < sph_q.length; x++) {
+            
+            for(var x=3; x < Math.min(sph_q.length, 9); x++) {
+                if (x!=6) {
+                    $('> table > tbody:nth-child(2) > tr > td:not(:nth-child(1)):not(:nth-child(2))', sph_q[x]).css('display', 'none');
+                } else {
+                    var td = $('<td />');
+                    $('> table > tbody:nth-child(2) > tr > td', sph_q[x]).each(function(i, n){
+                        $('> *', n).appendTo(td);
+                        $(n).remove();
+                    });
+                    $('> table > tbody:nth-child(2) > tr', sph_q[x]).append(td);
+                }
+            }
+            for(var x=9; x < sph_q.length; x++) {
                 $(sph_q[x]).css('display', 'none');
             }
-
         }
 
         /* apply to content page only */
