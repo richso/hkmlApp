@@ -209,11 +209,11 @@ $j(document).ready(function() {
             alterReplyBox();
         }    
         
-        if (/^logging.php$/.test(lastLocSeg)) {
+        if (/^logging\.php$/.test(lastLocSeg)) {
             $('form[name="login"] input[name="answer"]').css('width', '100%');
         }
         
-        if (/^toptendetails.php$/.test(lastLocSeg)) {
+        if (/^toptendetails\.php$/.test(lastLocSeg)) {
             var tbTop = $('.tableborder');
             
             // search bar
@@ -253,7 +253,7 @@ $j(document).ready(function() {
             }
         }
         
-        if (/^post.php$/.test(lastLocSeg)) {
+        if (/^post\.php$/.test(lastLocSeg)) {
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
     
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
@@ -289,6 +289,10 @@ $j(document).ready(function() {
                 });
                 $('> tbody > tr', n).append(ctrlTd);
             });
+        }
+        
+        if (/^misc\.php$/.test(lastLocSeg)) { 
+            $('form center').css('display', '');
         }
         
         
