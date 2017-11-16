@@ -253,6 +253,7 @@ $j(document).ready(function() {
             alterReplyBox();
             
             $('.tableborder[style^="width: 400px;"]').css('width', '100%');
+            $('form[action="forumdisplay.php"] .subtable').css('height', 'auto');
         }
         
         if (/^my\.php$/.test(lastLocSeg)) { 
