@@ -20,7 +20,8 @@ $j(document).ready(function() {
             '.myalbum-thumbss {width: 100% !important; height: auto;}\n' +
             '.myalbum-thumbss > a > img {width: 100% !important;}\n' +
             '.header {background: none; background-color: #eeeeee;}\n'+
-            'body, .menu {background: none !important; background-color: #dddddd;}\n'+
+            'body {background: none !important; background-color: white !important;}\n'+
+            '.menu {background: none !important; background-color: #dddddd !important; margin-top: 0;}\n'+
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
