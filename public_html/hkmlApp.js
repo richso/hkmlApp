@@ -166,6 +166,22 @@ $j(document).ready(function() {
                 //
             }
             
+            $('.msgheader').each(function(k, mh){
+                if (! /QUOTE/.test($(mh).html())) {
+                    $(mh).css('display', 'none');
+                    $('.msgborder', $(mh).parent()).css('border', 'none');
+                    $('.msgborder .t_attachlist', $(mh).parent()).css('border', 'none');
+                    $('.msgborder .t_attachlist', $(mh).parent()).each(function(i, n){
+                        $('> *', n).each(function(j, m){
+                            if (j<4) {
+                                $(m).css('display', 'none');
+                            }
+                        });
+                    })
+                }
+            })
+            
+            
             alterReplyBox();
         }    
         
