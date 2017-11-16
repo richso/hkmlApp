@@ -15,7 +15,9 @@ $j(document).ready(function() {
             '#postform #posteditor_textarea {height: 90px !important;}\n' + 
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
-            '.toptenblock {display: inline-block;}\n' +
+            '.toptenblock {display: inline-block; width: calc(50% - 15px) !important;}\n' +
+            '.myalbum-thumbss {width: 100% !important; height: auto;}' +
+            '.myalbum-thumbss > a > img {width: 100% !important;}' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
@@ -176,21 +178,23 @@ $j(document).ready(function() {
         
         if (/^toptendetails.php$/.test(lastLocSeg)) {
             var tbTop = $('.tableborder');
+            
+            // search bar
             var nav = tbTop[0];
             if (nav) {
                 var div = $('<div />');
                 $('> tbody > tr > td', nav).each(function(i, n){
-                    console.log(n.childNodes)
                     n.childNodes.forEach(function(c){
-                        console.log(n.childNodes[0])
                         $(div).append(n.childNodes[0]);
                     });
                     $(n).remove();
                 });
-                var td = $('<td />')
+                var td = $('<td />');
                 $(td).append(div);
                 $('> tbody > tr', nav).append(td);
             }
+            
+            // top ten table
             var tb0 = tbTop[1];
             var tb1 = $('> tbody > tr > td > table', tb0);
             if (tb0 && tb1[0]) {
