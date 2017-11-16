@@ -125,8 +125,8 @@ $j(document).ready(function() {
             
             // like frame
             try {
-                var fs = $('fieldset')[0];
-                if (fs) {
+                var fs0 = $('fieldset');
+                $.each(fs0, function(idx, fs) {
                     var tb0 = $('table', fs);
                     
                     var nameList = tb0[0];
@@ -151,7 +151,7 @@ $j(document).ready(function() {
                         $(fs).append('Like:');
                         $(fs).append(slt);
                     } 
-                }
+                });
             } catch (e) {
                 //alert(e.message);
             }
