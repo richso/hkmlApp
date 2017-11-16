@@ -163,34 +163,7 @@ $j(document).ready(function() {
                 //
             }
             
-            // postform
-            $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
-            $('#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td').css({
-                'border-bottom': '1px dotted #555555', 
-                'padding-bottom': '20px', 
-                'padding-top': '10px'
-            });
-            $('#postform #attachbody tr.row2:last-child, #postform #attachbody tr.row1:last-child > td').css('border-bottom', 'none');
-            
-            var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
-            var formToolTable = formTables[0];
-            $(formToolTable).css('display', 'none');
-            $('#postform input[name="subject"]').attr('placeholder', '主題(可選)');
-            $('#postform #message').attr('placeholder', '內容(可選)');
-            
-            // file upload set
-            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
-            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
-                if (i!=0) {
-                    $('input', n).attr('placeholder', '描述');
-                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
-                }
-                $(n).remove();
-            });
-            
+            alterReplyBox();
         }    
         
         if (/^logging.php$/.test(lastLocSeg)) {
@@ -275,34 +248,11 @@ $j(document).ready(function() {
             });
         }
         
+        
         if (/^forumdisplay\.php$/.test(lastLocSeg)) { 
-            // postform
-            $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
-            $('#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td').css({
-                'border-bottom': '1px dotted #555555', 
-                'padding-bottom': '20px', 
-                'padding-top': '10px'
-            });
-            $('#postform #attachbody tr.row2:last-child, #postform #attachbody tr.row1:last-child > td').css('border-bottom', 'none');
+            alterReplyBox();
             
-            var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
-            var formToolTable = formTables[0];
-            $(formToolTable).css('display', 'none');
-            $('#postform input[name="subject"]').attr('placeholder', '主題(可選)');
-            $('#postform #message').attr('placeholder', '內容(可選)');
-            
-            // file upload set
-            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
-            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
-                if (i!=0) {
-                    $('input', n).attr('placeholder', '描述');
-                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
-                }
-                $(n).remove();
-            });
+            $('.tableborder[style^="width: 400px;"]').css('width', '100%');
         }
         
         if (/^my\.php$/.test(lastLocSeg)) { 
@@ -386,6 +336,37 @@ $j(document).ready(function() {
         } catch (e) {
             //alert(e.message);
         }
+        
+        function alterReplyBox() {
+            // postform
+            $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
+            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
+            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
+            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
+            $('#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td').css({
+                'border-bottom': '1px dotted #555555', 
+                'padding-bottom': '20px', 
+                'padding-top': '10px'
+            });
+            $('#postform #attachbody tr.row2:last-child, #postform #attachbody tr.row1:last-child > td').css('border-bottom', 'none');
+            
+            var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
+            var formToolTable = formTables[0];
+            $(formToolTable).css('display', 'none');
+            $('#postform input[name="subject"]').attr('placeholder', '主題(可選)');
+            $('#postform #message').attr('placeholder', '內容(可選)');
+            
+            // file upload set
+            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
+            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
+                if (i!=0) {
+                    $('input', n).attr('placeholder', '描述');
+                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
+                }
+                $(n).remove();
+            });            
+        }
+        
     }
 })
 
