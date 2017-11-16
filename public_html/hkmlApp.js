@@ -30,6 +30,28 @@ $j(document).ready(function() {
         $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"])').css('width', '100%');
         $('.t_row > tbody > tr > td:nth-child(2) a[href][target]').attr('target', '_self').css('color', 'blue')
 
+        $('input[type="text"]').css('height', 'auto');
+                
+        /* hide the board instruction panel */
+        $('body center > div.tableborder').css('display', 'none');
+        /* hide the model brands links panel */
+        $('body center center').css('display', 'none');
+       
+        $('body > center > div.menu + div').css('display', 'none');
+        
+        // hide unuseful links
+        $('a[href="medals.php"]').remove();
+        $('#memcp').remove();
+        $('a[href="faq.php"]').remove();
+        var span = $('<span></span>');
+        $('body > center > div.menu > div.maintable > *').each(function(i, n){
+            if (i > 1) {
+                $(span).append(' | ');
+            }
+            $(n).appendTo(span);
+        });
+        $('body > center > div.menu > div.maintable').empty().append(span);
+        
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
@@ -306,28 +328,6 @@ $j(document).ready(function() {
             }
         }
 
-        $('input[type="text"]').css('height', 'auto');
-                
-        /* hide the board instruction panel */
-        $('body center > div.tableborder').css('display', 'none');
-        /* hide the model brands links panel */
-        $('body center center').css('display', 'none');
-       
-        $('body > center > div.menu + div').css('display', 'none');
-        
-        // hide unuseful links
-        $('a[href="medals.php"]').remove();
-        $('#memcp').remove();
-        $('a[href="faq.php"]').remove();
-        var span = $('<span></span>');
-        $('body > center > div.menu > div.maintable > *').each(function(i, n){
-            if (i > 1) {
-                $(span).append(' | ');
-            }
-            $(n).appendTo(span);
-        });
-        $('body > center > div.menu > div.maintable').empty().append(span);
-        
         try {
             $('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML;
