@@ -106,8 +106,8 @@ $j(document).ready(function() {
                 }
             });
              
-            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-image', 'none');
-            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr').css('background-color', '#eeeeee');
+            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr.header').css('background-image', 'none');
+            $('a[href^="misc.php"]').parent('div').parent('td').parent('tr.header').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
             
