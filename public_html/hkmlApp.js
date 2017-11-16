@@ -22,7 +22,7 @@ $j(document).ready(function() {
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
-        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="])').css('width', '100%');
+        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"])').css('width', '100%');
         $('.t_row > tbody > tr > td:nth-child(2) a[href][target]').attr('target', '_self').css('color', 'blue')
 
         var hashSeg = location.href.split(/\#/)[0];
@@ -122,9 +122,14 @@ $j(document).ready(function() {
             try {
                 var fs = $('fieldset')[0];
                 if (fs) {
-                    var tb = $('table', fs)[1]
+                    var tb0 = $('table', fs);
+                    
+                    var nameList = tb0[0];
+                    $('> tbody > tr > td:not(:first-child):not(:last-child)', nameList).css('display', 'none');
+                    
+                    var tb = tb0[1]
                     if (tb) {
-                        var slt = $('<select id="likeActions" style="width: 100%;" />');
+                        var slt = $('<select id="likeActions" />');
                         var opt = $('<option value="">---</option>');
                         $(slt).append(opt);
                         $('td a', tb).each(function(i, n){
