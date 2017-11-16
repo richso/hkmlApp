@@ -1,4 +1,6 @@
 $j(document).ready(function() {
+    // test ¤¤¤å
+    
     var $ = $j;
     
     var appHead = $('html').attr('hkmlApp_head');
