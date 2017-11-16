@@ -148,7 +148,7 @@ $j(document).ready(function() {
                             }
                         });
                         $(tb).remove();
-                        $(fs).append('讚好:');
+                        $(fs).append('Like:');
                         $(fs).append(slt);
                     } 
                 }
@@ -235,8 +235,8 @@ $j(document).ready(function() {
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
     
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
-            $('#postform input[name="subject"]').attr('placeholder', '主題(可選)');
-            $('#postform #posteditor_textarea').attr('placeholder', '內容(可選)');
+            $('#postform input[name="subject"]').attr('placeholder', 'Title (optional)');
+            $('#postform #posteditor_textarea').attr('placeholder', 'Content (optional)');
             
             // file upload set
             var eb = $(formTables).filter(function(){
@@ -246,7 +246,7 @@ $j(document).ready(function() {
             $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
                 if (i!=0) {
-                    $('input', n).attr('placeholder', '描述');
+                    $('input', n).attr('placeholder', 'Desc.');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
                 }
                 $(n).remove();
@@ -299,8 +299,8 @@ $j(document).ready(function() {
                 $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
             } else {
                 $('input[type="text"]').css('width', '100%');
-                $('input[name="srchtxt"]').attr('placeholder', '關鍵字');
-                $('input[name="srchuname"]').attr('placeholder', '用戶名');
+                $('input[name="srchtxt"]').attr('placeholder', 'Keywords');
+                $('input[name="srchuname"]').attr('placeholder', 'User name');
                 $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
                 $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
             }
@@ -375,14 +375,14 @@ $j(document).ready(function() {
             var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
             var formToolTable = formTables[0];
             $(formToolTable).css('display', 'none');
-            $('#postform input[name="subject"]').attr('placeholder', '主題(可選)');
-            $('#postform #message').attr('placeholder', '內容(可選)');
+            $('#postform input[name="subject"]').attr('placeholder', 'Title (optional)');
+            $('#postform #message').attr('placeholder', 'Content (optional)');
             
             // file upload set
             $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
             $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
                 if (i!=0) {
-                    $('input', n).attr('placeholder', '描述');
+                    $('input', n).attr('placeholder', 'desc.');
                     $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
                 }
                 $(n).remove();
