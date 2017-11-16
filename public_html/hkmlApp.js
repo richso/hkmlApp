@@ -252,7 +252,7 @@ $j(document).ready(function() {
         if (/^forumdisplay\.php$/.test(lastLocSeg)) { 
             alterReplyBox();
             
-            $('.tableborder[style^="width: 400px;"]').css('width', '100%');
+            $('.tableborder[style^="width: 400px;"]').css('width', '80%');
             $('form[action="forumdisplay.php"] .subtable').css('height', 'auto');
         }
         
