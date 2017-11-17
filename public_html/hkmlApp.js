@@ -207,6 +207,15 @@ $j(document).ready(function() {
             
             
             alterReplyBox();
+            
+            // the last visited select box at page end
+            var mt = $('.maintable');
+            $('select', mt[mt.length-3]).css({
+                width: '80%',
+                'margin-left': 'auto',
+                'margin-right': 'auto',
+                display: 'block'
+            });
         }    
         
         if (/^logging\.php$/.test(lastLocSeg)) {
@@ -331,8 +340,27 @@ $j(document).ready(function() {
                 $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
             }
         }
+        
+        if (/^pm\.php$/.test(lastLocSeg)) { 
+            var mt = $('.maintable')[2];
+            
+            $('> table > tbody > tr > td:first-child', mt).each(function(i, n){
+                var toggleDiv = $('<img id="foruminfo_img" src="images/d-xite_blue/collapsed_no.gif" style="position:absolute; border: none;">');
+                $(toggleDiv).on('click', function(){
+                    $(toggleDiv).attr('src', $('> div.spaceborder', n).css('display') == 'none' ? 'images/d-xite_blue/collapsed_no.gif' : 'images/d-xite_blue/collapsed_yes.gif');
+                    $('> div.spaceborder', n).toggle();
+                });
+                
+                $(n).css('width', 'auto').prepend(toggleDiv)
+            });
+        }
 
         try {
+            $('a[onclick^="setcopy"]').on('click', function(){
+                // note: nullify this function as this will cause iOS App crash
+                // do nothing
+            });
+            
             $('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML;
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/);
