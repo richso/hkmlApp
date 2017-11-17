@@ -263,7 +263,7 @@ $j(document).ready(function() {
             }
         }
         
-        if (/^post\.php$/.test(lastLocSeg)) {
+        if (/^post\.php$/.test(lastLocSeg) || (/^pm\.php$/.test(lastLocSeg) && lastLocParams == 'action=send')) {
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
     
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
@@ -342,7 +342,7 @@ $j(document).ready(function() {
             }
         }
         
-        if (/^pm\.php$/.test(lastLocSeg)) { 
+        if (/^pm\.php$/.test(lastLocSeg) && lastLocParams == 'action=send') { 
             var mt = $('.maintable')[2];
             
             $('> table > tbody > tr > td:first-child', mt).each(function(i, n){
