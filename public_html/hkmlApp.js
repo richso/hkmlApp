@@ -7,6 +7,7 @@ $j(document).ready(function() {
     
     if (! appHead) {
         showPopupText = function(){}
+        setcopy = function(){}
         
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
     
@@ -356,11 +357,6 @@ $j(document).ready(function() {
         }
 
         try {
-            $('a[onclick^="setcopy"]').on('click', function(){
-                // note: nullify this function as this will cause iOS App crash
-                // do nothing
-            });
-            
             $('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML;
                 var mth = out.match(/onclick\=\"window\.open\(\'([^\']+)\'/);
