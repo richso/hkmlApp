@@ -267,7 +267,7 @@ $j(document).ready(function() {
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
     
             var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
-            $('#postform input[name="subject"]').attr('placeholder', '&xa5;&x44; (optional)');
+            $('#postform input[name="subject"]').attr('placeholder', '&#xa5;&#x44; (optional)');
             $('#postform #posteditor_textarea').attr('placeholder', 'Content');
             
             // file upload set
