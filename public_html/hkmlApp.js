@@ -58,6 +58,7 @@ $j(document).ready(function() {
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
         var mainTable_q = $('body > center > .maintable');
+        
         /* check if index page */
         if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
             var mainTable = mainTable_q[0];
@@ -92,15 +93,19 @@ $j(document).ready(function() {
                 }
             })
             
+            // other boxes below
             for(var x=3; x < Math.min(sph_q.length, 9); x++) {
                 if (x!=6) {
                     $('> table > tbody:nth-child(2) > tr > td:not(:nth-child(1)):not(:nth-child(2))', sph_q[x]).css('display', 'none');
                 } else {
+                    // merchant's boxes
                     var td = $('<td />');
                     $('> table > tbody:nth-child(2) > tr > td', sph_q[x]).each(function(i, n){
                         $('> *', n).appendTo(td).css('width', '50%').attr('align', 'left');
                         $(n).remove();
                     });
+                    $('> table > tbody:nth-child(2) > tr', sph_q[x]).remove();
+                    $('> table > tbody:nth-child(2)', sph_q[x]).append('<tr />');
                     $('> table > tbody:nth-child(2) > tr', sph_q[x]).append(td);
                 }
             }
