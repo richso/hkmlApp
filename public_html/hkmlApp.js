@@ -342,7 +342,7 @@ $j(document).ready(function() {
             }
         }
         
-        if (/^pm\.php$/.test(lastLocSeg) && lastLocParams == 'action=send') { 
+        if (/^pm\.php$/.test(lastLocSeg) && lastLocParams != 'action=send') { 
             var mt = $('.maintable')[2];
             
             $('> table > tbody > tr > td:first-child', mt).each(function(i, n){
