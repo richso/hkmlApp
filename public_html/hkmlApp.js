@@ -180,9 +180,9 @@ $j(document).ready(function() {
             }
             
             // replace youtube link with in place youtube box
-            var tube = $('a[href^="https://www.youtube.com/watch?v="]').attr('href'); 
+            var tube = $('a[href^="https://www.youtube.com/watch?v="]').attr('href') || $('a[href^="http://www.youtube.com/watch?v="]').attr('href'); 
             try {
-                var match = tube.match(/^https\:\/\/www\.youtube\.com\/watch\?v\=([^\&]+)/)
+                var match = tube.match(/^http[s]{0,1}\:\/\/www\.youtube\.com\/watch\?v\=([^\&]+)/)
                 var w = $(window).width();
                 var vw = w * 0.8;
                 var vh = vw * 315 / 560;
