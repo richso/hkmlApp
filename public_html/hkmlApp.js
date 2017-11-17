@@ -180,16 +180,20 @@ $j(document).ready(function() {
             }
             
             // replace youtube link with in place youtube box
-            var tube = $('a[href^="https://www.youtube.com/watch?v="]').attr('href') || $('a[href^="http://www.youtube.com/watch?v="]').attr('href'); 
-            try {
-                var match = tube.match(/^http[s]{0,1}\:\/\/www\.youtube\.com\/watch\?v\=([^\&]+)/)
-                var w = $(window).width();
-                var vw = w * 0.8;
-                var vh = vw * 315 / 560;
-                $('a[href^="https://www.youtube.com/watch?v="], a[href^="http://www.youtube.com/watch?v="]').replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'" frameborder="0" allowfullscreen></iframe></div>')
-            } catch (e) {
-                //
-            }
+            var w = $(window).width();
+            var vw = w * 0.8;
+            var vh = vw * 315 / 560;
+            var q = $('a[href*=".youtube.com"], a[href*="youtu.be"]');
+            q.each(function(i, n){
+                var tube = $(n).attr('href');
+                var match = tube.match(/^http[s]{0,1}\:\/\/(?:[^\.]+\.)youtube\.com\/watch\?v\=([^\&]+)/);
+                if (! match) {
+                    match = tube.match(/^http[s]{0,1}\:\/\/(?:[^\.]+\.){0,1}youtu\.be\/([^\/]+)/);
+                }
+                if (match) {
+                    $(n).replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'" frameborder="0" allowfullscreen></iframe></div>');
+                }
+            });
             
             $('.msgheader').each(function(k, mh){
                 if (! /QUOTE/.test($(mh).html())) {
