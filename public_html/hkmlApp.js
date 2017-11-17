@@ -186,7 +186,7 @@ $j(document).ready(function() {
                 var w = $(window).width();
                 var vw = w * 0.8;
                 var vh = vw * 315 / 560;
-                $('a[href^="https://www.youtube.com/watch?v="]').replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'" frameborder="0" allowfullscreen></iframe></div>')
+                $('a[href^="https://www.youtube.com/watch?v="], a[href^="http://www.youtube.com/watch?v="]').replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'" frameborder="0" allowfullscreen></iframe></div>')
             } catch (e) {
                 //
             }
