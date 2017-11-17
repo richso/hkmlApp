@@ -270,6 +270,9 @@ $j(document).ready(function() {
             $('#postform input[name="subject"]').attr('placeholder', 'Title');
             $('#postform #posteditor_textarea').attr('placeholder', 'Content');
             
+            $('#postform input[name="msgto"]').attr('placeholder', 'To:');
+            $('#postform textarea[name="message"]').attr('placeholder', 'Message');
+            
             // file upload set
             var eb = $(formTables).filter(function(){
                 return $(this).hasClass('editor_button');
@@ -342,7 +345,7 @@ $j(document).ready(function() {
             }
         }
         
-        if (/^pm\.php$/.test(lastLocSeg) && lastLocParams != 'action=send') { 
+        if (/^pm\.php$/.test(lastLocSeg)) { 
             var mt = $('.maintable')[2];
             
             $('> table > tbody > tr > td:first-child', mt).each(function(i, n){
