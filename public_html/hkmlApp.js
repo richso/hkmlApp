@@ -20,8 +20,8 @@ $j(document).ready(function() {
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
             '.toptenblock {display: inline-block; width: calc(50% - 15px) !important;}\n' +
             '.toptenblock > div:nth-child(2) {height: 150px !important; overflow-y: hidden;}\n' +
-            '.myalbum-thumbss {width: 100% !important; height: auto;}\n' +
-            '.myalbum-thumbss > a > img {width: 100% !important;}\n' +
+            '.myalbum-thumbss {width: 100% !important; height: auto !important;}\n' +
+            '.myalbum-thumbss > a > img {width: 100% !important; height: auto !important;}\n' +
             '.header {background: none; background-color: #eeeeee;}\n'+
             'body {background: none !important; background-color: white !important;}\n'+
             '.menu {background: none !important; background-color: #dddddd !important; margin-top: 0;}\n'+
