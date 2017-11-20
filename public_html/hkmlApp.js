@@ -53,6 +53,8 @@ $j(document).ready(function() {
         });
         $('body > center > div.menu > div.maintable').empty().append(span);
         
+        $('a[href="my.php"]').attr('href', 'javascript:void(0);');
+        
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
