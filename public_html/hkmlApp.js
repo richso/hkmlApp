@@ -345,6 +345,7 @@ $j(document).ready(function() {
             if (nav) {
                 var div = $('<div />');
                 $('> tbody > tr > td', nav).each(function(i, n){
+                    alert($(n).html());
                     n.childNodes.forEach(function(c){
                         $(div).append(n.childNodes[0]);
                     });
