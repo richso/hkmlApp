@@ -398,15 +398,17 @@ $j(document).ready(function() {
                     var links = $('a[href^="redirect.php"][href$="&goto=nextnewset"]');
                     if (links.length) {
                         location = links.attr('href');
+                    } else {
+                        history.forward();
                     }
-                    //history.forward();
                 },
                 swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
                     var links = $('a[href^="redirect.php"][href$="&goto=nextoldset"]');
                     if (links.length) {
                         location = links.attr('href');
+                    } else {
+                        history.back();
                     }
-                    //history.back();
                 },
                 //Default is 75px, set to 0 for demo so any distance triggers swipe
                  threshold:120
