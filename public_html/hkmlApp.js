@@ -334,10 +334,10 @@ $j(document).ready(function() {
             
             var tbTop = $('.tableborder');
             
-            $.each(tbTop, function(i, n){
+            /* $.each(tbTop, function(i, n){
                 $(n).css('background-color', 'rgb(180, '+(100+i*50)+', ' + (i * 50) + ')')
                 $('> tbody', n).prepend('<tr><td>&nbsp;'+i+'&nbsp;</td></tr>')
-            })
+            }) */
             
             
             // search bar
@@ -346,10 +346,14 @@ $j(document).ready(function() {
                 var div = $('<div />');
                 $('> tbody > tr > td', nav).each(function(i, n){
                     alert($(n).html());
-                    n.childNodes.forEach(function(c){
-                        $(div).append(n.childNodes[0]);
-                    });
-                    $(n).remove();
+                    try {
+                        n.childNodes.forEach(function(c){
+                            $(div).append(n.childNodes[0]);
+                        });
+                        $(n).remove();
+                    } catch (e) {
+                        alert('error:' + e.message)
+                    }
                 });
                 var td = $('<td />');
                 $(td).append(div);
