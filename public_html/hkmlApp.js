@@ -332,7 +332,7 @@ $j(document).ready(function() {
         
         if (/^toptendetails\.php$/.test(lastLocSeg)) {
             
-            alert($('#selform').html());
+            alert($('#selForm').html());
             
             var tbTop = $('.tableborder');
             
