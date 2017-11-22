@@ -341,7 +341,7 @@ $j(document).ready(function() {
                 $('> tbody > tr > td', nav).each(function(i, n){
                     $.each(n.childNodes, function(){
                         $(div).append(n.childNodes[0]);
-                    });
+                    }); 
                     $(n).remove();
                 });
                 var td = $('<td />');
