@@ -332,8 +332,6 @@ $j(document).ready(function() {
         
         if (/^toptendetails\.php$/.test(lastLocSeg)) {
             
-            alert($('#selForm').html());
-            
             var tbTop = $('.tableborder');
             
             $.each(tbTop, function(i, n){
@@ -343,7 +341,6 @@ $j(document).ready(function() {
             
             
             // search bar
-            /*
             var nav = tbTop[0];
             if (nav) {
                 var div = $('<div />');
@@ -358,6 +355,7 @@ $j(document).ready(function() {
                 $('> tbody > tr', nav).append(td);
             }
             
+            /*
             // top ten table
             var tb0 = tbTop[1];
             var tb1 = $('> tbody > tr > td > table', tb0);
