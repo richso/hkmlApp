@@ -333,7 +333,13 @@ $j(document).ready(function() {
         if (/^toptendetails\.php$/.test(lastLocSeg)) {
             var tbTop = $('.tableborder');
             
+            $.each(tbTop, function(i, n){
+                $(n).css('background-color', 'rgb(180, '+(100+i*50)+', ' + (i * 50) + ')')
+                $('tbody', n).prepend('<tr><td>&nbsp;'+i+'&nbsp;</td></tr>')
+            })
+            
             // search bar
+            /*
             var nav = tbTop[0];
             if (nav) {
                 var div = $('<div />');
@@ -371,6 +377,7 @@ $j(document).ready(function() {
             $('.toptenblock').css({display: 'inline-block', width: 'calc(50% - 15px)'});
             $('.toptenblock:last-child').css({width: '100%'});
             $('.toptenblock > div:nth-child(2)').css({height: '150px', 'overflow-y': 'hidden'});
+            */
         }
         
         try {
