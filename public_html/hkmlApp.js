@@ -18,8 +18,6 @@ $j(document).ready(function() {
             '#postform #posteditor_textarea {height: 90px !important;}\n' + 
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
-            '.toptenblock {display: inline-block; width: calc(50% - 15px) !important;}\n' +
-            '.toptenblock > div:nth-child(2) {height: 150px !important; overflow-y: hidden;}\n' +
             '.myalbum-thumbss {width: 100% !important; height: auto !important;}\n' +
             '.myalbum-thumbss > a > img {width: 100% !important; height: auto !important;}\n' +
             '.header {background: none; background-color: #eeeeee;}\n'+
@@ -116,6 +114,88 @@ $j(document).ready(function() {
             }
         }
 
+        if (/^forumdisplay\.php$/.test(lastLocSeg)) { 
+            alterReplyBox();
+            
+            $('.tableborder[style^="width: 400px;"]').css('width', '80%');
+            $('form[action="forumdisplay.php"] .subtable').css('height', 'auto');
+        }
+        
+        if (/^logging\.php$/.test(lastLocSeg)) { 
+            $('form[name="login"] > div.spaceborder > table > tbody > tr:not(:first-child) > td:first-child').css('display', 'none');
+            $('form[name="login"] input[name="username"]').attr('placeholder', 'login name');
+            $('form[name="login"] input[name="password"]').attr('placeholder', 'password');
+            $('form[name="login"] input[name="answer"]').css('width', '100%').attr('placeholder', 'answer');
+        }
+        
+        if (/^misc\.php$/.test(lastLocSeg)) { 
+            $('form center').css('display', '');
+        }
+        
+        if (/^my\.php$/.test(lastLocSeg)) { 
+            $('td.subject a[target="_blank"]').attr('target', '_self');
+            $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
+            $('> td:nth-child(3)', $('td.subject').parent('tr')).css('display', 'none');
+            $('> td:nth-child(3)', $('tr.category')).css('display', 'none');
+            $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
+            $('input[type="text"]').css('width', '100%');
+        }
+        
+        if (/^pm\.php$/.test(lastLocSeg)) { 
+            var mt = $('.maintable')[2];
+            
+            $('> table > tbody > tr > td:first-child', mt).each(function(i, n){
+                var toggleDiv = $('<img id="foruminfo_img" src="images/d-xite_blue/collapsed_no.gif" style="position:absolute; border: none;">');
+                $(toggleDiv).on('click', function(){
+                    $(toggleDiv).attr('src', $('> div.spaceborder', n).css('display') == 'none' ? 'images/d-xite_blue/collapsed_no.gif' : 'images/d-xite_blue/collapsed_yes.gif');
+                    $('> div.spaceborder', n).toggle();
+                });
+                
+                $(n).css('width', 'auto').prepend(toggleDiv)
+            });
+        }
+
+        if (/^post\.php$/.test(lastLocSeg) || (/^pm\.php$/.test(lastLocSeg) && lastLocParams == 'action=send')) {
+            $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
+    
+            var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
+            $('#postform input[name="subject"]').attr('placeholder', 'Title');
+            $('#postform #posteditor_textarea').attr('placeholder', 'Content');
+            
+            $('#postform input[name="msgto"]').attr('placeholder', 'To:');
+            $('#postform textarea[name="message"]').attr('placeholder', 'Message');
+            
+            // file upload set
+            var eb = $(formTables).filter(function(){
+                return $(this).hasClass('editor_button');
+            })[0];
+            var editor_table = $('> tbody > tr:nth-child(2) > td > table', eb)[0];
+            $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
+            $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
+                if (i!=0) {
+                    $('input', n).attr('placeholder', 'desc.');
+                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
+                }
+                $(n).remove();
+            });
+            
+            var ctrlTd = $('<td></td>');
+            $('#postform #posteditor_controls > table').each(function(i, n){
+                //var fc = $('> tbody > tr > td:first-child', n);
+                $('> tbody > tr > td', n).each(function(j, n2){
+                    if (! n2.id) {
+                        $('> *', n2).each(function(k, n3){
+                            if (n3.tagName != 'IMG' && -1 == $.inArray(n3.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
+                                $(n3).appendTo(ctrlTd);
+                            }
+                        });
+                    }
+                    $(n2).remove();
+                });
+                $('> tbody > tr', n).append(ctrlTd);
+            });
+        }
+        
         /* apply to content page only */
         if (/^redirect\.php$/.test(lastLocSeg) || /^viewthread\.php$/.test(lastLocSeg)) { 
             
@@ -230,8 +310,24 @@ $j(document).ready(function() {
             });
         }    
         
-        if (/^logging\.php$/.test(lastLocSeg)) {
-            $('form[name="login"] input[name="answer"]').css('width', '100%');
+        if (/^search\.php$/.test(lastLocSeg)) { 
+            if (lastLocParams) {
+                $('td.subject a[target="_blank"]').attr('target', '_self');
+                $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
+                $('td a[href^="space"][target="_blank"]').attr('target', '_self');
+                $('> td:nth-child(4)', $('td.subject').parent('tr')).css('display', 'none');
+                $('> td:nth-child(5)', $('td.subject').parent('tr')).css('display', 'none');
+                $('> td:nth-child(4)', $('tr.category')).css('display', 'none');
+                $('> td:nth-child(5)', $('tr.category')).css('display', 'none');
+                $('> tr:first-child > td:nth-child(4)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
+                $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
+            } else {
+                $('input[type="text"]').css('width', '100%');
+                $('input[name="srchtxt"]').attr('placeholder', 'Keywords');
+                $('input[name="srchuname"]').attr('placeholder', 'User name');
+                $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
+                $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
+            }
         }
         
         if (/^toptendetails\.php$/.test(lastLocSeg)) {
@@ -272,104 +368,11 @@ $j(document).ready(function() {
                             border: 'none'
                         });
             }
+            $('.toptenblock').css({display: 'inline-block', width: 'calc(50% - 15px)'});
+            $('.toptenblock:last-child').css({width: '100%'});
+            $('.toptenblock > div:nth-child(2)').css({height: '150px', 'overflow-y': 'hidden'});
         }
         
-        if (/^post\.php$/.test(lastLocSeg) || (/^pm\.php$/.test(lastLocSeg) && lastLocParams == 'action=send')) {
-            $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child').css('display', 'none');
-    
-            var formTables = $('#postform > .spaceborder > table > tbody > tr.bottom table');
-            $('#postform input[name="subject"]').attr('placeholder', 'Title');
-            $('#postform #posteditor_textarea').attr('placeholder', 'Content');
-            
-            $('#postform input[name="msgto"]').attr('placeholder', 'To:');
-            $('#postform textarea[name="message"]').attr('placeholder', 'Message');
-            
-            // file upload set
-            var eb = $(formTables).filter(function(){
-                return $(this).hasClass('editor_button');
-            })[0];
-            var editor_table = $('> tbody > tr:nth-child(2) > td > table', eb)[0];
-            $('> tbody > tr > td:first-child', editor_table).css('width', 'auto !important');
-            $('> tbody > tr > td:nth-child(2)', editor_table).each(function(i, n){
-                if (i!=0) {
-                    $('input', n).attr('placeholder', 'desc.');
-                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
-                }
-                $(n).remove();
-            });
-            
-            var ctrlTd = $('<td></td>');
-            $('#postform #posteditor_controls > table').each(function(i, n){
-                //var fc = $('> tbody > tr > td:first-child', n);
-                $('> tbody > tr > td', n).each(function(j, n2){
-                    if (! n2.id) {
-                        $('> *', n2).each(function(k, n3){
-                            if (n3.tagName != 'IMG' && -1 == $.inArray(n3.id, ['posteditor_cmd_createlink', 'posteditor_cmd_unlink', 'posteditor_cmd_email'])) {
-                                $(n3).appendTo(ctrlTd);
-                            }
-                        });
-                    }
-                    $(n2).remove();
-                });
-                $('> tbody > tr', n).append(ctrlTd);
-            });
-        }
-        
-        if (/^misc\.php$/.test(lastLocSeg)) { 
-            $('form center').css('display', '');
-        }
-        
-        
-        if (/^forumdisplay\.php$/.test(lastLocSeg)) { 
-            alterReplyBox();
-            
-            $('.tableborder[style^="width: 400px;"]').css('width', '80%');
-            $('form[action="forumdisplay.php"] .subtable').css('height', 'auto');
-        }
-        
-        if (/^my\.php$/.test(lastLocSeg)) { 
-            $('td.subject a[target="_blank"]').attr('target', '_self');
-            $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
-            $('> td:nth-child(3)', $('td.subject').parent('tr')).css('display', 'none');
-            $('> td:nth-child(3)', $('tr.category')).css('display', 'none');
-            $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
-            $('input[type="text"]').css('width', '100%');
-        }
-        
-        if (/^search\.php$/.test(lastLocSeg)) { 
-            if (lastLocParams) {
-                $('td.subject a[target="_blank"]').attr('target', '_self');
-                $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
-                $('td a[href^="space"][target="_blank"]').attr('target', '_self');
-                $('> td:nth-child(4)', $('td.subject').parent('tr')).css('display', 'none');
-                $('> td:nth-child(5)', $('td.subject').parent('tr')).css('display', 'none');
-                $('> td:nth-child(4)', $('tr.category')).css('display', 'none');
-                $('> td:nth-child(5)', $('tr.category')).css('display', 'none');
-                $('> tr:first-child > td:nth-child(4)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
-                $('> tr:first-child > td:nth-child(5)', $('td.subject').parent('tr').parent('tbody')).css('display', 'none');
-            } else {
-                $('input[type="text"]').css('width', '100%');
-                $('input[name="srchtxt"]').attr('placeholder', 'Keywords');
-                $('input[name="srchuname"]').attr('placeholder', 'User name');
-                $('form[action="search.php"] > div > table > tbody > tr > td:first-child').css('display', 'none');
-                $('form[action="search.php"] > div > table > tbody > tr > td:nth-child(3)').css('display', 'none');
-            }
-        }
-        
-        if (/^pm\.php$/.test(lastLocSeg)) { 
-            var mt = $('.maintable')[2];
-            
-            $('> table > tbody > tr > td:first-child', mt).each(function(i, n){
-                var toggleDiv = $('<img id="foruminfo_img" src="images/d-xite_blue/collapsed_no.gif" style="position:absolute; border: none;">');
-                $(toggleDiv).on('click', function(){
-                    $(toggleDiv).attr('src', $('> div.spaceborder', n).css('display') == 'none' ? 'images/d-xite_blue/collapsed_no.gif' : 'images/d-xite_blue/collapsed_yes.gif');
-                    $('> div.spaceborder', n).toggle();
-                });
-                
-                $(n).css('width', 'auto').prepend(toggleDiv)
-            });
-        }
-
         try {
             $('a[href="javascript:void(0)"]').each(function(i, n){
                 var out = n.outerHTML;
