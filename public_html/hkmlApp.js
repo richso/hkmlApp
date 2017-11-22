@@ -331,12 +331,16 @@ $j(document).ready(function() {
         }
         
         if (/^toptendetails\.php$/.test(lastLocSeg)) {
+            
+            alert($('#selform').html());
+            
             var tbTop = $('.tableborder');
             
             $.each(tbTop, function(i, n){
                 $(n).css('background-color', 'rgb(180, '+(100+i*50)+', ' + (i * 50) + ')')
-                $('tbody', n).prepend('<tr><td>&nbsp;'+i+'&nbsp;</td></tr>')
+                $('> tbody', n).prepend('<tr><td>&nbsp;'+i+'&nbsp;</td></tr>')
             })
+            
             
             // search bar
             /*
