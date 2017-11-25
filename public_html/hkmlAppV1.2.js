@@ -10,20 +10,10 @@ $j(document).ready(function() {
         
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
         
-        var hashSeg = location.href.split(/\#/)[1];
-        hashSeg = hashSeg ? hashSeg : '';
+        var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
-        lastLocParams = lastLocParams ? lastLocParams : '';
-        
-        var locBase = location.href.substring(0,location.href.length - 
-                lastLocSeg - 
-                (hashSeg ? hashSeg.length+1 : 0) - 
-                (lastLocParams ? lastLocParams.length+1 :0)
-        );
-        alert(location.href + ": " + location.href.length + ',' + hashSeg.length + "," + urlParts[urlParts.length-1] + "," + lastLocParams.length + ":" + locBase);
-        
         var mainTable_q = $('body > center > .maintable');
     
         var jsonData = {}
@@ -82,7 +72,7 @@ $j(document).ready(function() {
                     $('> div', td).each(function(j, div){
                         if (j==0) {
                             obj.href = $('> a', div).attr('href');
-                            obj.img = locBase + $('> a > img', div).attr('src');
+                            obj.img = $('> a > img', div).attr('src');
                         } else {
                             obj.author_href = $('> a', div).attr('href');
                             obj.author = $('> a', div).html();
