@@ -15,7 +15,7 @@ $j(document).ready(function() {
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
         var locBase = location.href.substring(0,location.href.length - hashSeg.length - lastLocSeg.length);
         
-        alert(locBase);
+        alert(location.href + ": " + location.href.length + ',' + hashSeg.length + "," + lastLocSeg.length);
         
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
         var mainTable_q = $('body > center > .maintable');
