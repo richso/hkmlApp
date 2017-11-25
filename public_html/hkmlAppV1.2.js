@@ -97,6 +97,7 @@ $j(document).ready(function() {
     
     // for ios
     if (typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
+        alert(JSON.stringify(jsonData))
         window.webkit.messageHandlers.hkmlApp.postMessage(JSON.stringify(jsonData));
     }
 
