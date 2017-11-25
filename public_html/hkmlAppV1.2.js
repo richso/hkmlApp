@@ -22,7 +22,7 @@ $j(document).ready(function() {
                 (hashSeg ? hashSeg.length+1 : 0) - 
                 (lastLocParams ? lastLocParams.length+1 :0)
         );
-        alert(location.href + ": " + location.href.length + ',' + hashSeg.length + "," + lastLocSeg.length + "," + lastLocParams.length + ":" + locBase);
+        alert(location.href + ": " + location.href.length + ',' + hashSeg.length + "," + lastLocSeg + "," + lastLocParams.length + ":" + locBase);
         
         var mainTable_q = $('body > center > .maintable');
     
