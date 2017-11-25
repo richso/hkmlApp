@@ -13,7 +13,10 @@ $j(document).ready(function() {
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
-        var locBase = location.href.substring(0,location.href.length - hashSeg.length - lastLocSeg.length)
+        var locBase = location.href.substring(0,location.href.length - hashSeg.length - lastLocSeg.length);
+        
+        alert(locBase);
+        
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
         var mainTable_q = $('body > center > .maintable');
     
