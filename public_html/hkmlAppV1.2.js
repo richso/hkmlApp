@@ -14,11 +14,16 @@ $j(document).ready(function() {
         hashSeg = hashSeg ? hashSeg : '';
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
-        var locBase = location.href.substring(0,location.href.length - hashSeg.length - lastLocSeg.length);
-        
-        alert(location.href + ": " + location.href.length + ',' + hashSeg.length + "," + lastLocSeg.length);
-        
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
+        lastLocParams = lastLocParams ? lastLocParams : '';
+        
+        var locBase = location.href.substring(0,location.href.length - 
+                lastLocSeg - 
+                (hashSeg ? hashSeg.length+1 : 0) - 
+                (lastLocParams ? lastLocParams.length+1 :0)
+        );
+        alert(location.href + ": " + location.href.length + ',' + hashSeg.length + "," + lastLocSeg.length + "," + lastLocParams.length + ":" + locBase);
+        
         var mainTable_q = $('body > center > .maintable');
     
         var jsonData = {}
