@@ -13,6 +13,7 @@ $j(document).ready(function() {
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
+        var locBase = location.href.substring(0,location.href.length - hashSeg.length - lastLocSeg.length)
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
         var mainTable_q = $('body > center > .maintable');
     
@@ -72,7 +73,7 @@ $j(document).ready(function() {
                     $('> div', td).each(function(j, div){
                         if (j==0) {
                             obj.href = $('> a', div).attr('href');
-                            obj.img = $('> a > img', div).attr('src');
+                            obj.img = locBase + $('> a > img', div).attr('src');
                         } else {
                             obj.author_href = $('> a', div).attr('href');
                             obj.author = $('> a', div).html();
