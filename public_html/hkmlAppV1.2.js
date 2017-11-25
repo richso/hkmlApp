@@ -10,7 +10,8 @@ $j(document).ready(function() {
         
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
         
-        var hashSeg = location.href.split(/\#/)[0];
+        var hashSeg = location.href.split(/\#/)[1];
+        hashSeg = hashSeg ? hashSeg : '';
         var urlParts = hashSeg.split(/\//);
         var lastLocSeg = urlParts[urlParts.length-1].split(/\?/)[0];
         var locBase = location.href.substring(0,location.href.length - hashSeg.length - lastLocSeg.length);
