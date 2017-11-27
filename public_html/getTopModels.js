@@ -44,6 +44,7 @@ $j(document).ready(function() {
                             if (k==1) {
                                 obj.href = $('> a', n3).attr('href');
                                 obj.img = $('> a > img', n3).attr('src');
+                                obj.title = $('> a', n3).attr('alt');
                             }
                         });
                         bbJsonData.push(obj);
