@@ -28,8 +28,8 @@ $j(document).ready(function() {
             var bbJsonData = [];
             
             var billboard_div = sph_q[2];
-            $('<div id="hkmlApp-billboard"></div>').insertBefore(billboard_div);
-            $('<div id="hkmlApp-themepark"></div>').insertAfter('#hkmlApp-billboard');
+            //$('<div id="hkmlApp-billboard"></div>').insertBefore(billboard_div);
+            //$('<div id="hkmlApp-themepark"></div>').insertAfter('#hkmlApp-billboard');
             $('> table > tbody > tr > td > table', billboard_div).each(function(i, n){
                 if (i==0) {
                     var btd = $('> tbody > tr:nth-child(2) > td', n);
@@ -98,8 +98,11 @@ $j(document).ready(function() {
     
     try {
     // for ios
+        alert('@here1');
     if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
+        alert('@here2');
         window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
+        alert('@here3');
     }
     } catch (e) {
         alert(e.message)
