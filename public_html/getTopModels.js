@@ -96,9 +96,13 @@ $j(document).ready(function() {
     
     console.log(jsonData);
     
+    try {
     // for ios
     if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
         window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
+    }
+    } catch (e) {
+        alert(e.message)
     }
 
     // todo: pass back the jsonData to the phone
