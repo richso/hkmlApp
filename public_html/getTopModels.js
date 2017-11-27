@@ -53,6 +53,10 @@ $j(document).ready(function() {
             });
             
             jsonData.billboard = bbJsonData;
+            // for ios
+            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
+                window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
+            }
         }
         
         if (/^toptendetails\.php$/.test(lastLocSeg)) {
@@ -96,8 +100,8 @@ $j(document).ready(function() {
         console.log(jsonData);
     
         // for ios
-        if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
+        /* if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
             window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
-        }
+        } */
     }
 });
