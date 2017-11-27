@@ -61,9 +61,6 @@ $j(document).ready(function() {
         
         /* check if index page */
         if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
-            // destroy forumlinks
-            $('#forumlinks').remove();
-            
             var mainTable = mainTable_q[0];
             
             // new message boxes
