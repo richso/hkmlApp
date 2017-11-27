@@ -92,14 +92,12 @@ $j(document).ready(function() {
             
             jsonData.billboard = bbJsonData;
         }
-    }
+        
+        console.log(jsonData);
     
-    console.log(jsonData);
-    
-    // for ios
-    if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
-        window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
+        // for ios
+        if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
+            window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
+        }
     }
-
-    // todo: pass back the jsonData to the phone
 });
