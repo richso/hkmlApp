@@ -95,6 +95,10 @@ $j(document).ready(function() {
             }
             
             jsonData.billboard = bbJsonData;
+            // for ios
+            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
+                window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
+            }
         }
         
         console.log(jsonData);
