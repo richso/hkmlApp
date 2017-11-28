@@ -52,7 +52,7 @@ $j(document).ready(function() {
         });
         $('body > center > div.menu > div.maintable').empty().append(span);
         
-        $('a[href="my.php"]').attr('href', 'javascript:void(0);');
+        $('body > center > div.menu a[href="my.php"]').attr('href', 'javascript:void(0);');
         
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
@@ -201,6 +201,9 @@ $j(document).ready(function() {
         if (/^redirect\.php$/.test(lastLocSeg) || /^viewthread\.php$/.test(lastLocSeg)) { 
             
             $('a[href="###"][onclick="scroll(0,0)"]').on('click', function(){scrollTo(0,0);}).attr('href', 'javascript:void(0);')
+            
+            $(mainTable_q[2]).css('display', 'none');
+            $(mainTable_q[4]).css('display', 'none');
             
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
