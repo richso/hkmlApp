@@ -24,6 +24,7 @@ $j(document).ready(function() {
             'body {background: none !important; background-color: white !important;}\n'+
             '.menu {background: none !important; background-color: #dddddd !important; margin-top: 0;}\n'+
             'table tbody tr td {word-wrap: break-word;}\n'+
+            '.checkbox, .radio { border: inherit; background: inherit; vertical-align: middle; height: inherit;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
