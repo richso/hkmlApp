@@ -202,8 +202,8 @@ $j(document).ready(function() {
             
             $('a[href="###"][onclick="scroll(0,0)"]').on('click', function(){scrollTo(0,0);}).attr('href', 'javascript:void(0);')
             
-            $(mainTable_q[2]).css('display', 'none');
-            $(mainTable_q[4]).css('display', 'none');
+            //$(mainTable_q[2]).css('display', 'none');
+            //$(mainTable_q[4]).css('display', 'none');
             
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
