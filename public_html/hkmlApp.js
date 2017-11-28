@@ -237,7 +237,7 @@ $j(document).ready(function() {
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr.header').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
             $(p[0]).append("<br/> &gt;&gt;");
-            $(p[0]).append(section_link);
+            $(section_link).css('font-size', '12px').appendTo(p[0]);
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
             
             var utilLinkParent = $('a[href^="misc.php?action=emailfriend"]').parent();
