@@ -211,6 +211,12 @@ $j(document).ready(function() {
             } else {
                 $(mainTable_q[1]).css('display', 'none');
             }
+            var section_link;
+            $('a', mainTable_q[0]).each(function(i, n){
+                if (i==1) {
+                    section_link = n;
+                }
+            })
             
             var usercnt = '';
             $('form[name="delpost"] > div.spaceborder > table > tbody > tr > td').each(function(i, n){
@@ -230,6 +236,7 @@ $j(document).ready(function() {
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr.header').css('background-image', 'none');
             $('a[href^="misc.php"]').parent('div').parent('td').parent('tr.header').css('background-color', '#eeeeee');
             var p = $('a[href^="misc.php"]').parent('div').parent('td');
+            $(p[0]).append(section_link);
             $('a[href^="misc.php"]').parent('div').removeClass('right').appendTo(p[0]);
             
             var utilLinkParent = $('a[href^="misc.php?action=emailfriend"]').parent();
@@ -279,7 +286,7 @@ $j(document).ready(function() {
             
             // replace youtube link with in place youtube box
             var w = $(window).width();
-            var vw = w * 0.8;
+            var vw = w * 0.9;
             var vh = vw * 315 / 560;
             var q = $('a[href*=".youtube.com"], a[href*="youtu.be"]');
             q.each(function(i, n){
