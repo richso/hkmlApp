@@ -297,7 +297,7 @@ $j(document).ready(function() {
                     match = tube.match(/^http[s]{0,1}\:\/\/(?:[^\.]+\.){0,1}youtu\.be\/([^\/]+)/);
                 }
                 if (match) {
-                    $(n).replaceWith('<div style="text-align: center;"><iframe width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'" frameborder="0" allowfullscreen></iframe></div>');
+                    $(n).replaceWith('<div style="text-align: center;"><iframe webkit-playsinline width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'?playsinline=1" frameborder="0" allowfullscreen></iframe></div>');
                 }
             });
             
