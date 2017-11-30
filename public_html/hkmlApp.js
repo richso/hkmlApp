@@ -321,7 +321,12 @@ $j(document).ready(function() {
                         });
                     })
                 }
-            })
+            });
+            
+            // unicode smilies from system
+            $('.t_msgfont').each(function(i, n){
+                $(n).html($(n).html().replace(/\&amp\;(\#[0-9]{1,7}\;)/g, '<span style="font-size:24px;">&$1</span>'));
+            });
             
             
             alterReplyBox();
