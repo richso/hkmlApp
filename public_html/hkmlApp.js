@@ -197,6 +197,13 @@ $j(document).ready(function() {
                 });
                 $('> tbody > tr', n).append(ctrlTd);
             });
+            $('#postform')[0].onsubmit = function(){
+                var msg = hkmlapp_replace_smilies($('#postform #posteditor_textarea').val());
+                $('#postform #posteditor_textarea').val(msg);
+
+                return validate(this);
+            }
+
         }
         
         /* apply to content page only */
@@ -472,25 +479,25 @@ $j(document).ready(function() {
                 return validate(this);
             }
 
-            function hkmlapp_replace_smilies(str) {
-                var div = $('<div />');
-                var unicode = "&#129324;/&#128079;/&#128541;/&#128549;/&#128123;/&#128565;/&#9996;/&#128526;/&#129300;/&#128513;/&#127908;/&#128515;/&#128545;/&#128560;/&#129318;/&#128517;/&#129326;/&#128550;/&#128536;/&#128161;/&#128169;/&#129321;/&#128548;/&#128127;/&#128076;/&#128552;/&#128128;/&#127867;/&#128077;/&#10084;/&#129312;/&#128580;/&#128555;/&#9786;/&#128516;/&#128540;/&#128542;/&#128566;/&#129320;/&#128553;/&#128525;/&#128563;/&#129303;/&#129314;/&#129299;/&#128564;/&#128557;/&#128544;";
-                $(div).html(unicode);
-                unicode = $(div).html();
-                var hkml_code = ":em93:/:em95:/:em89:/:em88:/:em94:/:em87:/:em96:/:em31:/:em32:/:em34:/:em97:/:lol/:Q/:em41:/:em72:/:em73:/:em42:/:em40:/:em39:/:em36:/:em35:/:em37:/:em66:/:em69:/:em70:/:em71:/:em65:/:em64:/:em63:/:em46:/:em45:/:em44:/:em43:/:em47:/:em48:/:em49:/:em62:/:em61:/:em59:/:em58:/:em57:/:em56:/:em55:/:em54:/:em53:/:em52:/:em51:/:em50:";
-
-                var arUnicode = unicode.split("/");
-                var arHKMLCode = hkml_code.split("/");
-
-                $.each(arUnicode, function(i, u) {
-                    var p = RegExp(u, g);
-                    str = str.replace(p, arHKMLCode[i]);
-                });
-
-                return str;
-            }            
         }
         
+        function hkmlapp_replace_smilies(str) {
+            var div = $('<div />');
+            var unicode = "&#129324;/&#128079;/&#128541;/&#128549;/&#128123;/&#128565;/&#9996;/&#128526;/&#129300;/&#128513;/&#127908;/&#128515;/&#128545;/&#128560;/&#129318;/&#128517;/&#129326;/&#128550;/&#128536;/&#128161;/&#128169;/&#129321;/&#128548;/&#128127;/&#128076;/&#128552;/&#128128;/&#127867;/&#128077;/&#10084;/&#129312;/&#128580;/&#128555;/&#9786;/&#128516;/&#128540;/&#128542;/&#128566;/&#129320;/&#128553;/&#128525;/&#128563;/&#129303;/&#129314;/&#129299;/&#128564;/&#128557;/&#128544;";
+            $(div).html(unicode);
+            unicode = $(div).html();
+            var hkml_code = ":em93:/:em95:/:em89:/:em88:/:em94:/:em87:/:em96:/:em31:/:em32:/:em34:/:em97:/:lol/:Q/:em41:/:em72:/:em73:/:em42:/:em40:/:em39:/:em36:/:em35:/:em37:/:em66:/:em69:/:em70:/:em71:/:em65:/:em64:/:em63:/:em46:/:em45:/:em44:/:em43:/:em47:/:em48:/:em49:/:em62:/:em61:/:em59:/:em58:/:em57:/:em56:/:em55:/:em54:/:em53:/:em52:/:em51:/:em50:";
+
+            var arUnicode = unicode.split("/");
+            var arHKMLCode = hkml_code.split("/");
+
+            $.each(arUnicode, function(i, u) {
+                var p = RegExp(u, 'g');
+                str = str.replace(p, arHKMLCode[i]);
+            });
+
+            return str;
+        }            
     }
 })
 
