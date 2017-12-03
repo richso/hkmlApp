@@ -23,7 +23,7 @@ $j(document).ready(function() {
             '.header {background: none; background-color: #eeeeee;}\n'+
             'body {background: none !important; background-color: white !important;}\n'+
             '.menu {background: none !important; background-color: #dddddd !important; margin-top: 0;}\n'+
-            'table tbody tr td {word-wrap: break-word;}\n'+
+            'table tbody tr td {word-wrap: break-word; word-break: break-all;}\n'+
             'td.f_title {min-width: 80px;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
