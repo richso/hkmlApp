@@ -425,6 +425,8 @@ $j(document).ready(function() {
                 }
             });
             
+            alert($('body').swipe);
+            
             $("body").swipe( {
                 //Generic swipe handler for all directions
                 swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
