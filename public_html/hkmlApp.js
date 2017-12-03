@@ -212,7 +212,7 @@ $j(document).ready(function() {
             $('a[href="###"][onclick="scroll(0,0)"]').on('click', function(){scrollTo(0,0);}).attr('href', 'javascript:void(0);')
             $('a[target="_blank"]').attr('target', '_self');
             
-            if (mainTable_q.length > 2) {
+            if (mainTable_q.length > 2) { // only hide this box if this is not end of section posts message
                 $(mainTable_q[0]).css('display', 'none');
             }
             if ($('#pmprompt.maintable').length) {
@@ -330,8 +330,9 @@ $j(document).ready(function() {
                 $(n).html($(n).html().replace(/\&amp\;(\#[0-9]{1,7}\;)/g, '<span style="font-size:24px;">&$1</span>'));
             });
             
-            
-            alterReplyBox();
+            try {
+                alterReplyBox();
+            } catch (e) {}
             
             // the last visited select box at page end
             var mt = $('.maintable');
@@ -424,8 +425,6 @@ $j(document).ready(function() {
                     $(n)[0].onclick = null;
                 }
             });
-            
-            alert($('body').swipe);
             
             $("body").swipe( {
                 //Generic swipe handler for all directions
