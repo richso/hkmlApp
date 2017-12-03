@@ -25,7 +25,7 @@ $j(document).ready(function() {
             '.menu {background: none !important; background-color: #dddddd !important; margin-top: 0;}\n'+
             'table tbody tr td {word-wrap: break-word; word-break: break-all;}\n'+
             'td.f_author {min-width: 80px;}\n' +
-            'td.f_folder, td.f_icon {display: none;}\n' +
+            'td.f_folder, td.f_icon, td.f_views {display: none;}\n' +
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
