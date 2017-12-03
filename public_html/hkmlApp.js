@@ -435,6 +435,7 @@ $j(document).ready(function() {
                 },
                 swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
                     var links = $('a[href^="redirect.php"][href$="&goto=nextoldset"]');
+                    alert('@links count: ' + links.length)
                     if (links.length) {
                         location = links.attr('href');
                     } else {
