@@ -322,6 +322,9 @@ $j(document).ready(function() {
                             if (j<4) {
                                 $(m).css('display', 'none');
                             }
+                            if (j==2 && /\.jpeg$/.test($(m).html())) {
+                                $(n).append('<img src="'+$(m).attr('href')+'"/>');
+                            }
                         });
                     })
                 }
