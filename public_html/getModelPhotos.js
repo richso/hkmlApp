@@ -37,7 +37,6 @@ $j(document).ready(function() {
         }
         
         console.log(jsonData);
-        alert(JSON.stringify(jsonData));
     
         // for ios
         /* if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
