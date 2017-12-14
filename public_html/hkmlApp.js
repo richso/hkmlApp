@@ -323,7 +323,7 @@ $j(document).ready(function() {
                                 $(m).css('display', 'none');
                             }
                             if (j==2 && /\.jpeg$/.test($(m).html())) {
-                                $(n).append('<img src="'+$(m).attr('href')+'" style="width: 100%;"/>');
+                                $(n).append('<img src="'+$(m).attr('href')+'" style="width: 100%; height: auto;"/>');
                             }
                         });
                     })
