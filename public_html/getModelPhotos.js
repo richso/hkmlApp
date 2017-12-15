@@ -30,6 +30,10 @@ $j(document).ready(function() {
             });
             
             jsonData.photos = bbJsonData;
+            
+            var logoutLink = $('a[href^="logging.php?action=logout"]')
+            jsonData.loggedIn = !!logoutLink.length;
+            
             // for ios
             if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
                 window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
