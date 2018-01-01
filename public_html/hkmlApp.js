@@ -474,6 +474,19 @@ $j(document).ready(function() {
             
         }
         
+        try {
+            var userAgent = window.navigator.userAgent;
+
+            if (userAgent.match(/iPhone/i)) {
+                var d = $('<div style="position: fixed; bottom:0; width: 100%; height: 30px;></div>')
+                        .append('<a href="javascript:void(0);" onclick="history.back()">&lt;</a>')
+                        .append('<a href="javascript:void(0);" onclick="history.forward()">&gt;</a>')
+                        .append('<a href="http://www.facebook.com">Share</a>')
+                        .append('<a href="location=\'./\';">Home</a>')
+                $('body').append(d);
+            }
+        } catch (e) {}
+
         function alterReplyBox() {
             // postform
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
