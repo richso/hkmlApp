@@ -478,12 +478,12 @@ $j(document).ready(function() {
             var userAgent = window.navigator.userAgent;
 
             if (userAgent.match(/iPhone/i)) {
-                $('<div style="height: 30px;"></div>').appendTo('body');
+                $('<div style="height: 50px;"></div>').appendTo('body');
                 var d = $('<div style="position: fixed; bottom:0; width: 100%; height: 30px; background-color: #dddddd;"></div>')
-                        .append('<a href="javascript:void(0);" onclick="history.back()" style="float: left; padding: 5px; font-size: 16px;">&lt;</a>')
-                        .append('<a href="javascript:void(0);" onclick="history.forward()" style="float: left; padding: 5px; font-size: 16px;">&gt;</a>')
-                        .append('<a href="http://www.facebook.com" style="float: right; padding: 5px; font-size: 16px;">Share</a>')
-                        .append('<a href="javascript:void(0);" onclick="location=\'./\';" style="float: right; padding: 5px; font-size: 16px;">Home</a>')
+                        .append('<a href="javascript:void(0);" onclick="history.back()" style="float: left; padding: 5px; font-size: 20px;">&#8617;</a>')
+                        .append('<a href="javascript:void(0);" onclick="history.forward()" style="float: left; padding: 5px; font-size: 20px;">&#8618;</a>')
+                        .append('<a href="http://www.facebook.com" style="float: right; padding: 5px; font-size: 20px;">&#9734;</a>')
+                        .append('<a href="javascript:void(0);" onclick="location=\'./\';" style="float: right; padding: 5px; font-size: 20px;">&#127968;</a>')
                         .append('<div style="clear: both;"></div>');
                 d.appendTo('body');
             }
