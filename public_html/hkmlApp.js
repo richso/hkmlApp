@@ -478,12 +478,14 @@ $j(document).ready(function() {
             var userAgent = window.navigator.userAgent;
 
             if (userAgent.match(/iPhone/i)) {
-                var d = $('<div style="position: fixed; bottom:0; width: 100%; height: 30px;></div>')
-                        .append('<a href="javascript:void(0);" onclick="history.back()">&lt;</a>')
-                        .append('<a href="javascript:void(0);" onclick="history.forward()">&gt;</a>')
-                        .append('<a href="http://www.facebook.com">Share</a>')
-                        .append('<a href="location=\'./\';">Home</a>')
-                $('body').append(d);
+                $('<div style="height: 30px;"></div>').appendTo('body');
+                var d = $('<div style="position: fixed; bottom:0; width: 100%; height: 30px; background-color: #dddddd;"></div>')
+                        .append('<a href="javascript:void(0);" onclick="history.back()" style="float: left; padding: 5px; font-size: 16px;">&lt;</a>')
+                        .append('<a href="javascript:void(0);" onclick="history.forward()" style="float: left; padding: 5px; font-size: 16px;">&gt;</a>')
+                        .append('<a href="http://www.facebook.com" style="float: right; padding: 5px; font-size: 16px;">Share</a>')
+                        .append('<a href="javascript:void(0);" onclick="location=\'./\';" style="float: right; padding: 5px; font-size: 16px;">Home</a>')
+                        .append('<div style="clear: both;"></div>');
+                d.appendTo('body');
             }
         } catch (e) {}
 
