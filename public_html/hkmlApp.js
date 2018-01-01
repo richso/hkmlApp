@@ -456,6 +456,24 @@ $j(document).ready(function() {
             //alert(e.message);
         }
         
+        try {
+            var cks = document.cookie.split(/\; /);
+            var aCk = [];
+            cks.forEach(function(ck){
+                var ppt = ck.split(/\=/);
+                aCk.push({
+                    name: ppt[0],
+                    value: unescape(ppt[1])
+                });
+            });
+            // for ios
+            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined") {
+                window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+            }
+        } catch (e) {
+            
+        }
+        
         function alterReplyBox() {
             // postform
             $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
