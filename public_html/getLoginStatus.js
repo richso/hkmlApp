@@ -92,24 +92,23 @@ $j(document).ready(function() {
             }
             
         } else {
-            alert('@here')
             // for ios
-            try {
-                if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
-                    var cks = document.cookie.split(/\; /);
-                    var aCk = [];
-                    cks.forEach(function(ck){
-                        var ppt = ck.split(/\=/);
-                        aCk.push({
-                            name: ppt[0],
-                            value: unescape(ppt[1])
-                        });
-                    });
+            var logoutLink = $('a[href^="logging.php?action=logout"]')
 
+            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
+                var cks = document.cookie.split(/\; /);
+                var aCk = [];
+                cks.forEach(function(ck){
+                    var ppt = ck.split(/\=/);
+                    aCk.push({
+                        name: ppt[0],
+                        value: unescape(ppt[1])
+                    });
+                });
+
+                setTimeout(function(){
                     window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
-                }
-            } catch (e) {
-                alert(e.message)
+                }, 3000);
             }
         }
     }
