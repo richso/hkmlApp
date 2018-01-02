@@ -91,6 +91,23 @@ $j(document).ready(function() {
                 }, 3000);
             }
             
+        } else {
+            // for ios
+            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
+                var cks = document.cookie.split(/\; /);
+                var aCk = [];
+                cks.forEach(function(ck){
+                    var ppt = ck.split(/\=/);
+                    aCk.push({
+                        name: ppt[0],
+                        value: unescape(ppt[1])
+                    });
+                });
+                
+                setTimeout(function(){
+                    window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+                }, 3000);
+            }
         }
     }
 });
