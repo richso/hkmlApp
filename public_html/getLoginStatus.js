@@ -92,7 +92,7 @@ $j(document).ready(function() {
             }
             
         } else {
-            $('<div style="display: block; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 255, 255, 255, .8 ) url(\'http://i.stack.imgur.com/FhHRx.gif\') 50% 50% no-repeat;"></div>').appendTo('body');
+            $('<div style="display: block; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 200, 200, 200, .8 ) url(\'http://i.stack.imgur.com/FhHRx.gif\') 50% 50% no-repeat;"></div>').appendTo('body');
             
             // for ios
             var logoutLink = $('a[href^="logging.php?action=logout"]')
