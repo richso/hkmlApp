@@ -94,18 +94,22 @@ $j(document).ready(function() {
         } else {
             alert('@here')
             // for ios
-            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
-                var cks = document.cookie.split(/\; /);
-                var aCk = [];
-                cks.forEach(function(ck){
-                    var ppt = ck.split(/\=/);
-                    aCk.push({
-                        name: ppt[0],
-                        value: unescape(ppt[1])
+            try {
+                if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
+                    var cks = document.cookie.split(/\; /);
+                    var aCk = [];
+                    cks.forEach(function(ck){
+                        var ppt = ck.split(/\=/);
+                        aCk.push({
+                            name: ppt[0],
+                            value: unescape(ppt[1])
+                        });
                     });
-                });
-                
-                window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+
+                    window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+                }
+            } catch (e) {
+                alert(e.message)
             }
         }
     }
