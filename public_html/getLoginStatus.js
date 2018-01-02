@@ -85,7 +85,10 @@ $j(document).ready(function() {
                         value: unescape(ppt[1])
                     });
                 });
-                window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+                
+                setTimeout(function(){
+                    window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+                }, 3000);
             }
             
         }
