@@ -92,6 +92,7 @@ $j(document).ready(function() {
             }
             
         } else {
+            alert('@here')
             // for ios
             if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
                 var cks = document.cookie.split(/\; /);
