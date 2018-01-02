@@ -104,9 +104,7 @@ $j(document).ready(function() {
                     });
                 });
                 
-                setTimeout(function(){
-                    window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
-                }, 3000);
+                window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
             }
         }
     }
