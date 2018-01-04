@@ -10,8 +10,6 @@ $j(document).ready(function() {
         
         $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
         
-        $('html').attr('hkmlApp_head', 'done'); // prevent double invoke
-    
         $('html > head').append('<meta name="viewport" content="width=device-width, initial-scale=1">')
             .append('<style type="text/css">[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
             '#divStayTopLeft {display: none;}\n' +
@@ -88,11 +86,11 @@ $j(document).ready(function() {
                 
                 setTimeout(function(){
                     window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
-                }, 3000);
+                }, 5000);
             }
             
         } else {
-            $('<div style="display: block; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 200, 200, 200, .8 ) url(\'http://i.stack.imgur.com/FhHRx.gif\') 50% 50% no-repeat;"></div>').appendTo('body');
+            $('<div style="display: block; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 50, 50, 50, .8 ) url(\'http://i.stack.imgur.com/FhHRx.gif\') 50% 50% no-repeat;"></div>').appendTo('body');
             
             // for ios
             var logoutLink = $('a[href^="logging.php?action=logout"]')
