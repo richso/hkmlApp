@@ -3,6 +3,9 @@ $j(document).ready(function() {
     
     var $ = $j;
     
+    var userAgent = window.navigator.userAgent;
+    var appvl_flag = true;
+    
     var appHead = $('html').attr('hkmlApp_head');
     
     if (! appHead) {
@@ -57,6 +60,10 @@ $j(document).ready(function() {
         $('body > center > div.menu > div.maintable').empty().append(span);
         
         $('body > center > div.menu a[href="my.php"]').attr('href', 'javascript:void(0);');
+        
+        if (appvl_flag && userAgent.match(/iPhone/i)) {
+            $('body > center > div.menu').css('display', 'none');
+        }
         
         var hashSeg = location.href.split(/\#/)[0];
         var urlParts = hashSeg.split(/\//);
@@ -475,9 +482,7 @@ $j(document).ready(function() {
         }
         
         try {
-            var userAgent = window.navigator.userAgent;
-
-            if (userAgent.match(/iPhone/i)) {
+            if (appvl_flag && userAgent.match(/iPhone/i)) {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
                         .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#8617;</a>')
