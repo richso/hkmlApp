@@ -482,7 +482,7 @@ $j(document).ready(function() {
         }
         
         try {
-            if (appvl_flag && userAgent.match(/iPhone/i)) {
+            if (!appvl_flag && userAgent.match(/iPhone/i)) {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
                         .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#8617;</a>')
