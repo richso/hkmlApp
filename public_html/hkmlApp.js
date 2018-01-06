@@ -4,7 +4,7 @@ $j(document).ready(function() {
     var $ = $j;
     
     var userAgent = window.navigator.userAgent;
-    var appvl_flag = true;
+    var appvl_flag = false;
     
     var appHead = $('html').attr('hkmlApp_head');
     
