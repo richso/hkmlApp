@@ -356,7 +356,7 @@ $j(document).ready(function() {
             });
             
             try {
-                if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppThnumbnail != "undefined") {
+                if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppThumbnail != "undefined") {
                     var thumbnails = $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
                     var urls = [];
                     thumbnails.each(function(idx, n){
@@ -364,7 +364,7 @@ $j(document).ready(function() {
                     });
                     thumbnails.each(function(idx, n){
                         $(n)[0].onclick = function(){
-                            window.webkit.messageHandlers.hkmlAppThnumbnail.postMessage({
+                            window.webkit.messageHandlers.hkmlAppThumbnail.postMessage({
                                 idx: idx,
                                 images: urls
                             });
