@@ -496,43 +496,50 @@ $j(document).ready(function() {
 
         function alterReplyBox() {
             // postform
-            $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
-            '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
-            $('#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td').css({
-                'border-bottom': '1px dotted #555555', 
-                'padding-bottom': '20px', 
-                'padding-top': '10px'
-            });
-            $('#postform #attachbody tr.row2:last-child, #postform #attachbody tr.row1:last-child > td').css('border-bottom', 'none');
-            
-            var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
-            var formToolTable = formTables[0];
-            $(formToolTable).css('display', 'none');
-            $('#postform input[name="subject"]').attr('placeholder', 'Title (optional)');
-            $('#postform #message').attr('placeholder', 'Content');
-            
-            // file upload set
-            $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
-            $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
-                if (i!=0) {
-                    $('input', n).attr('placeholder', 'desc.');
-                    $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
-                }
-                $(n).remove();
-            });
-            
-            $('#postform')[0].onsubmit = function(){
-                var msg = hkmlapp_replace_smilies($('#postform #message').val());
-                $('#postform #message').val(msg);
+            try {
+                $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
+                '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
+                '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
+                '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
+                $('#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td').css({
+                    'border-bottom': '1px dotted #555555', 
+                    'padding-bottom': '20px', 
+                    'padding-top': '10px'
+                });
+                $('#postform #attachbody tr.row2:last-child, #postform #attachbody tr.row1:last-child > td').css('border-bottom', 'none');
 
-                return validate(this);
+                var formTables = $('#postform > .maintable > .spaceborder > table > tbody > tr.bottom table');
+                var formToolTable = formTables[0];
+                $(formToolTable).css('display', 'none');
+                $('#postform input[name="subject"]').attr('placeholder', 'Title (optional)');
+                $('#postform #message').attr('placeholder', 'Content');
+
+                // file upload set
+                $('> tbody > tr > td:first-child', formTables[2]).css('width', 'auto !important');
+                $('> tbody > tr > td:nth-child(2)', formTables[2]).each(function(i, n){
+                    if (i!=0) {
+                        $('input', n).attr('placeholder', 'desc.');
+                        $('input', n).appendTo($('> td:first-child', $(n).parent()).append('<br/>'));
+                    }
+                    $(n).remove();
+                });
+            
+                $('#postform')[0].onsubmit = function(){
+                    var msg = hkmlapp_replace_smilies($('#postform #message').val());
+                    $('#postform #message').val(msg);
+
+                    return validate(this);
+                }
+                
+                $('#smiliestable').insertAfter($('#postform #message').parent());
+            } catch(e) {
+                //
             }
 
         }
         
         function hkmlapp_replace_smilies(str) {
+            /*
             var div = $('<div />');
             var unicode = "&#129324;/&#128079;/&#128541;/&#128549;/&#128123;/&#128565;/&#9996;/&#128526;/&#129300;/&#128513;/&#127908;/&#128515;/&#128545;/&#128560;/&#129318;/&#128517;/&#129326;/&#128550;/&#128536;/&#128161;/&#128169;/&#129321;/&#128548;/&#128127;/&#128076;/&#128552;/&#128128;/&#127867;/&#128077;/&#10084;/&#129312;/&#128580;/&#128555;/&#9786;/&#128516;/&#128540;/&#128542;/&#128566;/&#129320;/&#128553;/&#128525;/&#128563;/&#129303;/&#129314;/&#129299;/&#128564;/&#128557;/&#128544;";
             $(div).html(unicode);
@@ -546,7 +553,7 @@ $j(document).ready(function() {
                 var p = RegExp(u, 'g');
                 str = str.replace(p, arHKMLCode[i]);
             });
-
+            */
             return str;
         }            
     }
