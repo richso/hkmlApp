@@ -218,6 +218,27 @@ $j(document).ready(function() {
         /* apply to content page only */
         if (/^redirect\.php$/.test(lastLocSeg) || /^viewthread\.php$/.test(lastLocSeg)) { 
             
+            try {
+                if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppThumbnail != "undefined") {
+                    var thumbnails = $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
+                    var urls = [];
+                    thumbnails.each(function(idx, n){
+                        urls.push($(n).attr('src'));
+                    });
+                    thumbnails.each(function(idx, n){
+                        $(n)[0].onclick = function(){
+                            window.webkit.messageHandlers.hkmlAppThumbnail.postMessage({
+                                idx: idx,
+                                images: urls
+                            });
+                        }
+                    });
+                }
+                
+            } catch (e) {
+                
+            }
+            
             $('a[href="###"][onclick="scroll(0,0)"]').on('click', function(){scrollTo(0,0);}).attr('href', 'javascript:void(0);')
             $('a[target="_blank"]').attr('target', '_self');
             
@@ -355,26 +376,6 @@ $j(document).ready(function() {
                 display: 'block'
             });
             
-            try {
-                if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppThumbnail != "undefined") {
-                    var thumbnails = $('.t_row > tbody > tr > td:nth-child(1) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
-                    var urls = [];
-                    thumbnails.each(function(idx, n){
-                        urls.push($(n).attr('src'));
-                    });
-                    thumbnails.each(function(idx, n){
-                        $(n)[0].onclick = function(){
-                            window.webkit.messageHandlers.hkmlAppThumbnail.postMessage({
-                                idx: idx,
-                                images: urls
-                            });
-                        }
-                    });
-                }
-                
-            } catch (e) {
-                
-            }
         }    
         
         if (/^search\.php$/.test(lastLocSeg)) { 
