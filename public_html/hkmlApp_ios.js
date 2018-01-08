@@ -226,12 +226,9 @@ $j(document).ready(function() {
                         urls.push($(n).attr('src'));
                     });
                     thumbnails.each(function(idx, n){
-                        $(n)[0].onclick = function(){
-                            window.webkit.messageHandlers.hkmlAppThumbnail.postMessage({
-                                idx: idx,
-                                images: urls
-                            });
-                        }
+                        $(n).off('click').off('mouseover').off('mousewheel')
+                                .removeAttr('onclick').removeAttr('onmouseover').removeAttr('onmousewheel')
+                                .attr('onclick', 'window.webkit.messageHandlers.hkmlAppThumbnail.postMessage({idx: '+ idx + ',images: '+ JSON.stringify(urls) + '})');
                     });
                 }
                 
