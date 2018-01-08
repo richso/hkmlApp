@@ -218,6 +218,25 @@ $j(document).ready(function() {
         /* apply to content page only */
         if (/^redirect\.php$/.test(lastLocSeg) || /^viewthread\.php$/.test(lastLocSeg)) { 
             
+            // show the JPEG file which the current forum version will not show directly
+            $('.msgheader').each(function(k, mh){
+                if (! /QUOTE/.test($(mh).html())) {
+                    $(mh).css('display', 'none');
+                    $('.msgborder', $(mh).parent()).css('border', 'none');
+                    $('.msgborder .t_attachlist', $(mh).parent()).css('border', 'none');
+                    $('.msgborder .t_attachlist', $(mh).parent()).each(function(i, n){
+                        $('> *', n).each(function(j, m){
+                            if (j<4) {
+                                $(m).css('display', 'none');
+                            }
+                            if (j==2 && /\.jpeg$/.test($(m).html())) {
+                                $(n).append('<img src="'+$(m).attr('href')+'" style="width: 100%; height: auto;"/>');
+                            }
+                        });
+                    })
+                }
+            });
+            
             try {
                 if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppThumbnail != "undefined") {
                     var thumbnails = $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
@@ -334,24 +353,6 @@ $j(document).ready(function() {
                 }
                 if (match) {
                     $(n).replaceWith('<div style="text-align: center;"><iframe webkit-playsinline width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'?playsinline=1" frameborder="0" allowfullscreen></iframe></div>');
-                }
-            });
-            
-            $('.msgheader').each(function(k, mh){
-                if (! /QUOTE/.test($(mh).html())) {
-                    $(mh).css('display', 'none');
-                    $('.msgborder', $(mh).parent()).css('border', 'none');
-                    $('.msgborder .t_attachlist', $(mh).parent()).css('border', 'none');
-                    $('.msgborder .t_attachlist', $(mh).parent()).each(function(i, n){
-                        $('> *', n).each(function(j, m){
-                            if (j<4) {
-                                $(m).css('display', 'none');
-                            }
-                            if (j==2 && /\.jpeg$/.test($(m).html())) {
-                                $(n).append('<img src="'+$(m).attr('href')+'" style="width: 100%; height: auto;"/>');
-                            }
-                        });
-                    })
                 }
             });
             
