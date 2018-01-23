@@ -552,6 +552,13 @@ $j(document).ready(function() {
                 }
                 
                 $('#smiliestable').insertAfter($('#postform #message').parent());
+                $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
+                $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
+                    var s = $('#message').prop("selectionStart");
+                    var v = $('#message').val();
+                    var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
+                    $('#message').val(newVal).focus();
+                });
             } catch(e) {
                 //
             }
