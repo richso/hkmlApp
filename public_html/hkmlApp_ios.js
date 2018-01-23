@@ -508,7 +508,7 @@ $j(document).ready(function() {
                         .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#8617;</a>')
                         .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#8618;</a>')
                         .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
-                        .append('<a href="facebookshare:" style="float: right; padding: 5px; font-size: 24px;">&#9734;</a>')
+                        .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#9734;</a>')
                         .append('<div style="clear: both;"></div>');
                 d.appendTo('body');
             }
