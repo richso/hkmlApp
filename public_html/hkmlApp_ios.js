@@ -552,6 +552,7 @@ $j(document).ready(function() {
                 }
                 
                 $('#smiliestable').insertAfter($('#postform #message').parent());
+                $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
             } catch(e) {
                 //
             }
