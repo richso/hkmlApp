@@ -4,7 +4,8 @@ $j(document).ready(function() {
     var $ = $j;
     
     var userAgent = window.navigator.userAgent;
-    var appvl_flag = true;
+    var usrname = $('body > center > div.menu > .maintable > .bold > a').text();
+    var appvl_flag = (!usrname || usrname == 'apptest');
     
     var appHead = $('html').attr('hkmlApp_head');
     
