@@ -526,7 +526,7 @@ $j(document).ready(function() {
                             .append('<div style="clear: both;"></div>');
                 }
                 if (!usrname) {
-                    d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
+                    d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px; text-align: center;"></div>')
                             .append('<a href="logging.php?action=login" style="padding-top: 5px;">µn¤J</a>')
                             .append('<div style="clear: both;"></div>');
                 }
