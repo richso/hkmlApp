@@ -239,16 +239,27 @@ $j(document).ready(function() {
             });
             
             try {
+                var thumbnails = $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
+                var urls = [];
+                thumbnails.each(function(idx, n){
+                    urls.push($(n).attr('src'));
+                });
+                
+                // ios
                 if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppThumbnail != "undefined") {
-                    var thumbnails = $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
-                    var urls = [];
-                    thumbnails.each(function(idx, n){
-                        urls.push($(n).attr('src'));
-                    });
                     thumbnails.each(function(idx, n){
                         $(n).off('click').off('mouseover').off('mousewheel')
                                 .removeAttr('onclick').removeAttr('onmouseover').removeAttr('onmousewheel')
                                 .attr('onclick', 'window.webkit.messageHandlers.hkmlAppThumbnail.postMessage({idx: '+ idx + ',images: '+ JSON.stringify(urls) + '})');
+                    });
+                }
+                
+                // android
+                if (typeof AndroidFunction != 'undefined') {
+                    thumbnails.each(function(idx, n){
+                        $(n).off('click').off('mouseover').off('mousewheel')
+                                .removeAttr('onclick').removeAttr('onmouseover').removeAttr('onmousewheel')
+                                .attr('onclick', 'AndroidFunction.onImageClick('+ idx + ', '+ JSON.stringify(urls) + ')');
                     });
                 }
                 
@@ -503,20 +514,14 @@ $j(document).ready(function() {
         }
         
         try {
-            if (userAgent.match(/iPhone/i)) {
+            if (!appvl_flag && userAgent.match(/iPhone/i)) {
                 $('<div style="height: 60px;"></div>').appendTo('body');
-                var d;
-                if (!appvl_flag) {
-                    d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
-                            .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#8617;</a>')
-                            .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#8618;</a>')
-                            .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
-                            .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#9734;</a>')
-                            .append('<div style="clear: both;"></div>');
-                } else if (!usrname) {
-                    d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px; text-align: center;"></div>')
-                            .append('<a href="logging.php?action=login">µn¤J</a>');
-                }
+                var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
+                        .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#8617;</a>')
+                        .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#8618;</a>')
+                        .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
+                        .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#9734;</a>')
+                        .append('<div style="clear: both;"></div>');
                 d.appendTo('body');
             }
         } catch (e) {}
