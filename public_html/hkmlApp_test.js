@@ -532,7 +532,7 @@ $j(document).ready(function() {
             }
             
             if (typeof AndroidFunction != 'undefined' && typeof AndroidFunction.getVersionCode != 'undefined') {
-                // start from versionCode = 7
+                // start from versionCode = 8
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 d.appendTo('body');
             }
