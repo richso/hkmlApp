@@ -542,8 +542,6 @@ $j(document).ready(function() {
         try {
             var refresh_content = $('meta[http-equiv="refresh"]').attr('content');
             if (refresh_content) {
-                alert(refresh_content)
-                return;
                 url = refresh_content.split(/[ ;]url\=/)[1];
                 if (url) {
                     location = url;
