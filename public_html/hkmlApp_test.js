@@ -515,8 +515,8 @@ $j(document).ready(function() {
         
         try {
             var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
-                .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#8617;</a>')
-                .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#8618;</a>')
+                .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#9664;</a>')
+                .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#9654;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#9734;</a>')
                 .append('<div style="clear: both;"></div>');
@@ -535,6 +535,15 @@ $j(document).ready(function() {
                 // start from versionCode = 8
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 d.appendTo('body');
+            }
+        } catch (e) {}
+        
+        // cater for Android cannot auto-refresh
+        try {
+            var refresh_content = $('meta[http-equiv="refresh"]').attr('content');
+            if (refresh_content) {
+                url = refresh_content.split(' url=')[1];
+                location = url;
             }
         } catch (e) {}
 
