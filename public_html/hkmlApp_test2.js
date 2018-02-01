@@ -544,7 +544,7 @@ $j(document).ready(function() {
             if (refresh_content) {
                 alert(refresh_content)
                 return;
-                url = refresh_content.split(' url=')[1];
+                url = refresh_content.split(/[ ;]url\=/)[1];
                 if (url) {
                     location = url;
                 }
