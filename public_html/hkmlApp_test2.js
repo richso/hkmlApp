@@ -542,9 +542,12 @@ $j(document).ready(function() {
         try {
             var refresh_content = $('meta[http-equiv="refresh"]').attr('content');
             if (refresh_content) {
-                url = refresh_content.split(/[ ;]url\=/)[1];
+                var data = refresh_content.split(/[ ;]url\=/);
+                var url = data[1];
                 if (url) {
-                    location = url;
+                    setTimeout(data[0], function(){
+                        location = url;
+                    });
                 }
             }
         } catch (e) {}
