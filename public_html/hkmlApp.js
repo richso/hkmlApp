@@ -516,7 +516,7 @@ $j(document).ready(function() {
         try {
             var pmCheck = $('#pmprompt');
             
-            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px;"></div>')
+            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #eeeeee; padding: 0 20px;"></div>')
                 .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#9664;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#9654;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
@@ -531,7 +531,7 @@ $j(document).ready(function() {
             if (userAgent.match(/iPhone/i)) {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
-                    d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #dddddd; padding: 0 20px; text-align: center;"></div>')
+                    d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
                             .append('<a href="logging.php?action=login" style="padding-top: 5px;">µn¤J</a>')
                             .append('<div style="clear: both;"></div>');
                 }
