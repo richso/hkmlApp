@@ -354,7 +354,7 @@ $j(document).ready(function() {
             
             // replace youtube link with in place youtube box
             var w = $(window).width();
-            var vw = w * 0.9;
+            var vw = Math.max(w - 10, 200);
             var vh = vw * 315 / 560;
             var q = $('a[href*=".youtube.com"], a[href*="youtu.be"]');
             q.each(function(i, n){
