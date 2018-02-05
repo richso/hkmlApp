@@ -214,6 +214,15 @@ $j(document).ready(function() {
                 return validate(this);
             }
 
+            $('#smiliestable').insertAfter($('#postform [name="message"]').parent());
+            $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
+            $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
+                var s = $('[name="message"]').prop("selectionStart");
+                var v = $('[name="message"]').val();
+                var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
+                $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
+                $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
+            });
         }
         
         /* apply to content page only */
