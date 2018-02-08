@@ -9,7 +9,7 @@ $j(document).ready(function() {
         $('html').attr('hkmlApp_head', 1);
         
         try {
-            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 60px; background-color: #eeeeee; padding: 0 20px;"></div>')
+            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px;"></div>')
                 .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#9664;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#9654;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'https://www.facebook.com/groups/86899893467/\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
