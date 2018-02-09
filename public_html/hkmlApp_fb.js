@@ -22,6 +22,7 @@ $j(document).ready(function() {
         } catch (e) {}
         
         $('a[target]').removeAttr('target');
+        alert('@target removed');
     }
 })
 
