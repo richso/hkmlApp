@@ -21,8 +21,6 @@ $j(document).ready(function() {
             d.appendTo('body');
         } catch (e) {}
         
-        $('a[target]').removeAttr('target');
-        alert('@target removed');
     }
 })
 
