@@ -25,7 +25,7 @@ $j(document).ready(function() {
     }
     
     setInterval(function(){
-        $('#mmsg').html(date());
+        $('#mmsg').html(new Date());
         $('a[target]').removeAttr('target');
     }, 1000);
 })
