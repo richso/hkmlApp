@@ -21,6 +21,9 @@ $j(document).ready(function() {
             d.appendTo('body');
         } catch (e) {}
         
+        setInterval(function(){
+            $('a[target]').removeAttr('target');
+        }, 1000);
     }
 })
 
