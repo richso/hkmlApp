@@ -22,12 +22,13 @@ $j(document).ready(function() {
             d.appendTo('body');
         } catch (e) {}
         
-        $(window).on('hashchange', function(){
-            setInterval(function(){
+        var lasthash = '';
+        setInterval(function(){
+            if (lasthash != location.hash) {
                 $('#mmsg').html(new Date());
                 $('a[target]').removeAttr('target');
-            }, 1000);
-        })
+            }
+        }, 1000);
     }
     
 })
