@@ -395,6 +395,14 @@ $j(document).ready(function() {
                 display: 'block'
             });
             
+            // beautify member post info line
+            $('.t_row > tbody > tr > td > table > tbody > tr > td > div > div:nth-child(3)').each(function(idx, n){
+                try {
+                    var t_a = $('> a', n)[0];
+                    $('<br />').insertBefore(t_a);
+                } catch (e) {}
+            });
+            
         }    
         
         if (/^search\.php$/.test(lastLocSeg)) { 
