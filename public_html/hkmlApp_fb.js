@@ -22,7 +22,11 @@ $j(document).ready(function() {
             d.appendTo('body');
         } catch (e) {}
         
-        //$('a[target]').removeAttr('target');
+        $(window).on('hashchange', function(){
+            setTimeout(function(){
+                $('a[target]').removeAttr('target');
+            }, 1000);
+        })
     }
     
 })
