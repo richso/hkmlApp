@@ -23,7 +23,7 @@ $j(document).ready(function() {
         } catch (e) {}
         
         $(window).on('hashchange', function(){
-            setTimeout(function(){
+            setInterval(function(){
                 $('#mmsg').html(new Date());
                 $('a[target]').removeAttr('target');
             }, 1000);
