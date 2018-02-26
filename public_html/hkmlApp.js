@@ -533,9 +533,11 @@ $j(document).ready(function() {
         try {
             var pmCheck = $('#pmprompt');
             
-            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px;"></div>')
+            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #555555; opacity:.8; padding: 0 20px;"></div>')
                 .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#9664;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#9654;</a>')
+                .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px;">&#8679;</a>')
+                .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,document.body.scrollHeight);" style="float: left; padding: 5px; font-size: 24px;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#9734;</a>');
             
