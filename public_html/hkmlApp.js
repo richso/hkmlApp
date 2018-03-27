@@ -537,7 +537,7 @@ $j(document).ready(function() {
                 .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#9664;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#9654;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8679;</a>')
-                .append('<a href="javascript:void(0);" onclick="goBottom();" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
+                .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,document.body.scrollHeight);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#11088;</a>');
             
