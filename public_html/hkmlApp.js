@@ -635,7 +635,7 @@ $j(document).ready(function() {
             if (ofs) {
                 window.scrollTo(0, ofs.top);
             } else {
-                var mt = $('.maintable');
+                var mt = $('.maintable:visible');
                 ofs = $(mt[mt.length-1]).offset();
                 window.scrollTo(0, ofs.top);
             }
