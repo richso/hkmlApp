@@ -533,11 +533,11 @@ $j(document).ready(function() {
         try {
             var pmCheck = $('#pmprompt');
             
-            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #555555aa; opacity:1; padding: 0 20px;"></div>')
+            var d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #555555;  background-color: #555555aa; opacity:1; padding: 0 20px;"></div>')
                 .append('<a href="javascript:void(0);" onclick="window.history.back()" style="float: left; padding: 5px; font-size: 24px;">&#9664;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.history.forward()" style="float: left; padding: 5px; font-size: 24px;">&#9654;</a>')
                 .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8679;</a>')
-                .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,document.body.scrollHeight);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
+                .append('<a href="javascript:void(0);" onclick="goBottom();" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#11088;</a>');
             
@@ -628,6 +628,17 @@ $j(document).ready(function() {
                 //
             }
 
+        }
+        
+        function goBottom() {
+            var ofs = $('#postform').offset();
+            if (ofs) {
+                window.scrollTo(0, ofs.top);
+            } else {
+                var mt = $('.maintable');
+                ofs = $(mt[mt.length-1]).offset();
+                window.scrollTo(0, ofs.top);
+            }
         }
         
         function hkmlapp_replace_smilies(str) {
