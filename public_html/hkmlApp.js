@@ -74,6 +74,8 @@ $j(document).ready(function() {
         
         /* check if index page */
         if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
+            $('tbody[id^="category_"] > tr.row > td[align="left"] > a > img').css('width', '').css('max-width', '100%');
+            
             var mainTable = mainTable_q[0];
             
             // new message boxes
