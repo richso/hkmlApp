@@ -226,9 +226,8 @@ $j(document).ready(function() {
                 $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
             });
             
-            var old_getSmilies = getSmilies;
-            getSmilies = function(event){
-                old_getSmilies(event);
+            var new_smilypageclick = function(event){
+                getSmilies(event);
                 
                 $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
                 $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
@@ -238,7 +237,11 @@ $j(document).ready(function() {
                     $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
                     $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
                 });
+                
+                $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', new_smilypageclick);
             }
+            
+            $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', new_smilypageclick);
         }
         
         /* apply to content page only */
