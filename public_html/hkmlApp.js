@@ -217,18 +217,7 @@ $j(document).ready(function() {
             }
 
             $('#smiliestable').insertAfter($('#postform [name="message"]').parent());
-            $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
-            $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
-                var s = $('[name="message"]').prop("selectionStart");
-                var v = $('[name="message"]').val();
-                var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
-                $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
-                $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
-            });
-            
-            var new_smilypageclick = function(event){
-                getSmilies(event);
-                
+            function hkmlInsertSmilies() {
                 $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
                 $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
                     var s = $('[name="message"]').prop("selectionStart");
@@ -237,11 +226,30 @@ $j(document).ready(function() {
                     $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
                     $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
                 });
-                
-                $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', new_smilypageclick);
+                $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', hkmlSmilypageclick);
             }
             
-            $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', new_smilypageclick);
+            function hkmlSmilypageclick(event){
+                event.preventDefault();
+                
+                getSmilies(event);
+                
+                setTimeout(function(){
+                    $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
+                    $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
+                        var s = $('[name="message"]').prop("selectionStart");
+                        var v = $('[name="message"]').val();
+                        var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
+                        $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
+                        $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
+                    });
+
+                    $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', hkmlSmilypageclick);
+                }, 500);
+                
+            }
+            
+            hkmlInsertSmilies();
         }
         
         /* apply to content page only */
@@ -643,6 +651,31 @@ $j(document).ready(function() {
                     $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
                     $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
                 });
+                
+                function hkmlInsertSmilies() {
+                    $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
+                    $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
+                        var s = $('[name="message"]').prop("selectionStart");
+                        var v = $('[name="message"]').val();
+                        var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
+                        $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
+                        $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
+                    });
+
+                    $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', hkmlSmilypageclick);                    
+                }
+                
+                function hkmlSmilypageclick(event){
+                    event.preventDefault();
+                    
+                    getSmilies(event);
+
+                    setTimeout(hkmlInsertSmilies, 500);
+                    
+                }
+
+                hkmlInsertSmilies();
+                
             } catch(e) {
                 //
             }
