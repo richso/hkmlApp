@@ -643,18 +643,18 @@ $j(document).ready(function() {
                 }
                 
                 $('#smiliestable').insertAfter($('#postform [name="message"]').parent());
-                $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
-                $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
-                    var s = $('[name="message"]').prop("selectionStart");
-                    var v = $('[name="message"]').val();
-                    var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
-                    $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
-                    $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
-                });
+//                $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
+//                $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
+//                    var s = $('[name="message"]').prop("selectionStart");
+//                    var v = $('[name="message"]').val();
+//                    var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
+//                    $('[name="message"]').val(newVal).prop("selectionStart", s + $(this).attr('alt').length+1);
+//                    $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
+//                });
                 
                 function hkmlInsertSmilies() {
-                    $('#smiliestable [id^="smilie_"]').removeAttr('onmouseover');
-                    $('#smiliestable [id^="smilie_"]').removeAttr('onclick').on('click', function(){
+                    $('#smiliestable [id^="smilie_"][onmouseover]').removeAttr('onmouseover');
+                    $('#smiliestable [id^="smilie_"][onclick]').removeAttr('onclick').on('click', function(){
                         var s = $('[name="message"]').prop("selectionStart");
                         var v = $('[name="message"]').val();
                         var newVal = v.substring(0, s) + $(this).attr('alt') + ' ' + v.substring(s, v.length);
@@ -662,7 +662,7 @@ $j(document).ready(function() {
                         $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
                     });
 
-                    $('#smiliestable .p_bar a.p_num').removeAttr('onclick').on('click', hkmlSmilypageclick);                    
+                    $('#smiliestable .p_bar a.p_num[onclick]').removeAttr('onclick').on('click', hkmlSmilypageclick);                    
                 }
                 
                 function hkmlSmilypageclick(event){
