@@ -404,6 +404,16 @@ $j(document).ready(function() {
                 }
             });
             
+            try {
+                var w = $(window).width();
+                var vw = Math.max(w - 10, 200);
+                var vh = vw * 315 / 560;
+                var q = $('a[href$=".mp4"]');
+                q.each(function(i, n){
+                    $(n).replaceWith('<video width="'+vw+'" height="'+vh+'" controls><source src="'+$(n).attr('href')+'" type="video/mp4"><a href="'+$(n).attr('href')+'">'+$(n).attr('href')+'</a></video>');
+                });
+            } catch(e) {}
+            
             // unicode smilies from system
             $('.t_msgfont').each(function(i, n){
                 $(n).html($(n).html().replace(/\&amp\;(\#[0-9]{1,7}\;)/g, '<span style="font-size:24px;">&$1</span>'));
