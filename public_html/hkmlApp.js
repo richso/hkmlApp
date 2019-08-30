@@ -410,7 +410,7 @@ $j(document).ready(function() {
                 var vh = vw * 315 / 560;
                 var q = $('a[href$=".mp4"]');
                 q.each(function(i, n){
-                    $(n).replaceWith('<video width="'+vw+'" height="'+vh+'" controls><source src="'+$(n).attr('href')+'" type="video/mp4"><a href="'+$(n).attr('href')+'">'+$(n).attr('href')+'</a></video>');
+                    $(n).replaceWith('<video style="background-color: black;" width="'+vw+'" height="'+vh+'" controls><source src="'+$(n).attr('href')+'" type="video/mp4"><a href="'+$(n).attr('href')+'">'+$(n).attr('href')+'</a></video>');
                 });
             } catch(e) {}
             
