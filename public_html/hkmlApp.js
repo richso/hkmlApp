@@ -273,6 +273,13 @@ $j(document).ready(function() {
                     })
                 }
             });
+            var checkJpegs = $('.t_msgfont > span[id^="attach_"] > a[href^="attachment.php"]');
+            checkJpegs.each(function(idx, jpeg) {
+                if ($(jpeg).html().match(/\.jpeg$/)) {
+                    $('.t_msgfont > span[id^="attach_"] > a[href^="attachment.php"]')
+                            .replaceWith('<img src="{{img}}" style="width: 100%; height: auto;"/>'.replace('{{img}}', $(jpeg).attr('href')));
+                }
+            });
             
             try {
                 var thumbnails = $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])');
