@@ -276,8 +276,8 @@ $j(document).ready(function() {
             var checkJpegs = $('.t_msgfont > span[id^="attach_"] > a[href^="attachment.php"]');
             checkJpegs.each(function(idx, jpeg) {
                 if ($(jpeg).html().match(/\.jpeg$/)) {
-                    $('.t_msgfont > span[id^="attach_"] > a[href^="attachment.php"]')
-                            .replaceWith('<img src="{{img}}" style="width: 100%; height: auto;"/>'.replace('{{img}}', $(jpeg).attr('href')));
+                    $(jpeg).replaceWith('<img src="{{img}}" style="width: 100%; height: auto;"/>'.replace('{{img}}', $(jpeg).attr('href')));
+                    $(jpeg).parent().removeAttr('onmouseover');
                 }
             });
             
