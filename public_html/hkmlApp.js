@@ -266,7 +266,7 @@ $j(document).ready(function() {
                             if (j<4) {
                                 $(m).css('display', 'none');
                             }
-                            if (j==2 && /\.jpeg$/.test($(m).html())) {
+                            if (j==2 && /\.jpeg$/i.test($(m).html())) {
                                 $(n).append('<img src="'+$(m).attr('href')+'" style="width: 100%; height: auto;"/>');
                             }
                         });
@@ -275,7 +275,7 @@ $j(document).ready(function() {
             });
             var checkJpegs = $('.t_msgfont > span[id^="attach_"] > a[href^="attachment.php"]');
             checkJpegs.each(function(idx, jpeg) {
-                if ($(jpeg).html().match(/\.jpeg$/)) {
+                if ($(jpeg).html().match(/\.jpeg$/i)) {
                     $(jpeg).parent().removeAttr('onmouseover');
                     $(jpeg).replaceWith('<img src="{{img}}" style="width: 100%; height: auto;"/>'.replace('{{img}}', $(jpeg).attr('href')));
                 }
