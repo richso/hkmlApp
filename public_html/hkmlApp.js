@@ -160,6 +160,11 @@ $j(document).ready(function() {
             $('input[type="text"]').css('width', '100%');
         }
         
+        if (/^memcp\.php?action=buddylist$/.test(lastLocSeg)) { 
+            var mt = $('.maintable')[2];
+            $('table td[width="200"]', mt).css('display', 'none');
+        }        
+        
         if (/^pm\.php$/.test(lastLocSeg)) { 
             var mt = $('.maintable')[2];
             
