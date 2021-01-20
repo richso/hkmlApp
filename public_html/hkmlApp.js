@@ -160,9 +160,10 @@ $j(document).ready(function() {
             $('input[type="text"]').css('width', '100%');
         }
         
-        if (/^memcp\.php?action=buddylist$/.test(lastLocSeg)) { 
+        if (/^memcp\.php$/.test(lastLocSeg) && lastLocParams == 'action=buddylist') { 
             var mt = $('.maintable')[2];
-            $('table td[width="200"]', mt).css('display', 'none');
+            $('> table td[width="200"]', mt).css('display', 'none');
+            $('> table td a[target="_blank"]', mt).removeAttr('target');
         }        
         
         if (/^pm\.php$/.test(lastLocSeg)) { 
