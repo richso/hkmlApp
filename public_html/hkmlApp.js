@@ -44,6 +44,10 @@ $j(document).ready(function() {
         $('body center > div.tableborder').css('display', 'none');
         /* hide the model brands links panel */
         $('body center center').css('display', 'none');
+        
+        // 202101 add friend list to my menu
+        $('#my_menu > table > tbody').append('<tr><td><a href="memcp.php?action=buddylist">我的好友</a></td></tr>');
+        // -
        
         $('body > center > div.menu + div').css('display', 'none');
         
