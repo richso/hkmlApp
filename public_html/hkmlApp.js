@@ -46,7 +46,7 @@ $j(document).ready(function() {
         $('body center center').css('display', 'none');
         
         // 202101 add friend list to my menu
-        $('#my_menu > table > tbody').append('<tr><td><a href="memcp.php?action=buddylist">我的好友</a></td></tr>');
+        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">我的好友</a></td></tr>');
         // -
        
         $('body > center > div.menu + div').css('display', 'none');
