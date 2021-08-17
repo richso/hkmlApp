@@ -682,7 +682,7 @@ $j(document).ready(function() {
                         $('[name="message"]').focus().prop("selectionEnd", $('[name="message"]').prop("selectionStart"));
                     });
 
-                    $('#smiliestable .p_bar a.p_num[onclick]').removeAttr('onclick').on('click', hkmlSmilypageclick);                    
+                    $('#smiliestable .p_bar a.p_num[onclick]').removeAttr('onclick').one('click', hkmlSmilypageclick);                    
                 }
                 
                 function hkmlSmilypageclick(event){
