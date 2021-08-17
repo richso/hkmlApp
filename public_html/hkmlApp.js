@@ -690,7 +690,7 @@ $j(document).ready(function() {
                     
                     getSmilies(event);
 
-                    //setTimeout(hkmlInsertSmilies, 500);
+                    setTimeout(hkmlInsertSmilies, 500);
                     
                 }
 
