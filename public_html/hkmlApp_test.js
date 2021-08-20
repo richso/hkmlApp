@@ -9,6 +9,8 @@ $j(document).ready(function() {
     
     var appHead = $('html').attr('hkmlApp_head');
     
+    $('body').prepend('<div style="background-color: red; color: yellow;">@@@ '+userAgent+' @@@</div>');
+    
     if (! appHead) {
         showPopupText = function(){}
         setcopy = function(){}
