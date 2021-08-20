@@ -66,7 +66,7 @@ $j(document).ready(function() {
         
         $('body > center > div.menu a[href="my.php"]').attr('href', 'javascript:void(0);');
         
-        if (appvl_flag && userAgent.match(/(iPhone|iPad)/i)) {
+        if (appvl_flag && userAgent.match(/(iPhone|iPad|Mac OS)/i)) {
             $('body > center > div.menu').css('display', 'none');
         }
         
@@ -602,7 +602,7 @@ $j(document).ready(function() {
         
             d.append('<div style="clear: both;" id="mobile_panel"></div>');
 
-            if (userAgent.match(/(iPhone|iPad)/i)) {
+            if (userAgent.match(/(iPhone|iPad|Mac OS)/i)) {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
                     d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
