@@ -162,7 +162,7 @@ $j(document).ready(function() {
         if (/^digest\.php$/.test(lastLocSeg)) {
             $('td.subject a[target="_blank"]').attr('target', '_self');
             $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
-            $('> td:nth-child(1)', $('tr.header')).attr('width', '41%');
+            $('> td:nth-child(1)', $('tr.header')).attr('width', '65%');
             $('> td:nth-child(3)', $('tr.header')).attr('width', '19%');
             $('> td:nth-child(4)', $('tr.header')).css('display', 'none');
             $('> td:nth-child(5)', $('tr.header')).css('display', 'none');
