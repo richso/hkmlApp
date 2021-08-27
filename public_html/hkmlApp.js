@@ -158,6 +158,9 @@ $j(document).ready(function() {
             $('> td:nth-child(3)', $('tr.category')).css('display', 'none');
             $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
             $('input[type="text"]').css('width', '100%');
+            if (/^(digest)\.php$/.test(lastLocSeg)) {
+                $('.altbg2.bottom table').hide();
+            }
         }
         
         if (/^memcp\.php$/.test(lastLocSeg) && lastLocParams == 'action=buddylist') { 
