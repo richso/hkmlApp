@@ -164,6 +164,7 @@ $j(document).ready(function() {
             $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
             $('> td:nth-child(4)', $('tr.header')).css('display', 'none');
             $('> td:nth-child(4)', $('td.subject').parent('tr')).css('display', 'none');
+            $('> td:nth-child(5)', $('td.subject').parent('tr')).removeAttr('nowrap');
             $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
             $('input[type="text"]').css('width', '100%');
             $('.altbg2.bottom table').hide();
