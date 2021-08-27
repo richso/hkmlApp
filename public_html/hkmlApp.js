@@ -158,9 +158,15 @@ $j(document).ready(function() {
             $('> td:nth-child(3)', $('tr.category')).css('display', 'none');
             $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
             $('input[type="text"]').css('width', '100%');
-            if (/^(digest)\.php$/.test(lastLocSeg)) {
-                $('.altbg2.bottom table').hide();
-            }
+        }
+        if (/^(digest)\.php$/.test(lastLocSeg)) {
+            $('td.subject a[target="_blank"]').attr('target', '_self');
+            $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
+            $('> td:nth-child(4)', $('tr.header')).css('display', 'none');
+            $('> td:nth-child(4)', $('td.subject').parent('tr')).css('display', 'none');
+            $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
+            $('input[type="text"]').css('width', '100%');
+            $('.altbg2.bottom table').hide();
         }
         
         if (/^memcp\.php$/.test(lastLocSeg) && lastLocParams == 'action=buddylist') { 
