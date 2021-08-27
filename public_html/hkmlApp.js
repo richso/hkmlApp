@@ -151,7 +151,7 @@ $j(document).ready(function() {
             $('form center').css('display', '');
         }
         
-        if (/^(my|digest)\.php$/.test(lastLocSeg)) { 
+        if (/^my\.php$/.test(lastLocSeg)) { 
             $('td.subject a[target="_blank"]').attr('target', '_self');
             $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
             $('> td:nth-child(3)', $('td.subject').parent('tr')).css('display', 'none');
@@ -159,7 +159,7 @@ $j(document).ready(function() {
             $('> table > tbody > tr > td:first-child', $('.maintable')[2]).css('display', 'none');
             $('input[type="text"]').css('width', '100%');
         }
-        if (/^(digest)\.php$/.test(lastLocSeg)) {
+        if (/^digest\.php$/.test(lastLocSeg)) {
             $('td.subject a[target="_blank"]').attr('target', '_self');
             $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
             $('> td:nth-child(4)', $('tr.header')).css('display', 'none');
