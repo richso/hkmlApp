@@ -151,7 +151,7 @@ $j(document).ready(function() {
             $('form center').css('display', '');
         }
         
-        if (/^my\.php$/.test(lastLocSeg)) { 
+        if (/^(my|digest)\.php$/.test(lastLocSeg)) { 
             $('td.subject a[target="_blank"]').attr('target', '_self');
             $('td a[href^="forumdisplay"][target="_blank"]').attr('target', '_self');
             $('> td:nth-child(3)', $('td.subject').parent('tr')).css('display', 'none');
