@@ -607,7 +607,7 @@ $j(document).ready(function() {
                 .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8679;</a>')
                 .append('<a href="javascript:void(0);" onclick="htmlAppGoBottom();" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
-                .append('<a href="digest.php" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ºë</a>')
+                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ºë</a>')
                 .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">·s</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#11088;</a>');
             
