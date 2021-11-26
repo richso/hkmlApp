@@ -89,8 +89,12 @@ $j(document).ready(function() {
             var sph = sph_q[1];
             $('<div id="hkmlApp-forumBox"></div>').insertBefore(sph);
             $('> table:first-child table', sph).each(function(i, n){
-                $(n).css('width', '100%');
-                $('#hkmlApp-forumBox').append(n);
+                if (i < 2) {
+                    $(n).css('width', '100%');
+                    $('#hkmlApp-forumBox').append(n);
+                } else {
+                    $(n).remove();
+                }
             })
 
             // billboard
@@ -114,9 +118,9 @@ $j(document).ready(function() {
             
             // other boxes below
             for(var x=3; x < Math.min(sph_q.length, 9); x++) {
-                if (x!=6) {
+                //if (x!=6) {
                     $('> table > tbody:nth-child(2) > tr > td:not(:nth-child(1)):not(:nth-child(2))', sph_q[x]).css('display', 'none');
-                } else {
+                /*} else {
                     // merchant's boxes
                     var td = $('<td />');
                     $('> table > tbody:nth-child(2) > tr > td', sph_q[x]).each(function(i, n){
@@ -126,11 +130,11 @@ $j(document).ready(function() {
                     $('> table > tbody:nth-child(2) > tr', sph_q[x]).remove();
                     $('> table > tbody:nth-child(2)', sph_q[x]).append('<tr />');
                     $('> table > tbody:nth-child(2) > tr', sph_q[x]).append(td);
-                }
+                }*/
             }
-            for(var x=9; x < sph_q.length; x++) {
-                $(sph_q[x]).css('display', 'none');
-            }
+            //for(var x=9; x < sph_q.length; x++) {
+                $(sph_q[sph_q.length-1]).css('display', 'none');
+            //}
         }
 
         if (/^forumdisplay\.php$/.test(lastLocSeg)) { 
