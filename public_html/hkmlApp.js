@@ -1,5 +1,5 @@
 $j(document).ready(function() {
-    // test ¤¤¤å
+    // test ä¸­æ–‡
     
     var $ = $j;
     
@@ -46,7 +46,7 @@ $j(document).ready(function() {
         $('body center center').css('display', 'none');
         
         // 202101 add friend list to my menu
-        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">§Úªº¦n¤Í</a></td></tr>');
+        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">æˆ‘çš„å¥½å‹</a></td></tr>');
         // -
        
         $('body > center > div.menu + div').css('display', 'none');
@@ -434,6 +434,9 @@ $j(document).ready(function() {
                 if (! match) {
                     match = tube.match(/^http[s]{0,1}\:\/\/(?:[^\.]+\.){0,1}youtu\.be\/([^\/]+)/);
                 }
+                if (! match) {
+                    math = tube.match(/^http[s]{0,1}\:\/\/(?:[^\.]+\.){0,1}youtube.com\/shorts\/([^\$?]+)/);
+                }
                 if (match) {
                     $(n).replaceWith('<div style="text-align: center;"><iframe webkit-playsinline width="'+vw+'" height="'+vh+'" src="https://www.youtube.com/embed/'+match[1]+'?playsinline=1" frameborder="0" allowfullscreen></iframe></div>');
                 }
@@ -611,8 +614,8 @@ $j(document).ready(function() {
                 .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8679;</a>')
                 .append('<a href="javascript:void(0);" onclick="htmlAppGoBottom();" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
-                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ºë</a>')
-                .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">·s</a>')
+                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ç²¾</a>')
+                .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">æ–°</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#11088;</a>');
             
             if (pmCheck.length) {
@@ -625,8 +628,8 @@ $j(document).ready(function() {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
                     d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
-                            .append('<a href="logging.php?action=login" style="padding: 5px;">µn¤J</a>')
-                            .append('<a href="register.php" style="padding: 5px;">µù¥U</a>')
+                            .append('<a href="logging.php?action=login" style="padding: 5px;">ç™»å…¥</a>')
+                            .append('<a href="register.php" style="padding: 5px;">è¨»å†Š</a>')
                             .append('<div style="clear: both;"></div>');
                 }
                 d.appendTo('body');
