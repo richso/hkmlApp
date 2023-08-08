@@ -1,5 +1,5 @@
 $j(document).ready(function() {
-    // test ä¸­æ?
+    // test ¤¤¤å
     
     var $ = $j;
     
@@ -46,7 +46,7 @@ $j(document).ready(function() {
         $('body center center').css('display', 'none');
         
         // 202101 add friend list to my menu
-        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">?‘ç?å¥½å?</a></td></tr>');
+        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">§Úªº¦n¤Í</a></td></tr>');
         // -
        
         $('body > center > div.menu + div').css('display', 'none');
@@ -614,8 +614,8 @@ $j(document).ready(function() {
                 .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8679;</a>')
                 .append('<a href="javascript:void(0);" onclick="htmlAppGoBottom();" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
-                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ç²?/a>')
-                .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">??/a>')
+                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ºë</a>')
+                .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">·s</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#11088;</a>');
             
             if (pmCheck.length) {
@@ -628,8 +628,8 @@ $j(document).ready(function() {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
                     d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
-                            .append('<a href="logging.php?action=login" style="padding: 5px;">?»å?</a>')
-                            .append('<a href="register.php" style="padding: 5px;">è¨»å?</a>')
+                            .append('<a href="logging.php?action=login" style="padding: 5px;">µn¤J</a>')
+                            .append('<a href="register.php" style="padding: 5px;">µù¥U</a>')
                             .append('<div style="clear: both;"></div>');
                 }
                 d.appendTo('body');
