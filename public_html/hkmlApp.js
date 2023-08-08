@@ -427,7 +427,7 @@ $j(document).ready(function() {
             var w = $(window).width();
             var vw = Math.max(w - 10, 200);
             var vh = vw * 315 / 560;
-            var q = $('a[href*=".youtube.com"], a[href*="youtu.be"]');
+            var q = $('a[href*=".youtube.com"], a[href*="youtu.be"], a[href*="youtube.com"]');
             q.each(function(i, n){
                 var tube = $(n).attr('href');
                 var match = tube.match(/^http[s]{0,1}\:\/\/(?:[^\.]+\.)youtube\.com\/watch\?v\=([^\&]+)/);
