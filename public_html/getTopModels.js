@@ -3,6 +3,7 @@ $j(document).ready(function() {
     var $ = $j;
     
     var appHead = $('html').attr('hkmlApp_head');
+    var usrname = $('body > center > div.menu > .maintable > .bold > a').text();
     
     if (! appHead) {
         showPopupText = function(){}
@@ -95,6 +96,10 @@ $j(document).ready(function() {
             }
             
             jsonData.billboard = bbJsonData;
+            jsonData.username = usrname;
+            var logoutLink = $('a[href^="logging.php?action=logout"]')
+            jsonData.loggedIn = !!logoutLink.length;
+            
             // for ios
             if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlApp != "undefined") {
                 window.webkit.messageHandlers.hkmlApp.postMessage(jsonData);
