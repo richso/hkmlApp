@@ -70,6 +70,8 @@ $j(document).ready(function() {
             $('form[name="login"] input[name="password"]').attr('placeholder', 'password');
             $('form[name="login"] input[name="answer"]').css('width', '100%').attr('placeholder', 'answer');
             
+            $('form[name="login"] input[name="username"]').focus()
+            
             var logoutLink = $('a[href^="logging.php?action=logout"]')
 
             // for ios
