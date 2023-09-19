@@ -91,6 +91,40 @@ $j(document).ready(function() {
                 }, 5000);
             }
             
+        } else if (/^register\.php$/.test(lastLocSeg)) {
+            $('form[name="register"] > div.spaceborder > table > tbody > tr:not(:first-child) > td:first-child').css('display', 'none');
+            $('form[name="register"] input[name="secodeverify"]').attr('placeholder', 'code');
+            $('form[name="register"] input[name="username"]').attr('placeholder', 'login name');
+            $('form[name="register"] input[name="password"]').attr('placeholder', 'password');
+            $('form[name="register"] input[name="password2"]').attr('placeholder', 'verify');
+            $('form[name="register"] input[name="email"]').attr('placeholder', 'email');
+            $('form[name="register"] input[name="msn"]').attr('placeholder', 'msn');
+            $('form[name="register"] #checkemail .smalltxt').css('display', 'none');
+            $('form[name="register"] #checkmsn .smalltxt').css('display', 'none');
+            $('form[name="register"] input[name="advshow"]').css('display', 'none');
+            $('form[name="register"] #advance').css('display', 'none');
+            
+            $('form[name="register"] input[name="username"]').focus()
+            
+            var logoutLink = $('a[href^="logging.php?action=logout"]')
+
+            // for ios
+            if (window.webkit && window.webkit.messageHandlers && typeof window.webkit.messageHandlers.hkmlAppCookie != "undefined" && logoutLink.length) {
+                var cks = document.cookie.split(/\; /);
+                var aCk = [];
+                cks.forEach(function(ck){
+                    var ppt = ck.split(/\=/);
+                    aCk.push({
+                        name: ppt[0],
+                        value: unescape(ppt[1])
+                    });
+                });
+                
+                setTimeout(function(){
+                    window.webkit.messageHandlers.hkmlAppCookie.postMessage(aCk);
+                }, 5000);
+            }
+            
         } else {
             $('<div style="display: block; position: fixed; z-index: 1000; top: 0; left: 0; height: 100%; width: 100%; background: rgba( 50, 50, 50, .8 ) 50% 50% no-repeat;"></div>').appendTo('body');
             
