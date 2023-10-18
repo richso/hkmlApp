@@ -76,6 +76,10 @@ $j(document).ready(function() {
         var lastLocParams = urlParts[urlParts.length-1].split(/\?/)[1];
         var mainTable_q = $('body > center > .maintable');
         
+        $('a[href^="space.php?uid"]').each((i, n) => {
+            n.href = n.href.replace(/space.php\?uid\=([0-9]+)$/, "viewpro.php?uid=$1");
+        });
+        
         /* check if index page */
         if (mainTable_q.length && /^index\.php$/.test(lastLocSeg)) {
             $('tbody[id^="category_"] > tr.row > td[align="left"] > a > img').css('width', '').css('max-width', '100%');
