@@ -1,5 +1,5 @@
 $j(document).ready(function() {
-    // test ¤¤¤å
+    // test Â¤Â¤Â¤Ã¥
     
     var $ = $j;
     
@@ -33,7 +33,7 @@ $j(document).ready(function() {
             '.msgborder, .msgheader { margin: 0 !important;}</style>');
         $('*').css('font-size', '16px');
         $('.logo').css('display', 'none');
-        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="http://www.hkml.net/Discuz/images/common"]):not([src^="http://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])').css({'width': '100%', 'height':'auto'});
+        $('.t_row > tbody > tr > td:nth-child(2) img:not([smilieid]):not([src^="images/d-xite"]):not([src^="images/common"]):not([src^="https://www.hkml.net/Discuz/images/common"]):not([src^="https://hkml.net/Discuz/images/common"]):not([src^="images/attachicons"]):not([src^="http://wpa.qq.com/pa?p="]):not([src^="http://web.icq.com/whitepages/online?icq="]):not([src^="http://edit.yahoo.com/config/send_webmesg?.target="]):not([src^="http://blog.roodo.com/onion_club/"]):not([src^="http://amos1.taobao.com/"])').css({'width': '100%', 'height':'auto'});
         $('.t_row > tbody > tr > td:nth-child(2) a[href][target]').attr('target', '_self').css('color', 'blue')
 
         $('input[type="text"], input[type="password"], input[type="file"]').css('height', 'auto');
@@ -549,7 +549,7 @@ $j(document).ready(function() {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
                     d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
-                            .append('<a href="logging.php?action=login" style="padding-top: 5px;">µn¤J</a>')
+                            .append('<a href="logging.php?action=login" style="padding-top: 5px;">ÂµnÂ¤J</a>')
                             .append('<div style="clear: both;"></div>');
                 }
                 d.appendTo('body');
