@@ -1,5 +1,5 @@
 $j(document).ready(function() {
-    // test 中文
+    // test 中文 big5
     
     var $ = $j;
     
