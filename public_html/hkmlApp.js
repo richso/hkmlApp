@@ -633,8 +633,8 @@ $j(document).ready(function() {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
                     d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
-                            .append('<a href="logging.php?action=login" style="padding: 5px;">µn¤J</a>')
-                            .append('<a href="register.php" style="padding: 5px;">µù¥U</a>')
+                            .append('<a href="logging.php?action=login" style="padding: 5px;">&#x767B;&#x5165;</a>')
+                            .append('<a href="register.php" style="padding: 5px;">&#x8A3B;&#x518A;</a>')
                             .append('<div style="clear: both;"></div>');
                 }
                 d.appendTo('body');
