@@ -1,5 +1,5 @@
 $j(document).ready(function() {
-    // test ä¸­æ–‡
+    // test ¤¤¤å
     
     var $ = $j;
     
@@ -46,7 +46,7 @@ $j(document).ready(function() {
         $('body center center').css('display', 'none');
         
         // 202101 add friend list to my menu
-        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">æˆ‘çš„å¥½å‹</a></td></tr>');
+        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">§Úªº¦n¤Í</a></td></tr>');
         // -
        
         $('body > center > div.menu + div').css('display', 'none');
@@ -241,12 +241,13 @@ $j(document).ready(function() {
                 });
                 $('> tbody > tr', n).append(ctrlTd);
             });
+            /*
             $('#postform')[0].onsubmit = function(){
                 var msg = hkmlapp_replace_smilies($('#postform #posteditor_textarea').val());
                 $('#postform #posteditor_textarea').val(msg);
 
                 return validate(this);
-            }
+            } */
 
             $('#smiliestable').insertAfter($('#postform [name="message"]').parent());
             function hkmlInsertSmilies() {
@@ -618,8 +619,8 @@ $j(document).ready(function() {
                 .append('<a href="javascript:void(0);" onclick="window.scrollTo(0,0);" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8679;</a>')
                 .append('<a href="javascript:void(0);" onclick="htmlAppGoBottom();" style="float: left; padding: 5px; font-size: 24px; color: white;">&#8681;</a>')
                 .append('<a href="javascript:void(0);" onclick="location=\'./index.php\';" style="float: right; padding: 5px; font-size: 24px;">&#127968;</a>')
-                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ç²¾</a>')
-                .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">æ–°</a>')
+                .append('<a href="digest.php?order=dateline" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">ºë</a>')
+                .append('<a href="search.php?srchfrom=20000&searchsubmit=yes" style="float: right; padding: 5px; font-size: 16px; color: yellow; ">·s</a>')
                 .append('<a href="facebookshare:'+location.href+'" style="float: right; padding: 5px; font-size: 24px;">&#11088;</a>');
             
             if (pmCheck.length) {
@@ -632,8 +633,8 @@ $j(document).ready(function() {
                 $('<div style="height: 60px;"></div>').appendTo('body');
                 if (!usrname) {
                     d = $('<div style="position: fixed; bottom:0; width: calc(100% - 40px); height: 40px; background-color: #eeeeee; padding: 0 20px; text-align: center;"></div>')
-                            .append('<a href="logging.php?action=login" style="padding: 5px;">ç™»å…¥</a>')
-                            .append('<a href="register.php" style="padding: 5px;">è¨»å†Š</a>')
+                            .append('<a href="logging.php?action=login" style="padding: 5px;">µn¤J</a>')
+                            .append('<a href="register.php" style="padding: 5px;">µù¥U</a>')
                             .append('<div style="clear: both;"></div>');
                 }
                 d.appendTo('body');
@@ -690,12 +691,12 @@ $j(document).ready(function() {
                     $(n).remove();
                 });
             
-                $('#postform')[0].onsubmit = function(){
+                /* $('#postform')[0].onsubmit = function(){
                     var msg = hkmlapp_replace_smilies($('#postform #message').val());
                     $('#postform #message').val(msg);
 
                     return validate(this);
-                }
+                } */
                 
                 $('#smiliestable').insertAfter($('#postform [name="message"]').parent());
                 
@@ -728,6 +729,211 @@ $j(document).ready(function() {
             }
 
         }
+        
+        // 202609
+        const form = document.getElementById('postform');
+        if (form) {
+                $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('¥i¥ÎÀÉ®×®æ¦¡: jpg, jpeg, png, gif');
+                $j('input[type="file"]')[0].accept=".jpg,.jpeg,.png,.gif"
+                $j('input[type="file"]')[1].accept=".jpg,.jpeg,.png,.gif"
+
+                window.validate = function(form) {
+                        if (form.message.value == "" && form.subject.value == "") {
+                                alert("½Ğ§¹¦¨¼ĞÃD©Î¤º®eÄæ¡C");
+                                form.message.focus();
+                                return false;
+                        } else if (form.subject.value.length > 80) {
+                                alert("±zªº¼ĞÃD¶W¹L 80 ­Ó¦r²Åªº­­¨î¡C");
+                                form.subject.focus();
+                                return false;
+                        }
+                        if (!disablepostctrl && ((postminchars != 0 && form.message.value.length < postminchars) || (postmaxchars != 0 && form.message.value.length > postmaxchars))) {
+                                alert("±zªº©«¤lªø«×¤£²Å¦X­n¨D¡C\n\n·í«eªø«×: "+form.message.value.length+" ¦r¸`\n¨t²Î­­¨î: "+postminchars+" µo°e¨ì "+postmaxchars+" ¦r¸`");
+                                return false;
+                        }
+                        if(!fetchCheckbox('parseurloff')) {
+                                form.message.value = parseurl(form.message.value, 'bbcode');
+                        }
+                        return true;
+                }
+
+                form.addEventListener('submit', async function(event) {
+                        event.preventDefault(); // ªı¤î¹w³]¥ß§Y´£¥æ
+
+                        // 3. Ä²µo­ì¦³ªº validate() ÅçÃÒ¾÷¨î
+                        if (typeof window.validate === 'function') {
+                                if (window.validate(form) === false) {
+                                        console.log('­ì©lÅçÃÒ¥¼³q¹L¡A¨ú®ø´£¥æ¡C');
+                                        return; 
+                                }
+                        }
+
+                        console.log('¦¨¥\ÄdºI´£¥æ¡A¶}©l³B²z¹Ï¤ù¡]­×¥¿ EXIF ¹êÅé±ÛÂà¡BÀ£ÁY¡B§ó¦W¡^...');
+
+                        const formData = new FormData(form);
+                        const fileKey = 'attach[]';
+                        const files = formData.getAll(fileKey);
+
+                        formData.delete(fileKey); // ¥ı²M°£¡Aµy«á¸É¤W³B²z¹Lªº·sÀÉ®×
+
+                        // 4. ³v¤@³B²z¨C­ÓÀÉ®×
+                        for (let i = 0; i < files.length; i++) {
+                                const file = files[i];
+
+                                if (file && file.type.startsWith('image/')) {
+                                        try {
+                                                console.log(`¥¿¦b³B²z: ${file.name}`);
+
+                                                // Àò¨ú EXIF ±ÛÂà¨¤«×
+                                                const orientation = await getExifOrientation(file);
+                                                // ¶i¦æ¹êÅé±ÛÂà¡BÁY©ñ»PÀ£ÁY
+                                                const compressedBlob = await processImage(file, orientation);
+
+                                                // ±j¨î±N°ÆÀÉ¦W§ï¬° .jpg
+                                                let newName = file.name.replace(/\.[^/.]+\$/, "") + ".jpg";
+
+                                                formData.append(fileKey, compressedBlob, newName);
+                                                console.log(`³B²z§¹¦¨¡A·sÀÉ¦W: ${newName} (EXIF ¨¤«×: ${orientation})`);
+                                        } catch (error) {
+                                                console.error(`³B²z ${file.name} ¥¢±Ñ¡A±N¨Ï¥Î­ìÀÉ®×¤W¶Ç¡C`, error);
+                                                formData.append(fileKey, file); // ¥¢±Ñ«á³Æ¤è®×
+                                        }
+                                } else {
+                                        if (file && file.size > 0) {
+                                                formData.append(fileKey, file);
+                                        }
+                                }
+                        }
+
+                        // 5. ±N³Ì²×³B²z¦nªº FormData µo°e¨ìªí³æ­ì¥»ªº action
+                        const actionUrl = form.getAttribute('action') || window.location.href;
+                        const method = form.getAttribute('method') || 'POST';
+
+                        try {
+                                const response = await fetch(actionUrl, { method: method, body: formData });
+                                console.log('@@@response', response);
+                                if (response.ok) {
+                                        window.location.href = response.url;
+                                } else {
+                                        alert('¦øªA¾¹±µ¦¬¥¢±Ñ¡C');
+                                }
+                        } catch (error) {
+                                alert('´£¥æ¹Lµ{¤¤µo¥Íºô¸ô¿ù»~¡C');
+                                console.log(error);
+                        }
+                });
+
+                /**
+                 * Åª¨ú JPEG ÀÉ®×ªº EXIF Orientation ¼ĞÅÒ¡]­ì¥Í¤G¶i¦ìÅª¨ú¡^
+                 */
+                function getExifOrientation(file) {
+                        return new Promise((resolve) => {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                        const view = new DataView(e.target.result);
+                                        if (view.getUint16(0, false) !== 0xFFD8) return resolve(-1); // ¤£¬O JPEG
+                                        const length = view.byteLength;
+                                        let offset = 2;
+                                        while (offset < length) {
+                                                if (view.getUint16(offset, false) === 0xFFE1) {
+                                                        if (view.getUint32(offset + 4, false) !== 0x45786966) return resolve(-1); // "Exif"
+                                                        const little = view.getUint16(offset + 10, false) === 0x4949;
+                                                        offset += 12;
+                                                        const tags = view.getUint16(offset, little);
+                                                        offset += 2;
+                                                        for (let i = 0; i < tags; i++) {
+                                                                if (view.getUint16(offset + (i * 12), little) === 0x0112) { // Orientation tag
+                                                                        return resolve(view.getUint16(offset + (i * 12) + 8, little));
+                                                                }
+                                                        }
+                                                } else if ((view.getUint16(offset, false) & 0xFF00) !== 0xFF00) {
+                                                        break;
+                                                } else {
+                                                        offset += view.getUint16(offset + 2, false) + 2;
+                                                }
+                                        }
+                                        return resolve(-1);
+                                };
+                                // ¥uÅª¨ú«e 64KB §Y¥iÀò¨ú EXIF ¸ê°T¡A¸`¬Ù°O¾ĞÅé
+                                reader.readAsArrayBuffer(file.slice(0, 65536));
+                        });
+                }
+
+                /**
+                 * ®Ö¤ß¹Ï¤ù³B²z¡Gµ²¦X¹êÅé±ÛÂà¡BªøÃäÁY©ñ (Max 1024px) »P 70% À£ÁY
+                 */
+                function processImage(file, orientation) {
+                        return new Promise((resolve, reject) => {
+                                const reader = new FileReader();
+                                reader.readAsDataURL(file);
+                                reader.onload = function(event) {
+                                        const img = new Image();
+                                        img.src = event.target.result;
+                                        img.onload = function() {
+                                                const canvas = document.createElement('canvas');
+                                                const ctx = canvas.getContext('2d');
+
+                                                let srcWidth = img.width;
+                                                let srcHeight = img.height;
+
+                                                // §PÂ_ EXIF ¨¤«×¡G¦pªG¬O 5, 6, 7, 8¡A¥Nªí¹Ï¤ù¼e°ª¦bµøÄ±¤W¬OÄA­Ëªº
+                                                const swapSides = orientation >= 5 && orientation <= 8;
+                                                const targetWidth = swapSides ? srcHeight : srcWidth;
+                                                const targetHeight = swapSides ? srcWidth : srcHeight;
+
+                                                // ­pºâµ¥¤ñ¨ÒÁY©ñ¤Ø¤o (ªøÃä³Ì¤j 1024px)
+                                                let width = targetWidth;
+                                                let height = targetHeight;
+                                                const max_size = 1024;
+
+                                                if (width > height) {
+                                                        if (width > max_size) {
+                                                                height *= max_size / width;
+                                                                width = max_size;
+                                                        }
+                                                } else {
+                                                        if (height > max_size) {
+                                                                width *= max_size / height;
+                                                                height = max_size;
+                                                        }
+                                                }
+
+                                                // ³]©wµe¥¬¤Ø¤o¬°³Ì²×ÁY©ñ«áªº¡uµøÄ±¤Ø¤o¡v
+                                                canvas.width = width;
+                                                canvas.height = height;
+
+                                                // ¨Ì¾Ú EXIF Orientation ­pºâ Canvas ª«²z±ÛÂà»P¦ì²¾
+                                                // ¦¹¨BÆJ·|§â¹³¯À¯u¥¿²¾¦ì¡A¾É¥¿¹Ï¤ù¡A¨Ã¥B¿é¥Xªº JPEG ±N¤£¦A±a¦³¿ù»~ªº EXIF Âà¨¤
+                                                switch (orientation) {
+                                                        case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;                  // ¥ª¥kÃè¹³
+                                                        case 3: ctx.transform(-1, 0, 0, -1, width, height); break;             // ±ÛÂà 180 «×
+                                                        case 4: ctx.transform(1, 0, 0, -1, 0, height); break;                 // ¤W¤UÄA­Ë
+                                                        case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;                       // ±ÛÂà 90 «× + ¥ª¥kÃè¹³
+                                                        case 6: ctx.transform(0, 1, -1, 0, width, 0); break;                  // ¶¶®É°w±ÛÂà 90 «×
+                                                        case 7: ctx.transform(0, -1, -1, 0, width, height); break;             // ±ÛÂà 270 «× + ¥ª¥kÃè¹³
+                                                        case 8: ctx.transform(0, -1, 1, 0, 0, height); break;                  // °f®É°w±ÛÂà 90 «×
+                                                        default: break;                                                        // ¥¿±`¡]¤£»İ±ÛÂà¡^
+                                                }
+
+                                                // ¥Ñ©óµe¥¬¤w¸g¹L±ÛÂà¦ì²¾¡A¦¹³B¥²¶·¬M®g¦^­ì©l¹Ï¤ùªºÁY©ñ¤ñ¨Ò¨ÓÃ¸»s
+                                                const scaleX = width / targetWidth;
+                                                const scaleY = height / targetHeight;
+                                                ctx.drawImage(img, 0, 0, srcWidth * scaleX, srcHeight * scaleY);
+
+                                                // ¿é¥X¬°¥ş·s¡BµL EXIF Âà¨¤´İ¯dªº¯u¹ê JPEG ÀÉ®×
+                                                canvas.toBlob((blob) => {
+                                                        if (blob) resolve(blob);
+                                                        else reject(new Error('Canvas Âà´« Blob ¥¢±Ñ'));
+                                                }, 'image/jpeg', 0.70);
+                                        };
+                                        img.onerror = (err) => reject(err);
+                                };
+                                reader.onerror = (err) => reject(err);
+                        });
+                }
+        }
+        //-
+		
         
         htmlAppGoBottom = function () {
             var ofs = $('#postform').offset();
