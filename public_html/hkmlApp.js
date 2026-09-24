@@ -733,22 +733,22 @@ $j(document).ready(function() {
         // 202609
         const form = document.getElementById('postform');
         if (form) {
-                $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('可用檔案格式: jpg, jpeg, png, gif');
+                $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('Formats: jpg, jpeg, png, gif');
                 $j('input[type="file"]')[0].accept=".jpg,.jpeg,.png,.gif"
                 $j('input[type="file"]')[1].accept=".jpg,.jpeg,.png,.gif"
 
                 window.validate = function(form) {
                         if (form.message.value == "" && form.subject.value == "") {
-                                alert("請完成標題或內容欄。");
+                                alert("please provide the subject");
                                 form.message.focus();
                                 return false;
                         } else if (form.subject.value.length > 80) {
-                                alert("您的標題超過 80 個字符的限制。");
+                                alert("subject exceeded 80 characters limit");
                                 form.subject.focus();
                                 return false;
                         }
                         if (!disablepostctrl && ((postminchars != 0 && form.message.value.length < postminchars) || (postmaxchars != 0 && form.message.value.length > postmaxchars))) {
-                                alert("您的帖子長度不符合要求。\n\n當前長度: "+form.message.value.length+" 字節\n系統限制: "+postminchars+" 發送到 "+postmaxchars+" 字節");
+                                alert("Message not long enough\n\ncurrent length: "+form.message.value.length+" chars.\nMin. required: "+postminchars+" Max.: "+postmaxchars+" chars.");
                                 return false;
                         }
                         if(!fetchCheckbox('parseurloff')) {
@@ -815,15 +815,13 @@ $j(document).ready(function() {
 
                         try {
                                 const response = await fetch(actionUrl, { method: method, body: formData });
-                                console.log('@@@response', response);
                                 if (response.ok) {
-                                		alert('&#x6210;&#x529F; upload');
                                         window.location.href = response.url;
                                 } else {
-                                        alert('伺服器接收失敗。');
+                                        alert('submission failed');
                                 }
                         } catch (error) {
-                                alert('提交過程中發生網路錯誤。');
+                                alert('network error');
                                 console.log(error);
                         }
                 });
