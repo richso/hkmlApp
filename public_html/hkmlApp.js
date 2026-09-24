@@ -775,6 +775,12 @@ $j(document).ready(function() {
                         formData.delete('message');
                         formData.set('message', multibyteToEntities(msg));
                         
+                        let descs = formData.getAll('attachdesc[]');
+                        formData.delete('attachdesc[]');
+                        descs.shift();
+                        descs = descs.map(d => multibyteToEntities(d));
+                        descs.forEach(d => formData.append('attachdesc[]', d));
+                        
                         const fileKey = 'attach[]';
                         const files = formData.getAll(fileKey);
 
