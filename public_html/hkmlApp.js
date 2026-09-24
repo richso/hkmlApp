@@ -732,7 +732,7 @@ $j(document).ready(function() {
         
         // 202609
         const form = document.getElementById('postform');
-        if (form) {
+        if (form && !form.elements['msgto']) {
                 $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('Formats: jpg, jpeg, png, gif');
                 $j('input[type="file"]')[0].accept=".jpg,.jpeg,.png,.gif"
                 $j('input[type="file"]')[1].accept=".jpg,.jpeg,.png,.gif"
@@ -771,6 +771,10 @@ $j(document).ready(function() {
                         console.log('成功攔截提交，開始處理圖片（修正 EXIF 實體旋轉、壓縮、更名）...');
 
                         const formData = new FormData(form);
+                        let subj = formData.get('subject');
+                        formData.delete('subject');
+                        formData.set('subject', multibyteToEntities(subj));
+                        
                         let msg = formData.get('message');
                         formData.delete('message');
                         formData.set('message', multibyteToEntities(msg));
