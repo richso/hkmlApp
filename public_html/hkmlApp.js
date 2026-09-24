@@ -771,6 +771,10 @@ $j(document).ready(function() {
                         console.log('成功攔截提交，開始處理圖片（修正 EXIF 實體旋轉、壓縮、更名）...');
 
                         const formData = new FormData(form);
+                        let msg = formData.get('message');
+                        formData.delete('message');
+                        formData.set('message', multibyteToEntities(msg));
+                        
                         const fileKey = 'attach[]';
                         const files = formData.getAll(fileKey);
 
@@ -822,6 +826,23 @@ $j(document).ready(function() {
                                 console.log(error);
                         }
                 });
+                
+                function multibyteToEntities(text) {
+					if (!text) return '';
+					
+					// Spread operator [...] safely splits strings by Unicode code points (handles emojis)
+					return [...text].map(char => {
+						const codePoint = char.codePointAt(0);
+						
+						// If it's a standard ASCII character (0-127), leave it as-is
+						if (codePoint <= 127) {
+							return char;
+						}
+						
+						// Convert multibyte character to its numeric HTML entity
+						return `&#x${codePoint.toString(16)};`;
+					}).join('');
+				}
 
                 /**
                  * 讀取 JPEG 檔案的 EXIF Orientation 標籤（原生二進位讀取）
