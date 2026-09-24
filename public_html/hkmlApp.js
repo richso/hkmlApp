@@ -817,6 +817,7 @@ $j(document).ready(function() {
                                 const response = await fetch(actionUrl, { method: method, body: formData });
                                 console.log('@@@response', response);
                                 if (response.ok) {
+                                		alert('&#x6210;&#x529F; upload');
                                         window.location.href = response.url;
                                 } else {
                                         alert('伺服器接收失敗。');
