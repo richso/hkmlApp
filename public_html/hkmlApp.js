@@ -760,9 +760,11 @@ $j(document).ready(function() {
 					.appendTo('head');
 				var loading = $j('<div id="loading-layer"><div class="loading-text"></div></div>').hide();
 				$j('body').append(loading);
-        
-        
+
+				// for new post / new reply        
                 $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('&#x63A5;&#x53D7;&#x683C;&#x5F0F;: jpg / jpeg / png / gif<br/><span style="color: red;">&#22294;&#29255;&#23610;&#23544;&#47;&#27284;&#26696;&#22823;&#23567;&#65306;&#20219;&#20309;&#23610;&#23544;&#21450;&#22823;&#23567;&#65292;&#25163;&#27231;&#31243;&#24335;&#33258;&#21205;&#36681;&#25563;</span>');
+                // for edit reply
+				$j('form#postform table table:nth-child(2) > tbody:nth-child(4)').html('&#x63A5;&#x53D7;&#x683C;&#x5F0F;: jpg / jpeg / png / gif<br/><span style="color: red;">&#22294;&#29255;&#23610;&#23544;&#47;&#27284;&#26696;&#22823;&#23567;&#65306;&#20219;&#20309;&#23610;&#23544;&#21450;&#22823;&#23567;&#65292;&#25163;&#27231;&#31243;&#24335;&#33258;&#21205;&#36681;&#25563;</span>');
                 $j('input[type="file"]')[0].accept=".jpg,.jpeg,.png,.gif"
                 $j('input[type="file"]')[1].accept=".jpg,.jpeg,.png,.gif"
 
