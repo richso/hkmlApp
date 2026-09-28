@@ -762,7 +762,7 @@ $j(document).ready(function() {
 				$j('body').append(loading);
         
         
-                $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('&#x63A5;&#x53D7;&#x683C;&#x5F0F;: jpg / jpeg / png / gif<br/><span style="color: red;">&#x5011;&#x7247;&#x5C3A;&#x5BF8;&#xFF0F;&#x6A94;&#x6848;&#x5927;&#x5C0F;&#xFF1A;&#x624B;&#x6A5F;&#x7A0B;&#x5F0F;&#x81EA;&#x52D5;&#x8ABF;&#x6564;&#x6A94;&#x540D;&#x3001;&#x5011;&#x7247;&#x5C3A;&#x5BF8;&#x3001;&#x6A94;&#x6848;&#x5927;&#x5C0F;</span>');
+                $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('&#x63A5;&#x53D7;&#x683C;&#x5F0F;: jpg / jpeg / png / gif<br/><span style="color: red;">&#22294;&#29255;&#23610;&#23544;&#47;&#27284;&#26696;&#22823;&#23567;&#65306;&#20219;&#20309;&#23610;&#23544;&#21450;&#22823;&#23567;&#65292;&#25163;&#27231;&#31243;&#24335;&#33258;&#21205;&#36681;&#25563;</span>');
                 $j('input[type="file"]')[0].accept=".jpg,.jpeg,.png,.gif"
                 $j('input[type="file"]')[1].accept=".jpg,.jpeg,.png,.gif"
 
