@@ -46,7 +46,7 @@ $j(document).ready(function() {
         $('body center center').css('display', 'none');
         
         // 202101 add friend list to my menu
-        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">我的好友</a></td></tr>');
+        $('#my_menu > table > tbody').append('<tr><td class="popupmenu_option" style="opacity: 0.85;"><a href="memcp.php?action=buddylist">&#25105;&#30340;&#22909;&#21451;</a></td></tr>');
         // -
        
         $('body > center > div.menu + div').css('display', 'none');
@@ -733,6 +733,35 @@ $j(document).ready(function() {
         // 202609
         const form = document.getElementById('postform');
         if (form && !form.elements['msgto']) {
+        		// loading layer
+        		$j('<style>')
+					.prop('type', 'text/css')
+					.html(`
+						#loading-layer {
+							position: fixed;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background-color: rgba(0, 0, 0, 0.6);
+							z-index: 9999;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
+						.loading-text {
+							color: #ffffff;
+							font-size: 24px;
+							font-family: Arial, sans-serif;
+							font-weight: bold;
+							letter-spacing: 1px;
+						}
+					`)
+					.appendTo('head');
+				var loading = $j('<div id="loading-layer"><div class="loading-text"></div></div>').hide();
+				$j('body').append(loading);
+        
+        
                 $j('form#postform table table:nth-child(3) > tbody:nth-child(4)').html('Formats: jpg, jpeg, png, gif');
                 $j('input[type="file"]')[0].accept=".jpg,.jpeg,.png,.gif"
                 $j('input[type="file"]')[1].accept=".jpg,.jpeg,.png,.gif"
@@ -769,6 +798,9 @@ $j(document).ready(function() {
                         }
 
                         console.log('成功攔截提交，開始處理圖片（修正 EXIF 實體旋轉、壓縮、更名）...');
+                        
+                        loading.fadeIn(200);
+                        loading.find('.loading-text').text('pls wait...');
 
                         const formData = new FormData(form);
                         let subj = formData.get('subject');
@@ -797,6 +829,7 @@ $j(document).ready(function() {
                                 if (file && file.type.startsWith('image/')) {
                                         try {
                                                 console.log(`正在處理: ${file.name}`);
+												loading.find('.loading-text').text(`converting ${file.name} ...`);
 
                                                 // 獲取 EXIF 旋轉角度
                                                 const orientation = await getExifOrientation(file);
@@ -823,8 +856,11 @@ $j(document).ready(function() {
                         const actionUrl = form.getAttribute('action') || window.location.href;
                         const method = form.getAttribute('method') || 'POST';
 
+						loading.find('.loading-text').text(`uploading ...`);
+						
                         try {
                                 const response = await fetch(actionUrl, { method: method, body: formData });
+                                loading.fadeOut(200);
                                 if (response.ok) {
                                         window.location.href = response.url;
                                 } else {
