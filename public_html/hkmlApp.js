@@ -896,7 +896,7 @@ $j(document).ready(function() {
 						
 								// 成功後隱藏並跳轉
 								loading.fadeOut(200);
-								//window.location.href = responseUrl;
+								window.location.href = responseUrl;
 						
 						} catch (error) {
 								loading.fadeOut(200); // 發生錯誤時也需隱藏 loading 層
