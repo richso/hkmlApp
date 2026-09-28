@@ -800,7 +800,7 @@ $j(document).ready(function() {
                         console.log('成功攔截提交，開始處理圖片（修正 EXIF 實體旋轉、壓縮、更名）...');
                         
                         loading.fadeIn(200);
-                        loading.find('.loading-text').text('pls wait...');
+                        loading.find('.loading-text').html('&#x8ACB;&#x7A0D;&#x5019;...');
 
                         const formData = new FormData(form);
                         let subj = formData.get('subject');
@@ -829,7 +829,7 @@ $j(document).ready(function() {
                                 if (file && file.type.startsWith('image/')) {
                                         try {
                                                 console.log(`正在處理: ${file.name}`);
-												loading.find('.loading-text').text(`converting ${file.name} ...`);
+												loading.find('.loading-text').html(`&#x6B63;&#x5728;&#x8655;&#x7406; ${file.name} ...`);
 
                                                 // 獲取 EXIF 旋轉角度
                                                 const orientation = await getExifOrientation(file);
@@ -856,20 +856,53 @@ $j(document).ready(function() {
                         const actionUrl = form.getAttribute('action') || window.location.href;
                         const method = form.getAttribute('method') || 'POST';
 
-						loading.find('.loading-text').text(`uploading ...`);
+						loading.find('.loading-text').html(`&#x4E0A;&#x8F09;&#x4E2D; ...`);
 						
-                        try {
-                                const response = await fetch(actionUrl, { method: method, body: formData });
-                                loading.fadeOut(200);
-                                if (response.ok) {
-                                        window.location.href = response.url;
-                                } else {
-                                        alert('submission failed');
-                                }
-                        } catch (error) {
-                                alert('network error');
-                                console.log(error);
-                        }
+						try {
+								// 改用 Promise 包裝 XMLHttpRequest 以支援上傳進度監聽
+								const responseUrl = await new Promise((resolve, reject) => {
+										const xhr = new XMLHttpRequest();
+										xhr.open(method, actionUrl);
+						
+										// 監聽上傳進度
+										if (xhr.upload) {
+												xhr.upload.addEventListener('progress', (event) => {
+														if (event.lengthComputable) {
+																// 計算百分比
+																const percentComplete = Math.round((event.loaded / event.total) * 100);
+																// 動態更新文字與進度
+																loading.find('.loading-text').html(`&#x4E0A;&#x8F09;&#x4E2D; ... ${percentComplete}%`);
+														}
+												});
+										}
+						
+										// 請求完成處理
+										xhr.onload = () => {
+											console.log(xhr);
+												if (xhr.status >= 200 && xhr.status < 300) {
+														// 模擬 fetch 的 response.url，若後端沒給則用當前網址或回應網址
+														resolve(xhr.responseURL || actionUrl);
+												} else {
+														reject(new Error('submission failed'));
+												}
+										};
+						
+										// 網路錯誤處理
+										xhr.onerror = () => reject(new Error('network error'));
+						
+										// 發送數據
+										xhr.send(formData);
+								});
+						
+								// 成功後隱藏並跳轉
+								loading.fadeOut(200);
+								//window.location.href = responseUrl;
+						
+						} catch (error) {
+								loading.fadeOut(200); // 發生錯誤時也需隱藏 loading 層
+								alert(error.message);
+								console.log(error);
+						}
                 });
                 
                 function multibyteToEntities(text) {
