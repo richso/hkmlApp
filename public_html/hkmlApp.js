@@ -19,7 +19,7 @@ $j(document).ready(function() {
             .append('<style type="text/css">[class*=myalbum-thumbs-], .myalbum-thumbs {overflow: hidden; margin: 0 auto !important;}\n'+
             '#divStayTopLeft {display: none;}\n' +
             '#postform input[type="file"], #postform input[type="text"] {width: 100% !important;}\n' +
-            '#postform #posteditor_textarea {height: 90px !important;}\n' + 
+            '#postform #posteditor_textarea {height: 130px !important;}\n' + 
             '.lightbutton {padding: 0 5px !important; color: #050505 !important; background-image: url(../../images/d-xite_blue/header_bg.gif); background-repeat: repeat-x; background-position: 0 50%; outline: 1px solid #4691C8; border: 1px solid #FFF !important; height: 19px !important; line-height: 17px !important;}\n' +
             '#posteditor_controls .editor_buttonnormal, #posteditor_controls .editor_buttonhover, #posteditor_controls .editor_buttonselected {float: left;}' +
             '.myalbum-thumbss {width: 100% !important; height: auto !important;}\n' +
@@ -664,10 +664,10 @@ $j(document).ready(function() {
         function alterReplyBox() {
             // postform
             try {
-                $('#postform > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-                '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:first-child, '+
-                '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
-                '#postform > .maintable > .spaceborder > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
+                $('#postform > :nth-child(1 of .spaceborder) > table > tbody > tr:not(tr:first-child) > td:first-child, '+
+                '#postform > .maintable > :nth-child(1 of .spaceborder) > table > tbody > tr:not(tr:first-child) > td:first-child, '+
+                '#postform > .maintable > :nth-child(1 of .spaceborder) > table > tbody > tr:not(tr:first-child) > td:nth-child(2), '+
+                '#postform > .maintable > :nth-child(1 of .spaceborder) > table > tbody > tr:not(tr:first-child) > td:last-child').css('display', 'none');
                 $('#postform #attachbody tr.row2 > td, #postform #attachbody tr.row1 > td').css({
                     'border-bottom': '1px dotted #555555', 
                     'padding-bottom': '20px', 
